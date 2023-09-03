@@ -1,0 +1,2 @@
+module PostHobbiesHelper
+end
