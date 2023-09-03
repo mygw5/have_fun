@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HaveFun</title>
+    <title>Let's have fun!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- controller単位でレイアウトを調整するため -->
+    <%= stylesheet_pack_tag params[:controller], 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+
+    </header>
+
+    <main>
+      <div class="container-fuild">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+
+    </footer>
   </body>
 </html>
