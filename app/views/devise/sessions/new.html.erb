@@ -1,27 +1,38 @@
-<h2>ログイン</h2>
+<div class="row">
+  <h2>ログイン</h2>
+</div>
 
-<%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="row justify-content-center">
+  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <td><%= f.label :email, "メールアドレス" %></td>
+        <td><%= f.email_field :email, autocomplete: "email" %></td>
+      </tr>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+      <tr>
+        <td><%= f.label :password, "パスワード" %></td>
+        <td><%= f.password_field :password, autocomplete: "current-password", id: "pass" %></td>
+        <td>
+          <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+          パスワードを表示する
+        </td>
+      </tr>
 
-  <div class="field">
-    <%= f.label :パスワード %><br>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <% if devise_mapping.rememberable? %>
+        <tr>
+          <td>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, "ログインしたままにする" %>
+          </td>
+        </tr>
+      <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
+      <tr>
+        <td><%= f.submit "ログインする", class: "btn btn-primary" %></td>
+      </tr>
+    </table>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログインする" %>
-  </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
