@@ -1,42 +1,32 @@
 class PostHobbiesController < ApplicationController
   def new
     @post_hobby = PostHobby.new
-    @isDraft = @post_hobby.draft?
+    @tag_list = @post_hobby.tags.pluck(:tag_name).join(',')
   end
 
   def create
-     if params
-       params[:post_status] == :draft
-        @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
-       if @post_hobby.save_draft
-         flash[:notice] = "下書き保存に成功しました"
-         redirect_to drafts_post_hobbies_path
-        else
-         flash.now[:alert] = "下書き保存に失敗しました"
-         render :new
-        end
-      else
-         @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
-        tag_list = params[:post_hobby][:tag_name].split(',')
-        if tag_list == []
-          tag = Tag.new()
-          tag.tag_name = ""
-          tag.save
-          flash.now[:alert] = "タグを入力してください"
-          render :new
-        elsif @post_hobby.save
-          flash[:notice] = "投稿に成功しました"
-          @post_hobby.save_tags(tag_list)
-          redirect_to post_hobby_path(@post_hobby)
-        else
-          render :new
-        end
-      end
+    @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
+    tag_list = params[:post_hobby][:tag_name].split(',')
+    if tag_list == []
+      tag = Tag.new()
+      tag.tag_name = ""
+      tag.save
+      flash.now[:alert] = "タグを入力してください"
+      render :new
+    elsif @post_hobby.save
+      @post_hobby.save_tags(tag_list)
+      flash[:notice] = "投稿に成功しました"
+      redirect_to post_hobby_path(@post_hobby)
+    else
+      flash.now[:alert] = "投稿に失敗しました"
+      render :new
+    end
   end
 
   def index
     #公開設定のみ一覧へ表示させる
-    @published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
+    #@published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
+    @post_hobbies = PostHobby.all
     @tag_list = Tag.all
   end
 
@@ -45,12 +35,39 @@ class PostHobbiesController < ApplicationController
   end
 
   def edit
-    @post_hobby = PostHobby(params[:id])
+    @post_hobby = PostHobby.find(params[:id])
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(',')
   end
 
   def update
+    @post_hobby = PostHobby.find(params[:id])
+    tag_list = params[:post_hobby][:tag_name].split(',')
+    if tag_list == []
+       tag = Tag.new()
+        tag.tag_name = ""
+        tag.save
+        flash.now[:alert] = "タグを入力してください"
+        render :edit
+    elsif
+        @post_hobby.update(post_hobby_params)
+        @old_relations = PostTag.where(post_hobby_id: @post_hobby.id)
+        @old_relations.each do |relation|
+          relation.delete
+        end
+        @post_hobby.save_tags(tag_list)
+        flash[:notice] = "投稿内容の更新に成功しました"
+        redirect_to post_hobby_path(@post_hobby)
+    else
+      flash.now[:alert] = "投稿内容の更新に失敗しました"
+      render :edit
+    end
+  end
 
+  def destroy
+    post_hobby = PostHobby.find(params[:id])
+    post_hobby.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to post_hobbies_path
   end
 
   def drafts

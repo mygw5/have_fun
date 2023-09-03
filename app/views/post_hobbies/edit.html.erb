@@ -1,2 +1,6 @@
-<h1>PostHobbies#edit</h1>
-<p>Find me in app/views/post_hobbies/edit.html.erb</p>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h4>投稿編集</h4>
+    <%= render 'form', post_hobby: @post_hobby, tag_list: @tag_list %>
+  </div>
+</div>

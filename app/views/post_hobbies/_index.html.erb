@@ -1,0 +1,8 @@
+<% post_hobbies.each do |post_hobby| %>
+  <div class="card">
+    <%= image_tag post_hobby.get_post_image, size: "150x150", class: "card-img" %>
+      <h4 class="card-title"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
+      <p class="card-text"><%= post_hobby.text %></p>
+      <p class="card-tag"><%= post_hobby.tags.map(&:tag_name).join(',') %></p>
+  </div>
+<% end %>

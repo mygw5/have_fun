@@ -12,7 +12,7 @@ class PostHobby < ApplicationRecord
   validates  :title, presence: true
   validates  :text,  presence: true, length:{ maximum:200 }
 
-  enum status: { published: 0, draft: 1, unpublished: 2 }
+  enum post_status: { published: 0, draft: 1, unpublished: 2 }
 
   def save_draft
     self.post_status = :draft
