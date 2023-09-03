@@ -6,6 +6,6 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.text    :introduction,null: false
       t.timestamps
     end
-    add_index :post_tags, :group_name, unique: true
+    add_index :groups, :group_name, unique: true
   end
 end

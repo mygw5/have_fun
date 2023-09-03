@@ -1,2 +1,6 @@
-<h1>PostHobbies#index</h1>
-<p>Find me in app/views/post_hobbies/index.html.erb</p>
+<p>&plus;<%= link_to '新規投稿する', new_post_hobby_path %></p>
+<div class="row">
+  <div class="col-8">
+    <%= render 'index', post_hobbies: @post_hobbies %>
+  </div>
+</div>

@@ -1,2 +1,18 @@
-<h1>PostHobbies#show</h1>
-<p>Find me in app/views/post_hobbies/show.html.erb</p>
+<div class="row">
+  <div class="col-4 offset-1">
+    <%= image_tag @post_hobby.get_post_image, size: "200x150"  %>
+    <p><%= @post_hobby.created_at %></p>
+    <span>
+      <% if @post_hobby.user = current_user %>
+        <%= link_to '編集する', edit_post_hobby_path(@post_hobby) %>
+        <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </span>
+    <h3><%= @post_hobby.title %></h3>
+    <p><%= @post_hobby.text %></p>
+    <p><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+  </div>
+  <div class="col-7">
+    <p>コメント表示</p>
+  </div>
+</div>
