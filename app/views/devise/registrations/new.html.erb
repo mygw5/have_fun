@@ -18,7 +18,9 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", id: "passwordcheck" %>
+    <!-- パスワードの可視化 -->
+    <input type="checkbox" onChange="document.getElementById('passwordcheck').type = (this.checked) ? 'text' : 'password';">
   </div>
 
   <div class="field">

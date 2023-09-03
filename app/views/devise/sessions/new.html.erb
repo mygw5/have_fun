@@ -4,23 +4,26 @@
 
 <div class="row justify-content-center">
   <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
-    <table class="table table-borderless">
+  <div class="table-responsive">
+    <table class="table form-group">
       <tr>
-        <td><%= f.label :email, "メールアドレス" %></td>
-        <td><%= f.email_field :email, autocomplete: "email" %></td>
+        <th><%= f.label :email, "メールアドレス" %></td>
+        <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :password, "パスワード" %></td>
-        <td><%= f.password_field :password, autocomplete: "current-password", id: "pass" %></td>
+        <th><%= f.label :password, "パスワード" %></td>
         <td>
-          <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+          <%= f.password_field :password, autocomplete: "current-password", id: "passwordcheck", class: "form-control" %>
+          <!-- パスワードの可視化 -->
+          <input type="checkbox" onChange="document.getElementById('passwordcheck').type = (this.checked) ? 'text' : 'password';">
           パスワードを表示する
         </td>
       </tr>
 
       <% if devise_mapping.rememberable? %>
         <tr>
+          <th></th>
           <td>
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me, "ログインしたままにする" %>
@@ -32,6 +35,7 @@
         <td><%= f.submit "ログインする", class: "btn btn-primary" %></td>
       </tr>
     </table>
+    </div>
   <% end %>
 </div>
 
