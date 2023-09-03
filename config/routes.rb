@@ -1,19 +1,29 @@
 Rails.application.routes.draw do
-  get 'groups/index'
-  get 'groups/new'
-  get 'groups/edit'
-  get 'groups/show'
-  get 'groups/member'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/confirm_withdraw'
-  get 'post_hobbies/new'
-  get 'post_hobbies/index'
-  get 'post_hobbies/show'
-  get 'post_hobbies/edit'
-  get 'post_hobbies/drafts'
-  get 'post_hobbies/favorites'
-  get 'homes/top'
-  devise_for :users
+
+  devise_for   :users
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: "users/sessions#guest_sign_in"
+  end
+
+  root to: "homes#top"
+
+  resources :post_hobbies do
+    get "drafts",         on: :collection
+    get :favorites,       on: :collection
+    resources :comments,  only: [:create]
+    resources :favorites, only: [:create, :destroy]
+  end
+
+  resources :users,       only: [:show, :edit, :update] do
+    get   "confirm_withdraw"
+    patch "withdraw"
+  end
+
+  resources :groups, only: [:new, :create, :index, :show, :edit, :update] do
+    get "group_member"
+    resources :group_users, only: [:create, :destroy]
+    resources :chats, only: [:create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
