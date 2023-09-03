@@ -1,0 +1,2 @@
+class PostHobby < ApplicationRecord
+end
