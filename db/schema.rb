@@ -78,13 +78,14 @@ ActiveRecord::Schema.define(version: 2023_09_03_043852) do
     t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_name"], name: "index_groups_on_group_name", unique: true
   end
 
   create_table "post_hobbies", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
     t.text "text", null: false
-    t.integer "post_status", null: false
+    t.integer "post_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,7 +95,6 @@ ActiveRecord::Schema.define(version: 2023_09_03_043852) do
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"group_name\"", name: "index_post_tags_on_group_name", unique: true
     t.index ["post_hobby_id", "tag_id"], name: "index_post_tags_on_post_hobby_id_and_tag_id", unique: true
   end
 
