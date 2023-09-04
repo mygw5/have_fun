@@ -17,3 +17,33 @@ td {
   border-bottom: 2px solid;
 }
 
+//編集画面の画像投稿デザイン
+.image-label {
+  display: block;
+  background-color: #d3d3d3;
+  width: 180px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.image-form {
+  display: none;
+}
+
+
+//投稿続きを読むデザイン
+
+.card {
+  width: 300px;
+  height: 350px;
+}
+
+.card-img {
+  object-fit: cover;
+}

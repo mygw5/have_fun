@@ -22,8 +22,12 @@
     <div class="action mt-5">
       <% if current_user == @user || current_user.admin? %>
         <%= link_to '編集する', edit_user_path(@user), class: "btn btn-success" %>
-        <%= link_to '退会する', user_confirm_withdraw_path(@user), class: "btn btn-danger" %>
       <% end %>
     </div>
+  </div>
+</div>
+<div class="row justify-content-center mt-5">
+  <div class="col-10 d-flex flex-wrap">
+    <%= render 'post_hobbies/index', post_hobbies: @post_hobbies %>
   </div>
 </div>
