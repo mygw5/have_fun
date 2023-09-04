@@ -1,5 +1,16 @@
-<div class="row justify-content-center pt-5">
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  <%= link_to '新規登録', new_user_registration_path %>
-  <%= link_to 'ログイン', user_session_path %>
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="top-text">
+      <h1 class="text-light">Let's have fun!</h1>
+      <p class="text-light">Give color to your life.</p>
+      <span><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "text-decoration-none text-light m-2" %></span>
+      <span><%= link_to '新規登録', new_user_registration_path, class: "text-decoration-none text-light m-2" %></span>
+      <span><%= link_to 'ログイン', user_session_path, class: "text-decoration-none text-light m-2" %></span>
+    </div>
+    <div class="img-box">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </div>
