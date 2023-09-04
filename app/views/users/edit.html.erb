@@ -1,2 +1,30 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="row">
+  <div class="col-6">
+    <%= form_with model: @user, local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, autofocus: true, class: "form-group" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :profile_image, "プロフィール画像" %>
+        <%= f.file_field :profile_image, accept: 'image/*', class: "form-control-file" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :hobby, "趣味" %>
+        <%= f.file_field :hobby, class: "form-group" %>
+      </div>
+      <% if current_user.admin? %>
+        <div>
+          <%= f.label :is_deleted, "会員ステータス" %>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted_true, "有効" %>
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted_false, "退会" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
