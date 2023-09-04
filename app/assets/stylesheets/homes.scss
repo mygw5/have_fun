@@ -1,3 +1,93 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.top-text {
+  width: 100%;
+  top: 45%;
+  background: rgba(192,192,192,0.7);
+  text-align: center;
+  position: absolute;
+  z-index: 11; //スライドの前に出す
+
+
+span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-size: 20px;
+}
+
+span:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transform: translate(-100%, 0);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  content: "";
+}
+
+span:hover:after {
+  transform: translate(0, 0);
+}
+}
+
+//スライドショー
+.img-box{
+  width: 100%;
+  height: 45vw; //viewportが400pxの場合、画像の高さ10pxとなる
+  overflow: hidden;
+  position: relative;
+}
+.img-box>div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 10;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+}
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  20%{
+    opacity: 7;
+  }
+  80%{
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100%{
+    z-index: 0;
+    opacity: 0;
+  }
+}
+/* 1枚目のスライド */
+.img-box>div:first-of-type{
+  background-image: image-url('camera.jpg');
+}
+
+/* 2枚目のスライド */
+.img-box>div:nth-of-type(2){
+  background-image: image-url('Fruitcake.jpg');
+  animation-delay: 4s;
+}
+
+/* 3枚目のスライド */
+.img-box>div:last-of-type{
+  background-image: image-url('camp.jpg');
+  animation-delay: 8s;
+}
