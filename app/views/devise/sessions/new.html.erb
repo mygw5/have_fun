@@ -1,42 +1,46 @@
-<div class="row">
-  <h2>ログイン</h2>
-</div>
-
 <div class="row justify-content-center">
-  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="table-responsive">
-    <table class="table form-group">
-      <tr>
-        <th><%= f.label :email, "メールアドレス" %></td>
-        <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
-      </tr>
+  <div class="col-10">
+    <h2>ログイン</h2>
 
-      <tr>
-        <th><%= f.label :password, "パスワード" %></td>
-        <td>
-          <%= f.password_field :password, autocomplete: "current-password", id: "passwordcheck", class: "form-control" %>
-          <!-- パスワードの可視化 -->
-          <input type="checkbox" onChange="document.getElementById('passwordcheck').type = (this.checked) ? 'text' : 'password';">
-          パスワードを表示する
-        </td>
-      </tr>
+    <div class="row justify-content-center">
+      <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <% if devise_mapping.rememberable? %>
-        <tr>
-          <th></th>
-          <td>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, "ログインしたままにする" %>
-          </td>
-        </tr>
+        <table class="table table-borderless login-form">
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td colspan="2"><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :password, "パスワード" %></th>
+            <td colspan="2">
+              <%= f.password_field :password, autocomplete: "current-password", id: "passwordcheck", class: "form-control" %>
+              <!-- パスワードの可視化 -->
+              <input type="checkbox" onChange="document.getElementById('passwordcheck').type = (this.checked) ? 'text' : 'password';">
+              パスワードを表示する
+            </td>
+          </tr>
+
+          <% if devise_mapping.rememberable? %>
+            <tr>
+              <th></th>
+              <td>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me, "ログインしたままにする" %>
+              </td>
+              <td class="action"><%= f.submit "ログインする", class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </table>
+
       <% end %>
-
-      <tr>
-        <td><%= f.submit "ログインする", class: "btn btn-primary" %></td>
-      </tr>
-    </table>
     </div>
-  <% end %>
+
+    <div class="text-right">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
 </div>
 
-<%= render "devise/shared/links" %>
+

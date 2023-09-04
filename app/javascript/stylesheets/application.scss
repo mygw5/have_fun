@@ -111,18 +111,22 @@ header {
   }
 }
 
-//ログイン
+th {
+  width: 200px;
+}
 
-.form-group {
-  
-
-  th {
-    margin: 0;
-    width: 100px;
+.login-form {
+  td {
+    width: 300px;
   }
+}
 
+.signup-form {
   td{
-    margin: 0;
-    width: 500px;
+    width: 600px;
   }
+}
+
+.action {
+  text-align: right;
 }
