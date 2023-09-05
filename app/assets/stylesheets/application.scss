@@ -19,6 +19,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: monospace, "ヒラギノ丸ゴ ProN", "ヒラギノ角ゴシック", メイリオ, Arial, sans-serif;
+}
+
+body{
+  background: repeating-linear-gradient(90deg, #fafad2 10px, #fff 20px);
 }
 
 //ハンバーガーメニューレイアウト
@@ -33,8 +38,10 @@
 .drawer-open {
   height: 50px;
   width: 50px;
+  top: 20px;
   align-items: center;
-  position: relative;
+  position: fixed;
+
   z-index: 100;
 
   span,

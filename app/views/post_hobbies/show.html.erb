@@ -1,16 +1,17 @@
-<div class="row">
+<div class="row pt-5">
   <div class="col-4 offset-1">
-    <%= image_tag @post_hobby.get_post_image, size: "200x150"  %>
-    <p><%= @post_hobby.created_at %></p>
-    <span>
-      <% if @post_hobby.user = current_user %>
-        <%= link_to '編集する', edit_post_hobby_path(@post_hobby) %>
-        <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <% end %>
-    </span>
-    <h3><%= @post_hobby.title %></h3>
+    <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
+      <%= @post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
+        <span>
+          <% if @post_hobby.user = current_user %>
+            <%= link_to '編集する', edit_post_hobby_path(@post_hobby) %>
+            <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <% end %>
+        </span>
+
+    <h4><%= @post_hobby.title %></h4>
     <p><%= @post_hobby.text %></p>
-    <p><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+    <p class="hobby-tag"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
   <div class="col-7">
     <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>

@@ -1,6 +1,9 @@
-<p>&plus;<%= link_to '新規投稿する', new_post_hobby_path %></p>
-<div class="row">
-  <div class="col-8">
+<div class="row justify-content-center pt-5">
+  <div class="col-3">
+    <p class="new-post">&plus;<%= link_to '新規投稿する', new_post_hobby_path %></p>
+  </div>
+  <div class="col-7">
     <%= render 'index', post_hobbies: @post_hobbies %>
   </div>
 </div>
+

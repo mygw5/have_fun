@@ -1,15 +1,17 @@
 <% post_hobbies.each do |post_hobby| %>
-  <div class="card">
-    <%= image_tag post_hobby.get_post_image, size: "150x150", class: "card-img p-1" %>
-    <%= link_to post_hobby.user.name, user_path(post_hobby.user) %>
-
-    <h4 class="p-2"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
+  <div class="card pb-2">
+    <%= image_tag post_hobby.get_post_image, class: "card-img p-2" %>
     <p>
+      <%= link_to post_hobby.user.name, user_path(post_hobby.user), class: "px-1" %>
+      <%= post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </p>
+    <h4 class="px-2"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
+    <p class="px-3">
       <%= post_hobby.text.truncate(50) %>
     </p>
     <% if post_hobby.text.size >= 50 %>
       <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
     <% end %>
-    <p><%= post_hobby.tags.map(&:tag_name).join(',') %></p>
+    <p class="p-2"><%= link_to post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
 <% end %>
