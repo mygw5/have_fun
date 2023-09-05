@@ -164,53 +164,64 @@ ja:
       favorite: お気に入り
       group: グループ
       group_user: グループユーザー
-      post_hobby: 趣味の投稿
+      post_hobby: 投稿
       post_tag: ポストタグ
       tag: タグ
       user: ユーザー
     attributes:
       chat:
-        user_id: ユーザーID
-        group_id: グループID
+        user: ユーザー
+        group: グループ
         message: メッセージ
         created_at: 登録日時
         updated_at: 更新日時
       comment:
-        user_id: ユーザーID
-        post_hobby_id: 趣味投稿ID
+        user: ユーザー
+        post_hobby: 投稿
         comment: コメント
         created_at: 登録日時
         updated_at: 更新日時
       favorite:
-        user_id: ユーザーID
-        post_hobby_id: 趣味投稿ID
+        user: ユーザー
+        post_hobby: 投稿
         created_at: 登録日時
         updated_at: 更新日時
       group:
-        owner_id: オーナーID
+        owner: オーナー
         group_name: グループ名
         introduction: グループ紹介
+        group_users: グループメンバー
+        chats: チャット
+        users: ユーザー
+        group_image: グループ画像
         created_at: 登録日時
         updated_at: 更新日時
       group_user:
-        user_id: ユーザーID
-        group_id: グループID
+        user: ユーザー
+        group: グループ
         created_at: 登録日時
         updated_at: 更新日時
       post_hobby:
-        user_id: ユーザーID
+        user: ユーザー
         title: タイトル
         text: 本文
         post_status: 投稿ステータス
+        favorites: お気に入り登録
+        comments: コメント
+        post_tags: ポストタグ
+        tags: タグ
+        post_image: 投稿画像
         created_at: 登録日時
         updated_at: 更新日時
       post_tag:
-        post_hobby_id: 趣味投稿ID
-        tag_id: タグID
+        post_hobby: 投稿
+        tag: タグ
         created_at: 登録日時
         updated_at: 更新日時
       tag:
         tag_name: タグ名
+        post_tags: ポストタグ
+        post_hobbies: 投稿
         created_at: 登録日時
         updated_at: 更新日時
       user:
@@ -220,5 +231,11 @@ ja:
         encrypted_password: パスワード
         hobby: 趣味
         is_status: 会員ステータス
+        comment: コメント
+        favorites: お気に入り登録
+        post_hobbies: 投稿
+        Group_users: グループユーザー
+        chats: チャット
+        profile_image: プロフィール画像
         created_at: 登録日時
         updated_at: 更新日時
