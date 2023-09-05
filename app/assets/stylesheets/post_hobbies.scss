@@ -1,3 +1,25 @@
 // Place all the styles related to the post_hobbies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+//編集画面の画像投稿デザイン
+.image-label {
+  display: block;
+  background-color: #fff;
+  width: 180px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #00bfff;
+  padding-top: 2px;
+  color: #00bfff;
+  text-decoration: none;
+  text-align: center;
+}
+
+.image-form {
+  display: none;
+}
+
