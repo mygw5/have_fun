@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :post_hobbies do
     get "drafts",         on: :collection
     get :favorites,       on: :collection
-    resources :comments,  only: [:create]
+    resources :comments,  only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
 
