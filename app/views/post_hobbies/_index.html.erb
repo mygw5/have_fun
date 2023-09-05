@@ -1,6 +1,8 @@
 <% post_hobbies.each do |post_hobby| %>
   <div class="card">
     <%= image_tag post_hobby.get_post_image, size: "150x150", class: "card-img p-1" %>
+    <%= link_to post_hobby.user.name, user_path(post_hobby.user) %>
+
     <h4 class="p-2"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
     <p>
       <%= post_hobby.text.truncate(50) %>

@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
+  before_action :if_not_admin, only: [:index]
 
   def index
     @users = User.all
@@ -45,6 +49,27 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :hobby, :profile_image, :is_deleted)
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user || current_user.admin?
+      redirect_to user_path(current_user)
+    end
+  end
 
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      flash[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+
+  def if_not_admin
+    redirect_to user_path(current_user) unless current_user.admin?
+  end
 
 end
