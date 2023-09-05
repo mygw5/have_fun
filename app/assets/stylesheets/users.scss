@@ -2,19 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//show
+.profile {
 
-.profile-img {
-  border-radius: 50%;
-  object-fit: cover;
-}
+  .profile-img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-th {
-  width: 100px;
-}
+  th {
+    width: 100px;
+  }
 
-td {
-  width: 300px;
-  border-bottom: 2px solid;
+  td {
+    width: 300px;
+    border-bottom: 2px solid;
+  }
 }
 
 //編集画面の画像投稿デザイン
