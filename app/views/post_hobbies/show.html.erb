@@ -5,16 +5,15 @@
         <span>
           <% if @post_hobby.user = current_user %>
             <%= link_to '編集する', edit_post_hobby_path(@post_hobby) %>
-            <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？" %>
           <% end %>
         </span>
 
     <h4><%= @post_hobby.title %></h4>
-    <p><%= @post_hobby.text %></p>
+    <p class="text"><%= @post_hobby.text %></p>
     <p class="hobby-tag"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
-  <div class="col-7">
+  <div class="col-6">
     <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>
-    </p>
   </div>
 </div>

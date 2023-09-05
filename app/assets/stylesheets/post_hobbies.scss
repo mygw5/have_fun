@@ -34,6 +34,59 @@
 
 }
 
+.text {
+  overflow-wrap: break-word;
+}
+//showコメント欄
+.comment-area{
+  width: 100%;
+  height: 500px;
+  background: rgba(255,255,255,0.7);
+  overflow: scroll;
+
+  .user-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .user-name {
+    width: 50px;
+    text-align: center;
+    font-size: 10px;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  tr {
+    background: #fffaf0;
+  }
+
+  td:first-child {
+    width: 50px;
+  }
+
+  td:nth-child(2) {
+    vertical-align: middle;
+  }
+
+  td:last-child {
+    width: 50px;
+    font-size: 12px;
+    vertical-align: bottom;
+  }
+
+  span {
+    vertical-align: top;
+    font-size: 10px;
+  }
+
+}
+
+
 //新規投稿リンク固定
 .new-post {
   position: fixed;
@@ -46,18 +99,3 @@
   object-fit: cover;
 }
 
-.message {
-  width: 100%;
-}
-
-.user-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.user-name {
-  width: 50px;
-  text-align: center;
-  font-size: 10px;
-}

@@ -1,15 +1,26 @@
-<% post_hobby.comments.each do |hobby_comment| %>
-  <%= image_tag hobby_comment.user.get_profile_image, class: "user-img" %>
-    <p class="user-name"><%= hobby_comment.user.name %></p>
-    <div class="">
-      <%= hobby_comment.created_at.strftime('%Y/%m/%d') %>
-    <%= hobby_comment.comment %>
-    </div>
-    
-    <% if hobby_comment.user == current_user %>
-      <%= link_to "削除", post_hobby_comment_path(hobby_comment.post_hobby, hobby_comment), method: :delete %>
-    <% end %>
-  <% end %>
+<div class="comment-area p-2">
+  <table class="table table-borderless">
+    <tbody>
+      <% post_hobby.comments.each do |hobby_comment| %>
+        <tr class="mb-2">
+          <td>
+            <%= image_tag hobby_comment.user.get_profile_image, class: "user-img" %>
+            <p class="user-name"><%= hobby_comment.user.name %></p>
+          </td>
+          <td>
+            <span><%= hobby_comment.created_at.strftime('%Y/%m/%d') %></span><br>
+            <%= hobby_comment.comment %>
+          </td>
+          <td class="action">
+            <% if hobby_comment.user == current_user %>
+              <%= link_to "削除", post_hobby_comment_path(hobby_comment.post_hobby, hobby_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
   <p>コメント: <%= post_hobby.comments.count %>件</p>
   <p>
