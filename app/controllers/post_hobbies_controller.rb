@@ -33,6 +33,7 @@ class PostHobbiesController < ApplicationController
   def show
     @post_hobby = PostHobby.find(params[:id])
     @user = @post_hobby.user
+    @comment = Comment.new
   end
 
   def edit

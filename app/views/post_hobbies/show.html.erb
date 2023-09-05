@@ -13,6 +13,19 @@
     <p><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
   <div class="col-7">
-    <p>コメント表示</p>
+    <% @post_hobby.comments.each do |hobby_comment| %>
+      <p><%= image_tag comment.user.get_profile_image, size: "50x50" %></p>
+      <p>
+        <%= hobby_comment.user.name %>
+        <%= hobby_comment.created_at.strftime('%Y/%m/%d')%>
+        <%= hobby_comment.comment %>
+      </p>
+    <% end %>
+    <p>
+     <%= form_with model:[@post_hobby, @comment] do |f| %>
+       <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+       <%= f.submit "送信する", class: "btn-sm btn-primary" %>
+     <% end %>
+    </p>
   </div>
 </div>
