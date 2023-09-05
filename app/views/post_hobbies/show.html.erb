@@ -13,6 +13,7 @@
     <p><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
   <div class="col-7">
-    <p>コメント表示</p>
+    <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>
+    </p>
   </div>
 </div>
