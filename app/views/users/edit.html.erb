@@ -22,11 +22,11 @@
       </div>
       <% if current_user.admin? %>
         <div>
-          <%= f.label :is_deleted, "会員ステータス" %>
-          <%= f.radio_button :is_deleted, true %>
-          <%= f.label :is_deleted_true, "退会" %>
-          <%= f.radio_button :is_deleted, false %>
-          <%= f.label :is_deleted_false, "有効" %>
+          <%= f.label :is_status, "会員ステータス" %>
+          <%= f.radio_button :is_status, true %>
+          <%= f.label :is_status_true, "有効" %>
+          <%= f.radio_button :is_status, false %>
+          <%= f.label :is_status_false, "退会" %>
         </div>
       <% end %>
       <%= f.submit '編集内容を保存する', class: "btn btn-success" %>
