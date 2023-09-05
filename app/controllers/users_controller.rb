@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
     @post_hobbies = @user.post_hobbies
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    if current_user.update(is_deleted: false)
+    if current_user.update(is_deleted: true)
       reset_session
       flash[:notice] = "退会処理が完了しました"
       redirect_to root_path
@@ -42,11 +41,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :hobby, :profile_image, :is_deleted)
   end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.guest_user?
-      flash.now[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
-      render :show
-    end
-  end
+
+
 end

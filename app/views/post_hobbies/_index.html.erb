@@ -3,8 +3,11 @@
     <%= image_tag post_hobby.get_post_image, size: "150x150", class: "card-img p-1" %>
     <h4 class="p-2"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
     <p>
-      <%= post_hobby.text %>
-      <%= post_hobby.tags.map(&:tag_name).join(',') %>
+      <%= post_hobby.text.truncate(50) %>
     </p>
+    <% if post_hobby.text.size >= 50 %>
+      <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
+    <% end %>
+    <p><%= post_hobby.tags.map(&:tag_name).join(',') %></p>
   </div>
 <% end %>
