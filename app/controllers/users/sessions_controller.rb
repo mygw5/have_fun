@@ -2,6 +2,7 @@ class Users::SessionsController < ApplicationController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to user_path(user), notice: "ゲストユーザーでログインしました。"
+    flash[:notice] = "ゲストユーザーでログインしました"
+    redirect_to user_path(user)
   end
 end

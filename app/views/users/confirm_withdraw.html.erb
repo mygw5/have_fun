@@ -1,2 +1,13 @@
-<h1>Users#confirm_withdraw</h1>
-<p>Find me in app/views/users/confirm_withdraw.html.erb</p>
+<div class="row justify-content-center">
+  <div class="col-10">
+    <h2>&#x26a0;退会手続き</h2>
+    <p>
+      退会すると会員情報登録や投稿が閲覧できないようになります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+  </div>
+</div>
+<div>
+  <%= link_to "退会しない", user_path(current_user), class: "btn btn-primary" %>
+  <%= link_to "退会する", user_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+</div>
