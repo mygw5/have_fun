@@ -7,16 +7,16 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/f94369044a.js" crossorigin="anonymous"></script>
-
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- controller単位でレイアウトを調整するため -->
-    <%= stylesheet_pack_tag params[:controller], 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <%= render 'homes/header' %>
+      <%= render 'layouts/header' %>
     </header>
 
     <main>

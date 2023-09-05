@@ -7,18 +7,18 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <table class="table table-borderless signup-form">
           <tr>
-            <th><%= f.label :名前 %></th>
+            <th><%= f.label :name, "名前" %></th>
             <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
           </tr>
 
           <tr>
-            <th><%= f.label :メールアドレス %></th>
+            <th><%= f.label :email, "メールアドレス" %></th>
             <td><%= f.email_field :email, autocomplete: "email", class: "form-control" %></td>
           </tr>
 
           <tr>
             <th>
-              <%= f.label :パスワード %>
+              <%= f.label :password, "パスワード" %>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %>文字以上)</em>
               <% end %>
@@ -27,7 +27,7 @@
           </tr>
 
           <tr>
-            <th><%= f.label :パスワード確認 %></th>
+            <th><%= f.label :password_confirmation, "パスワード確認" %></th>
             <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></td>
           </tr>
 
