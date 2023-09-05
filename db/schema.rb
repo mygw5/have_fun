@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2023_09_03_043852) do
     t.string "name", default: "", null: false
     t.boolean "admin", default: false
     t.string "hobby"
-    t.boolean "is_deleted", default: false, null: false
+    t.boolean "is_status", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

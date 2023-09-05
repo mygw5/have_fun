@@ -12,10 +12,10 @@
       <td><%= user.id %></td>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <% if user.is_deleted == true %>
-        <td>退会</td>
-      <% else %>
+      <% if user.is_status == true %>
         <td>有効</td>
+      <% else %>
+        <td>退会</td>
       <% end %>
     </tr>
     <% end %>
