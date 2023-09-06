@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-//編集画面の画像投稿デザイン
+//投稿フォームの画像投稿デザイン
 .image-label {
   display: block;
   background-color: #fff;
@@ -23,6 +23,8 @@
   display: none;
 }
 
+
+//投稿デザイン
 .card {
   width: 100%;
   height: 500px;
@@ -32,19 +34,42 @@
     object-fit: cover;
   }
 
+  h4 {
+    font-size: 20px;
+  }
+
+  p{
+    font-size: 10px;
+  }
+
+  .card-content {
+    height: 100px;
+  }
 }
 
-.text {
-  overflow-wrap: break-word;
+//showデザイン
+.tag-area {
+  width: 100%;
+  height: 30px;
+}
+
+.post-detail {
+  width: 100%;
+  height: 350px;
+
+  .text {
+    font-size: 20px;
+    overflow-wrap: break-word;
+  }
 }
 //showコメント欄
 .comment-area{
   width: 100%;
-  height: 500px;
+  height: 550px;
   background: rgba(255,255,255,0.7);
   overflow: scroll;
 
-  .user-img {
+  .user-icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -57,8 +82,8 @@
   }
 
   table {
-    border-collapse: separate;
-    border-spacing: 0 10px;
+    table-layout: fixed;
+    width: 100%;
   }
 
   tr {
@@ -66,24 +91,14 @@
   }
 
   td:first-child {
-    width: 50px;
-  }
-
-  td:nth-child(2) {
-    vertical-align: middle;
+    width: 70px;
   }
 
   td:last-child {
-    width: 50px;
     font-size: 12px;
-    vertical-align: bottom;
+    vertical-align: middle;
+    overflow-wrap: break-word;
   }
-
-  span {
-    vertical-align: top;
-    font-size: 10px;
-  }
-
 }
 
 
@@ -98,4 +113,3 @@
   height: 300px;
   object-fit: cover;
 }
-

@@ -10,7 +10,7 @@ class PostHobby < ApplicationRecord
   has_one_attached :post_image, dependent: :destroy
 
   validates  :title, presence: true
-  validates  :text,  presence: true, length:{ maximum:200 }
+  validates  :text,  presence: true, length:{ maximum:300 }
 
   enum post_status: { published: 0, draft: 1, unpublished: 2 }
 
