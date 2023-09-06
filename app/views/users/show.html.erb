@@ -1,8 +1,13 @@
 <div class="row justify-content-center mt-5">
   <div class="col-4">
-    <%= image_tag @user.get_profile_image, size: "250x250", class: "profile-img" %>
+    <%= image_tag @user.get_profile_image, size: "200x200", class: "profile-img" %>
   </div>
-  <div class="col-6">
+  <div class="col-4">
+    <% if @user == current_user %>
+      <h4>マイページ</h4>
+    <% else %>
+      <h4><%= @user.name %>さんのページ</h4>
+    <% end %>
     <table class="profile">
       <tr>
         <th>名前</th>
@@ -29,7 +34,7 @@
   </div>
 </div>
 <div class="row justify-content-center mt-5">
-  <div class="col-10 d-flex flex-wrap">
+  <div class="col-9 d-flex flex-wrap">
     <%= render 'post_hobbies/index', post_hobbies: @post_hobbies %>
   </div>
 </div>

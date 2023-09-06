@@ -2,37 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-//show
 
-
-  .profile-img {
+//showレイアウト
+.profile-img {
     border-radius: 50%;
     object-fit: cover;
-  }
+}
 
-  .profile {
+.profile {
 
   th {
     width: 100px;
+    height: 40px;
   }
 
   td {
     width: 300px;
     border-bottom: 2px solid;
+    vertical-align: bottom;
   }
 }
 
 //編集画面の画像投稿デザイン
 .image-label {
   display: block;
-  background-color: #d3d3d3;
+  border: 1px solid #9370db;
+  background-color: #e6e6fa;
   width: 180px;
   height: 30px;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
   padding-top: 2px;
-  color: white;
+  color: #9370db;
   text-decoration: none;
   text-align: center;
 }
@@ -42,15 +44,57 @@
 }
 
 
-//投稿続きを読むデザイン
-
+//投稿レイアウト
 .card {
   width: 300px;
-  height: 400px;
+  height: 450px;
+  margin: 0 5px 10px;
+
+  p {
+    font-size: 10px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  .card-content {
+    height: 150px;
+  }
 }
 
 .card-img {
   height: 200px;
   object-fit: cover;
+}
+
+//indexレイアウト
+.list {
+  th:last-child {
+    width: 200px;
+    text-align: center;
+  }
+
+  td:last-child {
+    text-align: center;
+  }
+
+  th:first-child {
+    width: 100px;
+    text-align: center;
+  }
+
+  td:first-child {
+    text-align: center;
+  }
+
+}
+
+//退会確認画面
+.marker {
+  background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);
+  display: inline;
+
+
 }
 
