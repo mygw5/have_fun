@@ -76,7 +76,7 @@ class PostHobbiesController < ApplicationController
     @draft_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :draft).order(created_at: :desc)
   end
 
-  def favorited
+  def favorites
 
   end
 
