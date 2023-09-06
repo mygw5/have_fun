@@ -1,27 +1,35 @@
 <div class="row pt-5">
   <div class="col-4 offset-1">
-
     <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
-    <p>
+    <p class="created">
       <%= @post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
       <% if @post_hobby.user = current_user %>
-        <%= link_to '編集する', edit_post_hobby_path(@post_hobby) %>
-        <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？" %>
+        <%= link_to '編集する', edit_post_hobby_path(@post_hobby), class: "text-primary" %>
+        <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？", class: "text-danger" %>
       <% end %>
     </p>
-
 
     <div class="post-detail">
       <h4><%= @post_hobby.title %></h4>
       <p class="text"><%= @post_hobby.text %></p>
     </div>
-    <div class="tag-area">
-      <p class="hobby-tag"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+    <div class="category row">
+      <p class="hobby-tag mr-auto"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+      <div class="like px-2 mr-5">
+        <% if @post_hobby.favorited_by?(current_user) %>
+          <%= link_to post_hobby_favorite_path(@post_hobby),method: :delete do %>
+            <i class="fas fa-heart">お気に入り</i>
+          <% end %>
+        <% else %>
+          <%= link_to post_hobby_favorites_path(@post_hobby), method: :post do %>
+            <i class="far fa-heart">お気に入り</i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <div class="col-6">
     <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>
   </div>
-
 </div>
