@@ -80,7 +80,8 @@ class PostHobbiesController < ApplicationController
   end
 
   def favorites
-
+    favorite = Favorite.where(user_id: current_user.id).pluck(:post_hobby_id)
+    @post_hobbies = PostHobby.find(favorite)
   end
 
   private

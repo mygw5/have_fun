@@ -1,2 +1,10 @@
-<h1>PostHobbies#favorites</h1>
-<p>Find me in app/views/post_hobbies/favorites.html.erb</p>
+<div class="row justify-content-center pt-5">
+  <div class="col-5">
+    <h3>お気に入り一覧</h3>
+    <% if @post_hobbies.present? %>
+      <%= render 'index',  post_hobbies: @post_hobbies %>
+    <% else %>
+      <p>お気に入り登録がありません</p>
+    <% end %>
+  </div>
+</div>
