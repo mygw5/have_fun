@@ -26,8 +26,8 @@
 
 <p class="pt-4">コメント: <%= post_hobby.comments.count %>件</p>
 <%= form_with model:[post_hobby, comment] do |f| %>
-  <div>
-    <%= f.text_area :comment, cols: '80', placeholder: "コメントを入力" %>
+  <div class="form">
+    <%= f.text_area :comment, cols: '80',placeholder: "コメントを入力" %>
   </div>
   <div class="action">
     <%= f.submit "送信する", class: "btn-sm btn-primary" %>

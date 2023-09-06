@@ -10,6 +10,6 @@ class FavoritesController < ApplicationController
     @post_hobby = PostHobby.find(params[:post_hobby_id])
     favorite = current_user.favorites.find_by(post_hobby_id: @post_hobby.id)
     favorite.destroy
-    redirect_to post_hobby_oath(@post_hobby)
+    redirect_to post_hobby_path(@post_hobby)
   end
 end

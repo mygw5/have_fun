@@ -8,7 +8,6 @@
     <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
     <div class="card-content px-4">
       <%= post_hobby.text.truncate(150) %>
-
       <% if post_hobby.text.size >= 150 %>
         <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
       <% end %>
@@ -16,8 +15,5 @@
     <div class="px-3">
       <%= link_to post_hobby.tags.map(&:tag_name).join(',') %>
     </div>
-    
-
-
   </div>
 <% end %>
