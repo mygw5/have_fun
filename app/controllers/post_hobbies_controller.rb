@@ -50,8 +50,7 @@ class PostHobbiesController < ApplicationController
         tag.save
         flash.now[:alert] = "タグを入力してください"
         render :edit
-    elsif
-        @post_hobby.update(post_hobby_params)
+    elsif @post_hobby.update(post_hobby_params)
         @old_relations = PostTag.where(post_hobby_id: @post_hobby.id)
         @old_relations.each do |relation|
           relation.delete
@@ -68,7 +67,7 @@ class PostHobbiesController < ApplicationController
   def destroy
     post_hobby = PostHobby.find(params[:id])
     post_hobby.destroy
-    flash[:notice] = "投稿を削除しました"
+    flash[:notice] = "投稿削除に成功しました"
     redirect_to post_hobbies_path
   end
 

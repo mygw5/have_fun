@@ -19,9 +19,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: monospace, "ヒラギノ丸ゴ ProN", "ヒラギノ角ゴシック", メイリオ, Arial, sans-serif;
 }
 
-//ハンバーガーメニューレイアウト
+body{
+  background: repeating-linear-gradient(90deg, #fafad2 10px, #fff 20px);
+}
+
+//ハンバーガーメニューレイアウト、位置固定
 .menu {
   position:  absolute;
 }
@@ -33,8 +38,10 @@
 .drawer-open {
   height: 50px;
   width: 50px;
+  top: 20px;
   align-items: center;
-  position: relative;
+  position: fixed;
+
   z-index: 100;
 
   span,
@@ -105,40 +112,21 @@
 
 //flashメッセージレイアウト
 .flash-message {
-  border-radius: 5px;
-  padding: 16px 24px;
-  margin: 16px 0px;
+  padding: 0 5px;
+  text-align: center;
+}
 
-  .notice {
-    background-color: #bcdfff;
-    color: #0067C0;
-    border: solid 1px #0067C0;
+.flash-message.notice {
+    background-color: #98fb98;
+    color: #3cb371;
   }
 
-  .alert {
+.flash-message.alert {
     background-color: #ffd4d1;
     color: #930403;
-    border: solid 1px #930403;
   }
-}
 
-th {
-  width: 200px;
-}
-
-.login-form {
-  td {
-    width: 300px;
-  }
-}
-
-.signup-form {
-  td{
-    width: 600px;
-  }
-}
-
+//ボタン位置
 .action {
   text-align: right;
 }
-
