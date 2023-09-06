@@ -40,7 +40,7 @@ span:hover:after {
 //スライドショー
 .img-box{
   width: 100%;
-  height: 45vw; //viewportが400pxの場合、画像の高さ10pxとなる
+  height: 57vw; //40vw=>viewportが400pxの場合、画像の高さ10pxとなる
   overflow: hidden;
   position: relative;
 }
@@ -80,13 +80,13 @@ span:hover:after {
   background-image: image-url('camera.jpg');
 }
 
-// 2枚目のスライド 
+// 2枚目のスライド
 .img-box>div:nth-of-type(2){
   background-image: image-url('Fruitcake.jpg');
   animation-delay: 4s;
 }
 
-// 3枚目のスライド 
+// 3枚目のスライド
 .img-box>div:last-of-type{
   background-image: image-url('camp.jpg');
   animation-delay: 8s;

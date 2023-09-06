@@ -39,9 +39,9 @@ body{
   height: 50px;
   width: 50px;
   top: 20px;
+  right: 50px;
   align-items: center;
   position: fixed;
-
   z-index: 100;
 
   span,
@@ -100,6 +100,11 @@ body{
 .nav-list {
   list-style: none;
   text-align: center;
+  padding: 50px;
+
+  li {
+    padding-bottom: 10px;
+  }
 }
 
 .nav-item {
@@ -109,6 +114,7 @@ body{
 #drawer-input:checked ~ .nav-content {
   left: 0;
 }
+
 
 //flashメッセージレイアウト
 .flash-message {
@@ -129,4 +135,11 @@ body{
 //ボタン位置
 .action {
   text-align: right;
+}
+
+//ページタイトル固定
+h3 {
+  top: 20px;
+  left: 50px;
+  position: fixed;
 }
