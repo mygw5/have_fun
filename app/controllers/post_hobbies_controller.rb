@@ -2,6 +2,7 @@ class PostHobbiesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+
   def new
     @post_hobby = PostHobby.new
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(',')
@@ -31,6 +32,7 @@ class PostHobbiesController < ApplicationController
     #@published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
     @post_hobbies = PostHobby.all
     @tag_list = Tag.all
+
   end
 
   def show
@@ -90,11 +92,11 @@ class PostHobbiesController < ApplicationController
     params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
   end
 
-
   def ensure_correct_user
     @post_hobby = PostHobby.find(params[:id])
     unless @post_hobby.user == current_user || current_user.admin?
       redirect_to post_hobbies_path
     end
   end
+
 end
