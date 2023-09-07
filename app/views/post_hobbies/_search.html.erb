@@ -1,5 +1,4 @@
-<%= search_form_for @q, url: post_hobbies_path do |f| %>
-  <%= f.search_field :title_or_text_cont %>
-  <%= f.radio_button :title_or_text_cont, "キーワード" %>
+<%= search_form_for @q, url: search_post_hobbies_path do |f| %>
+  <%= f.search_field :title_cont %>
   <%= f.submit '検索' %>
 <% end %>

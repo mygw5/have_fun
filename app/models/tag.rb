@@ -6,4 +6,5 @@ class Tag < ApplicationRecord
   validates  :tag_name, presence: true
 
   scope :merge_post_hobbies, -> (tags){ }
+
 end
