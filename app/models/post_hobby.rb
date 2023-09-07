@@ -43,7 +43,11 @@ class PostHobby < ApplicationRecord
     (post_image.attached?) ? post_image : 'no_image.jpg'
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["tags"] #アソシエーション先を記述
+  end
+
   def self.ransackable_attributes(auth_object = nil)
-    ["title"]
+    ["title","tag_id"]
   end
 end
