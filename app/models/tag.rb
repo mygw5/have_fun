@@ -7,4 +7,12 @@ class Tag < ApplicationRecord
 
   scope :merge_post_hobbies, -> (tags){ }
 
+  def self.ransackable_associations(auth_object = nil)
+    ["post_hobbies"] #アソシエーション先を記述
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["id"]
+  end
+
 end
