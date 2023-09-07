@@ -48,6 +48,6 @@ class PostHobby < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title","tag_id"]
+    ["title"]
   end
 end
