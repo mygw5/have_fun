@@ -1,7 +1,6 @@
 class PostHobbiesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :set_q, only: [:index, :search]
 
   def new
     @post_hobby = PostHobby.new
@@ -30,8 +29,8 @@ class PostHobbiesController < ApplicationController
   def index
     #公開設定のみ一覧へ表示させる
     #@published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
-
-    @post_hobbies = PostHobby.order('created_at DESC')
+    @q = PostHobby.ransack(params[:q])
+    @post_hobbies = @q.result(distinct: true)
     @tag_list = Tag.all
 
 
@@ -93,11 +92,6 @@ class PostHobbiesController < ApplicationController
   end
 
   private
-
-  def set_q
-    @q = PostHobby.ransack(params[:q])
-  end
-
 
   def post_hobby_params
     params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
