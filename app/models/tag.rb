@@ -12,7 +12,7 @@ class Tag < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["tag_id"]
+    ["id"]
   end
 
 end
