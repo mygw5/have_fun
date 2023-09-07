@@ -42,4 +42,8 @@ class PostHobby < ApplicationRecord
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title"]
+  end
 end

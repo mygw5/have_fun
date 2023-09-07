@@ -29,8 +29,11 @@ class PostHobbiesController < ApplicationController
   def index
     #公開設定のみ一覧へ表示させる
     #@published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
-    @post_hobbies = PostHobby.all
+    @q = PostHobby.ransack(params[:q])
+    @post_hobbies = @q.result(distinct: true)
     @tag_list = Tag.all
+
+
   end
 
   def show
@@ -84,12 +87,15 @@ class PostHobbiesController < ApplicationController
     @post_hobbies = PostHobby.find(favorite)
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
 
   def post_hobby_params
     params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
   end
-
 
   def ensure_correct_user
     @post_hobby = PostHobby.find(params[:id])
@@ -97,4 +103,7 @@ class PostHobbiesController < ApplicationController
       redirect_to post_hobbies_path
     end
   end
+
+
+
 end
