@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name,  length: { minimum:2, maximum:20 }, uniqueness: true
+  validates :name,  length: { minimum:1, maximum:20 }, uniqueness: true
   validates :hobby, length: { maximum:50 }
 
 
@@ -37,5 +37,9 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && (is_status == true)
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
   end
 end

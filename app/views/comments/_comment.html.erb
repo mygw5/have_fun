@@ -14,7 +14,7 @@
         <tr>
           <td class="created">
             <%= hobby_comment.created_at.strftime('%Y/%m/%d') %>
-            <% if hobby_comment.user == current_user %>
+            <% if hobby_comment.user == current_user || current_user.admin? %>
               <%= link_to "コメントを削除する", post_hobby_comment_path(hobby_comment.post_hobby, hobby_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
             <% end %>
           </td>

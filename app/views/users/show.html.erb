@@ -23,6 +23,18 @@
         <th>グループ</th>
         <td>所属グループ表示</td>
       </tr>
+
+      <% if current_user.admin? %>
+        <tr>
+          <th>ステータス</th>
+          <% if @user.is_status == true %>
+            <td><span class="text-success">有効</span></td>
+          <% else %>
+            <td><span class="text-danger">退会</span></td>
+          <% end %>
+        </tr>
+      <% end %>
+
     </table>
     <div class="action mt-5">
       <% if current_user == @user || current_user.admin? %>

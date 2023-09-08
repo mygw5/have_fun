@@ -60,6 +60,7 @@
 
   .card-content {
     height: 150px;
+    overflow: scroll;
   }
 }
 
@@ -94,7 +95,5 @@
 .marker {
   background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);
   display: inline;
-
-
 }
 

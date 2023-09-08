@@ -31,7 +31,9 @@
 
       <div class="action">
         <%= f.submit '編集内容を保存する', class: "btn btn-success" %>
-        <%= link_to '退会する', user_confirm_withdraw_path(@user), class: "btn btn-danger" %>
+        <% if @user == current_user %>
+          <%= link_to '退会する', user_confirm_withdraw_path(@user), class: "btn btn-danger" %>
+        <% end %>
       </div>
     <% end %>
   </div>

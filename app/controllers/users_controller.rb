@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :if_not_admin, only: [:index]
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :hobby, :profile_image, :is_deleted)
+    params.require(:user).permit(:name, :hobby, :profile_image, :is_status)
   end
 
   def ensure_correct_user

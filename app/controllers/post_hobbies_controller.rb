@@ -87,10 +87,6 @@ class PostHobbiesController < ApplicationController
     @post_hobbies = PostHobby.find(favorite)
   end
 
-  def search
-    @results = @q.result
-  end
-
   private
 
   def post_hobby_params
