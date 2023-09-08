@@ -1,5 +1,5 @@
-<div class="row justify-content-center">
-  <div class="col-10">
+<div class="row justify-content-center pt-5">
+  <div class="col-8">
     <h2>新規登録</h2>
 
     <div class="row justify-content-center">
@@ -23,12 +23,22 @@
                 <em>(<%= @minimum_password_length %>文字以上)</em>
               <% end %>
             </th>
-            <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></td>
+            <td>
+              <%= f.password_field :password, autocomplete: "new-password", id: "new-passwordcheck", class: "form-control" %>
+              <!-- パスワードの可視化 -->
+              <input type="checkbox" onChange="document.getElementById('new-passwordcheck').type = (this.checked) ? 'text' : 'password';">
+              パスワードを表示する
+            </td>
           </tr>
 
           <tr>
             <th><%= f.label :password_confirmation, "パスワード確認" %></th>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></td>
+            <td>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "new-passwordcheck-confirm", class: "form-control" %>
+              <!-- パスワードの可視化 -->
+              <input type="checkbox" onChange="document.getElementById('new-passwordcheck-confirm').type = (this.checked) ? 'text' : 'password';">
+              パスワードを表示する
+            </td>
           </tr>
 
           <tr>
@@ -41,6 +51,6 @@
           </tr>
         </table>
       <% end %>
-     </div>
+    </div>
   </div>
 </div>
