@@ -13,7 +13,7 @@
 
     <div class="post-detail">
       <h4><%= @post_hobby.title %></h4>
-      <p class="text"><%= @post_hobby.text %></p>
+      <p class="text"><%= safe_join(@post_hobby.text.split("\n"),tag(:br)) %></p>
     </div>
     <div class="category row">
       <p class="hobby-tag mr-auto"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
