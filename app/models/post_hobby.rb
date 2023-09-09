@@ -9,15 +9,13 @@ class PostHobby < ApplicationRecord
 
   has_one_attached :post_image, dependent: :destroy
 
-  validates  :title, presence: true
-  validates  :text,  presence: true, length:{ maximum:300 }
+  with_options presence: true, if: :published? do
+    validates  :title, length: { maximum: 20 }
+    validates  :text,  length:{ maximum: 300 }
+  end
 
   enum post_status: { published: 0, draft: 1, unpublished: 2 }
 
-  def save_draft
-    self.post_status = :draft
-    save(validate: false)
-  end
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
