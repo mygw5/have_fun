@@ -3,46 +3,8 @@
     <%= image_tag @user.get_profile_image, size: "200x200", class: "profile-img" %>
   </div>
   <div class="col-4">
-    <% if @user == current_user %>
-      <h4>マイページ</h4>
-    <% else %>
-      <h4><%= @user.name %>さんのページ</h4>
-    <% end %>
-    <table class="profile">
-      <tr>
-        <th>名前</th>
-        <td><%= @user.name %></td>
-      </tr>
-
-      <tr>
-        <th>趣味</th>
-        <td><%= @user.hobby %></td>
-      </tr>
-
-      <tr>
-        <th>グループ</th>
-        <td>所属グループ表示</td>
-      </tr>
-
-      <% if current_user.admin? %>
-        <tr>
-          <th>ステータス</th>
-          <% if @user.is_status == true %>
-            <td><span class="text-success">有効</span></td>
-          <% else %>
-            <td><span class="text-danger">退会</span></td>
-          <% end %>
-        </tr>
-      <% end %>
-
-    </table>
-    <div class="action mt-5">
-      <% if current_user == @user || current_user.admin? %>
-        <% unless @user.guest_user? %>
-          <%= link_to '編集する', edit_user_path(@user), class: "btn btn-success" %>
-        <% end %>
-      <% end %>
-    </div>
+    <h4><%= @user.name %>さんのページ</h4>
+    <%= render 'info', user: @user %>
   </div>
 </div>
 <div class="row justify-content-center mt-5">
