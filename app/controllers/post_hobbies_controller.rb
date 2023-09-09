@@ -14,7 +14,7 @@ class PostHobbiesController < ApplicationController
       if @post_hobby.post_status = :draft
         @post_hobby.save
         flash[:notice] = "下書き保存に成功しました"
-        redirect_to drafts_post_hobbies_path
+        redirect_to unpublished_post_hobbies_path
       else
         flash.now[:alert] = "下書き保存に失敗しました"
         render :new

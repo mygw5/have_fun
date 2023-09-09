@@ -58,6 +58,7 @@
 
   .text {
     font-size: 20px;
+    //自動的に改行する
     overflow-wrap: break-word;
   }
 }
@@ -93,6 +94,7 @@
   width: 100%;
   height: 550px;
   background: rgba(255,255,255,0.7);
+  //スクロールする
   overflow: scroll;
 
   .user-icon {
@@ -123,6 +125,7 @@
   td:last-child {
     font-size: 12px;
     vertical-align: middle;
+    //改行
     overflow-wrap: break-word;
   }
 }
