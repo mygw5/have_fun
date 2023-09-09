@@ -3,7 +3,7 @@
     <%= image_tag @user.get_profile_image, size: "200x200", class: "profile-img" %>
   </div>
   <div class="col-4">
-    <h4><%= user.name %>さんのページ</h4>
+    <h4><%= @user.name %>さんのページ</h4>
     <%= render 'info', user: @user %>
   </div>
 </div>
