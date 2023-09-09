@@ -41,12 +41,9 @@ class PostHobbiesController < ApplicationController
 
   def index
     #公開設定のみ一覧へ表示させる
-    #@published_post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
     @q = PostHobby.ransack(params[:q])
-    @post_hobbies = @q.result(distinct: true)
+    @post_hobbies = @q.result(distinct: true).where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
     @tag_list = Tag.all
-
-
   end
 
   def show
@@ -75,15 +72,12 @@ class PostHobbiesController < ApplicationController
         tag.save
         flash.now[:alert] = "タグを入力してください"
         render :edit
-      else @post_hobby.update(post_hobby_params)
-        @old_relations = PostTag.where(post_hobby_id: @post_hobby.id)
-        @old_relations.each do |relation|
-          relation.delete
-        end
+      else @post_hobby.update(post_status: :published)
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿内容の更新に成功しました"
         redirect_to post_hobby_path(@post_hobby)
       end
+    else
       flash.now[:alert] = "投稿内容の更新に失敗しました"
       render :edit
     end
