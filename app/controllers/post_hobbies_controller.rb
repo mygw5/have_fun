@@ -42,7 +42,7 @@ class PostHobbiesController < ApplicationController
   def index
     #公開設定のみ一覧へ表示させる
     @q = PostHobby.ransack(params[:q])
-    @post_hobbies = @q.result(distinct: true).where(user_id: current_user.id).where(post_status: :published).order(created_at: :desc)
+    @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
@@ -65,7 +65,12 @@ class PostHobbiesController < ApplicationController
       if params[:commit] == "下書き保存"
         @post_hobby.update(post_status: :draft)
         flash[:notice] = "下書きの更新に成功しました"
-        redirect_to drafts_post_hobbies_path
+        redirect_to unpublished_post_hobbies_path
+      elsif params[:commit] == "非公開にする"
+        @post_hobby.update(post_status: :unpublished)
+        @post_hobby.save_tags(tag_list)
+        flash[:notice] = "投稿を非公開にしました"
+        redirect_to post_hobby_path(@post_hobby)
       elsif tag_list == []
         tag = Tag.new()
         tag.tag_name = ""
@@ -90,9 +95,9 @@ class PostHobbiesController < ApplicationController
     redirect_to post_hobbies_path
   end
 
-  def drafts
+  def unpublished
     #下書き保存した分のみ表示する
-    @post_hobbies = PostHobby.where(user_id: current_user.id).where(post_status: :draft).order(created_at: :desc)
+    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id)
   end
 
   def favorites

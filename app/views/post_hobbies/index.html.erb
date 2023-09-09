@@ -10,8 +10,8 @@
 </div>
 
 <div class="row justify-content-center">
-  <p class="new-post">&plus;<%= link_to '新規投稿する', new_post_hobby_path %></p>
-  <p class="draft-index"><%= link_to '下書き一覧へ', drafts_post_hobbies_path %></p>
+  <p class="new-post"><%= link_to '＋新規投稿する', new_post_hobby_path %></p>
+  <p class="draft-index"><%= link_to '<<下書き/非公開一覧へ', unpublished_post_hobbies_path %></p>
   <div class="col-5">
     <% if @q.title_cont != nil %>
       <p>検索結果 <%= @post_hobbies.count %>件です</p>

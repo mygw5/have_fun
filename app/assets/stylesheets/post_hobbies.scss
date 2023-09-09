@@ -81,6 +81,12 @@
   font-size: 13px;
 }
 
+.status {
+  color: #fff;
+  background-color: #4169e1;
+  border-radius: 5px;
+}
+
 
 //showコメント欄
 .comment-area{
@@ -125,7 +131,13 @@
 .new-post {
   top: 150px;
   left: 80px;
-   position: fixed;
+  position: fixed;
+}
+
+.draft-index {
+  top: 180px;
+  left: 80px;
+  position: fixed;
 }
 
 .post-img {

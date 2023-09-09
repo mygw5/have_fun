@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
 
   resources :post_hobbies do
-    get :drafts,          on: :collection
+    get :unpublished,          on: :collection
     get :favorites,       on: :collection
     resources :comments,  only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
