@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
   has_many :post_tags, dependent: :destroy, foreign_key: 'tag_id'
   has_many :post_hobbies, through: :post_tags
 
-  validates  :tag_name, presence: true
+  validates  :tag_name, presence: true, uniqueness: true
 
   scope :merge_post_hobbies, -> (tags){ }
 
