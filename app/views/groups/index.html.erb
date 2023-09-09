@@ -1,2 +1,30 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<div class="row py-3">
+  <h3>グループ一覧</h3>
+</div>
+<div class="search-form">
+  <%= render 'group_search', q: @q %>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>グループ名</th>
+        <th>紹介</th>
+        <!-- カテゴリー追加する -->
+        <th>カテゴリー</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.group_name %></td>
+        <td><%= group.introduction %></td>
+        <td>カテゴリー</td>
+        <td>参加/脱退</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
