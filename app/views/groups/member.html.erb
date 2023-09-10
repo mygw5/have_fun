@@ -2,14 +2,12 @@
   <h3>メンバー一覧</h3>
 </div>
 
-<div class="row">
-  <div class="col-8">
+<div class="row justify-content-center p-5">
+  <div class="col-8 member-list">
     <table class="table">
-      <% @groups.each do |group| %>
+      <% @members.each do |member| %>
       <tr>
-        <td>
-          <%= group.group_user.name %>
-        </td>
+        <td><%= link_to member.name, user_path(member) %></td>
       </tr>
       <% end %>
     </table>

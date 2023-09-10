@@ -39,7 +39,8 @@ class GroupsController < ApplicationController
   end
 
   def member
-    
+   @group = Group.find(params[:group_id])
+   @members = @group.users
   end
 
   private

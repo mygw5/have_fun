@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :users,       only: [:index, :show, :edit, :update] do
-    get   "confirm_withdraw"
-    patch "withdraw"
-    get "mypage", on: :collection
+    get   :confirm_withdraw
+    patch :withdraw
+    get   :mypage, on: :collection
   end
 
   resources :groups, only: [:new, :create, :index, :show, :edit, :update] do

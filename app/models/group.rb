@@ -20,7 +20,7 @@ class Group < ApplicationRecord
   end
 
   def includesUser?(user)
-    group_users.exists?(user_id: user.id)
+      group_users.exists?(user_id: user.id)
   end
 
   def self.ransackable_attributes(auth_object = nil)
