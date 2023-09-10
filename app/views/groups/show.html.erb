@@ -20,7 +20,17 @@
   <div class="col-7">
     <div>
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
-      グループチャット
+        <div class="chat-area">
+          <% @group.chats.each do |chat| %>
+            <p><%= chat.message %></p>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with(model: [@group, @chat], local: true) do |f| %>
+            <%= f.text_area :mesage %>
+            <%= f.submit '送信する' %>
+          <% end %>
+        </div>
       <% else %>
         <p>
           グループに参加することでグループチャットが利用することができます。
