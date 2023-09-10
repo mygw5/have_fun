@@ -28,16 +28,18 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       flash[:notice] = "グループ情報を更新しました"
     else
-      flash.now[:alert]
+      flash.now[:alert] ="グループ編集に失敗しました"
       render :edit
     end
   end
 
   def show
     @group = Group.find(params[:id])
+    @user = @group.owner
   end
 
   def member
+    
   end
 
   private

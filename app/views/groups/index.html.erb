@@ -25,7 +25,7 @@
         <% @groups.each do |group| %>
         <tr>
           <td><%= image_tag group.get_group_image, size: "100x50", class: "group-img" %></td>
-          <td><%= group.group_name %></td>
+          <td><%= link_to group.group_name, group_path(group) %></td>
           <td><%= group.introduction %></td>
           <td>カテゴリー</td>
           <td>参加/脱退</td>

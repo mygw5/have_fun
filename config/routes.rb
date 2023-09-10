@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups, only: [:new, :create, :index, :show, :edit, :update] do
-    get "group_member"
+    get :member
     resources :group_users, only: [:create, :destroy]
     resources :chats, only: [:create]
   end

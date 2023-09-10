@@ -1,2 +1,17 @@
-<h1>Groups#member</h1>
-<p>Find me in app/views/groups/member.html.erb</p>
+<div class="row py-3">
+  <h3>メンバー一覧</h3>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <table class="table">
+      <% @groups.each do |group| %>
+      <tr>
+        <td>
+          <%= group.group_user.name %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

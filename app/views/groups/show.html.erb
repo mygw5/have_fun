@@ -1,2 +1,20 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="row justify-content-center py-5">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-head">
+        <%= image_tag @group.get_group_image, size: "200x100" %>
+      </div>
+      <div class="card-body">
+        <h5><%= @group.group_name %></h5>
+        <p><%= @group.introduction %></p>
+        <p>オーナー: <%= link_to @group.owner.name, user_path(@user) %></p>
+        <p>グループメンバー: <%= link_to @group.group_users.count, group_member_path(@group) %>名</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-7">
+    <div>
+
+    </div>
+  </div>
+</div>
