@@ -24,7 +24,7 @@
       <tbody>
         <% @groups.each do |group| %>
         <tr>
-          <td><%= image_tag group.get_group_image %></td>
+          <td><%= image_tag group.get_group_image, size: "100x50", class: "group-img" %></td>
           <td><%= group.group_name %></td>
           <td><%= group.introduction %></td>
           <td>カテゴリー</td>
