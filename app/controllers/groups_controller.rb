@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   def index
     @q = Group.ransack(params[:q])
-    @group = Group.result(distinct: true)
+    @groups = @q.result(distinct: true)
   end
 
   def new
@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(group_params)
+    @group = Group.create(group_params.merge(owner_id: current_user.id))
     if @group.save
       flash[:notice] = "グループ作成に成功しました"
       redirect_to groups_path
