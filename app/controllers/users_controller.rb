@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_hobbies = @user.post_hobbies
+    @post_hobbies = @user.post_hobbies.where(post_status: :published)
   end
 
   def edit
@@ -22,15 +22,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報の更新に成功しました"
-      redirect_to user_path(@user)
+      redirect_to mypage_path
     else
       flash.now[:alert] = "ユーザー情報の更新に失敗しました"
       render :edit
     end
   end
 
-  def confirm_withdraw
+  def mypage
+    @user = current_user
+    @post_hobbies = @user.post_hobbies
+  end
 
+  def confirm_withdraw
   end
 
   def withdraw

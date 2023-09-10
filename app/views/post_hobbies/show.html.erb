@@ -6,6 +6,7 @@
       <% if @post_hobby.user == current_user %>
         <%= link_to '編集する', edit_post_hobby_path(@post_hobby), class: "text-primary" %>
         <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？", class: "text-danger" %>
+        <span class="status px-2"><%= @post_hobby.post_status_i18n %></span>
       <% else %>
         <%= link_to "#{ @post_hobby.user.name }", user_path(@post_hobby.user) %>さんの投稿
       <% end %>

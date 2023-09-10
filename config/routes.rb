@@ -11,19 +11,20 @@ Rails.application.routes.draw do
   root to: "homes#top"
 
   resources :post_hobbies do
-    get :drafts,          on: :collection
+    get :unpublished,     on: :collection
     get :favorites,       on: :collection
     resources :comments,  only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
   end
 
   resources :users,       only: [:index, :show, :edit, :update] do
-    get   "confirm_withdraw"
-    patch "withdraw"
+    get   :confirm_withdraw
+    patch :withdraw
+    get   :mypage, on: :collection
   end
 
   resources :groups, only: [:new, :create, :index, :show, :edit, :update] do
-    get "group_member"
+    get :member
     resources :group_users, only: [:create, :destroy]
     resources :chats, only: [:create]
   end

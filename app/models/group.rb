@@ -11,11 +11,19 @@ class Group < ApplicationRecord
   validates :group_name,   presence: true, uniqueness: true
   validates :introduction, presence: true
 
+  def get_group_image
+    (group_image.attached?) ? group_image : 'no_image.jpg'
+  end
+
   def is_owned_by?(user)
       owner.id == user.id
   end
 
   def includesUser?(user)
-    group_users.exists?(user_id: user.id)
+      group_users.exists?(user_id: user.id)
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["group_name"]
   end
 end

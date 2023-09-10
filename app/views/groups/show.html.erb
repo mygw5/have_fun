@@ -1,2 +1,33 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="row justify-content-center py-5">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-head mx-auto pt-3">
+        <%= image_tag @group.get_group_image, size: "300x150" %>
+      </div>
+      <div class="card-body">
+        <h5><%= @group.group_name %></h5>
+        <p><%= @group.introduction %></p>
+        <p>オーナー: <%= link_to @group.owner.name, user_path(@user) %></p>
+        <p>グループメンバー: <%= link_to @group.group_users.count, group_member_path(@group) %>名</p>
+        <% if @group.is_owned_by?(current_user) %>
+          <p><%= link_to '編集', edit_group_path(@group), class: "btn btn-success" %></p>
+        <% elsif @group.includesUser?(current_user) %>
+          <p><%= link_to 'グループを抜ける', group_group_user_path(@group), method: :delete, class: "btn btn-danger" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-7">
+    <div>
+      <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
+      グループチャット
+      <% else %>
+        <p>
+          グループに参加することでグループチャットが利用することができます。
+          参加して交流を深めましょう！
+        </p>
+        <p><%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-success" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

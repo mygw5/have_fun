@@ -1,2 +1,35 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
+<div class="row py-3">
+  <h3>グループ一覧</h3>
+  <div class="search-form">
+    <%= render 'group_search', q: @q %>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <%= link_to  new_group_path, class: "text-light new-group px-3" do %>
+    <i class="fas fa-user-friends">グループ作成</i>
+  <% end %>
+  <div class="col-6 group-list">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>グループ名</th>
+          <th>紹介</th>
+          <!-- カテゴリー追加する -->
+          <th>カテゴリー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+        <tr>
+          <td><%= image_tag group.get_group_image, size: "100x50", class: "group-img" %></td>
+          <td><%= link_to group.group_name, group_path(group) %></td>
+          <td><%= group.introduction %></td>
+          <td>カテゴリー</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
