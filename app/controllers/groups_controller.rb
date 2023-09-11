@@ -37,8 +37,9 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = @group.owner
-    @users = @group.users
+    @chats = @group.chats
     @chat = Chat.new
+    @myid = current_user.id
   end
 
   def member
