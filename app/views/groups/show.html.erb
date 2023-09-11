@@ -20,7 +20,7 @@
   <div class="col-7">
     <div>
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
-      グループチャット
+          <%= render 'chat', group: @group, chat: @chat %>
       <% else %>
         <p>
           グループに参加することでグループチャットが利用することができます。
