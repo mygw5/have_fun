@@ -5,7 +5,7 @@
 
 //showレイアウト
 .profile-img {
-    border-radius: 50%;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -99,3 +99,11 @@ $purple: #9370db;
   display: inline;
 }
 
+
+//レスポンシブ
+@mesia scrieen and (max-width:768px) {
+  .info {
+
+  }
+
+}
