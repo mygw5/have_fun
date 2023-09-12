@@ -21,7 +21,7 @@
     <div>
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
         <div id="chat-index" class="chat-area">
-          <%= render 'chats/index', group: @group, myid: @myid %>
+          <%= render 'chats/index', group: @group %>
         </div>
         <div>
           <%= render 'chats/form', group: @group, chat: @chat %>
