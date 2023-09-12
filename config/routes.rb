@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get :unpublished,     on: :collection
     get :favorites,       on: :collection
     resources :comments,  only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :users,       only: [:index, :show, :edit, :update] do
