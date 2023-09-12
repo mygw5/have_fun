@@ -27,6 +27,10 @@
   </div>
 
   <div class="col-6">
-    <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>
+    <div id="comment-index" class="comment-area p-2">
+      <%= render 'comments/index', post_hobby: @post_hobby %>
+    </div>
+    <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
+    <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
   </div>
 </div>

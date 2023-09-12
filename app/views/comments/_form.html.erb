@@ -1,0 +1,4 @@
+<%= form_with model:[post_hobby, comment], local: false do |f| %>
+  <%= f.text_area :comment, rows: '2',placeholder: "コメントを入力", class: "w-100 textarea" %>
+  <%= f.submit "送信する", class: "btn-sm btn-primary" %>
+<% end %>
