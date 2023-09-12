@@ -12,8 +12,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name,  length: { minimum:1, maximum:20 }, uniqueness: true
-  validates :hobby, length: { maximum:50 }
+  validates :name,         length: { minimum: 1, maximum: 20 }, uniqueness: true
+  validates :hobby,        length: { maximum: 50 }
+  validates :introduction, length: { maximum: 100 }
 
 
   #ゲストログイン
