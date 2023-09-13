@@ -1,14 +1,16 @@
 <div class="row justify-content-center mt-5">
   <div class="col-lg-2 col-md-4">
-    <%= image_tag @user.get_profile_image, class: "rounded-circle profile-img center-block" %>
+    <%= image_tag @user.get_profile_image, class: "rounded-circle profile-img" %>
   </div>
-  <div class="col-lg-3 offset-lg-1 col-md-10 info">
-    <h4>マイページ</h4>
+
+  <div class="col-lg-4 offset-lg-1 col-md-10 info">
+    <h4><span>マイページ</span></h4>
     <%= render 'info', user: @user %>
   </div>
 </div>
+
 <div class="row justify-content-center mt-5">
-  <div class="col-lg-9 d-flex flex-wrap col-md-10">
+  <div class="col-lg-10 d-flex flex-wrap col-md-10">
     <%= render 'post', post_hobbies: @post_hobbies, user: @user %>
   </div>
 </div>

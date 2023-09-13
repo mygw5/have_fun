@@ -3,40 +3,42 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-//showレイアウト
+//mypage,showレイアウト
 .profile-img {
-    width: 100%;
-    object-fit: cover;
+  width: 80%;
+  object-fit: cover;
 }
+
 
 .profile {
 
   th {
-    width: 100px;
-    height: 40px;
+    width: 150px;
+    height: 30px;
   }
 
   td {
     width: 300px;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     vertical-align: bottom;
   }
+
 }
 
 //編集画面の画像投稿デザイン
-$purple: #9370db;
+$coral: #ff7f50;
 
 .image-label {
   display: block;
-  border: 1px solid $purple;
-  background-color: #e6e6fa;
+  border: 1px solid $coral;
+  background-color: #faebd7;
   width: 180px;
   height: 30px;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
   padding-top: 2px;
-  color: $purple;
+  color: $coral;
   text-decoration: none;
   text-align: center;
 }
@@ -48,8 +50,8 @@ $purple: #9370db;
 
 //投稿レイアウト
 .card {
-  width: 300px;
-  height: 450px;
+  width: 280px;
+  height: 350px;
   margin: 0 5px 10px;
 
   p {
@@ -67,12 +69,16 @@ $purple: #9370db;
 }
 
 .card-img {
+  width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
 //indexレイアウト
 .list {
+  th {
+    background-color: #ffe4c4;
+  }
   th:last-child {
     width: 200px;
     text-align: center;
@@ -94,16 +100,50 @@ $purple: #9370db;
 }
 
 //退会確認画面
+
+
 .marker {
-  background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);
+  background:linear-gradient(transparent 70%, rgba(220, 20, 60,0.5) 70%);
   display: inline;
 }
 
-
 //レスポンシブ
-@mesia scrieen and (max-width:768px) {
-  .info {
+@media screen and (max-width: 768px) {
 
+  //mypage,show
+  .profile-img {
+    width: 100%;
+  }
+  .info {
+    h4 {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .profile {
+      margin: 0 auto;
+    }
   }
 
+  .action {
+    margin-right: 90px;
+  }
+
+  .card {
+    margin-right: auto;
+  }
+
+  .index-head {
+    width: 100%;
+    height: 60px;
+    background-color: #ffdead;
+    display: flex;
+    align-items: flex-start;
+    position: fixed;
+
+    .search-form {
+      top: 25px;
+      left: 200px;
+    }
+  }
 }
