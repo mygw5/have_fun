@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @post_hobbies = @user.post_hobbies.where(post_status: :published)
+    @post_hobbies = @user.post_hobbies.where(post_status: :published).page(params[:page])
   end
 
   def edit
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @post_hobbies = @user.post_hobbies
+    @post_hobbies = @user.post_hobbies.page(params[:page])
   end
 
   def confirm_withdraw

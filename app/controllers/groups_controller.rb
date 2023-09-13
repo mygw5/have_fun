@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @q = Group.ransack(params[:q])
-    @groups = @q.result(distinct: true)
+    @groups = @q.result(distinct: true).page(params[:page])
   end
 
   def new
@@ -46,7 +46,7 @@ class GroupsController < ApplicationController
 
   def member
    @group = Group.find(params[:group_id])
-   @members = @group.users
+   @members = @group.users.page(params[:page])
    @owner = @group.owner
   end
 
