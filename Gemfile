@@ -63,4 +63,7 @@ gem 'enum_help'
 
 gem 'rails_admin', '~> 3.0'
 
+gem 'cancancan'
+
 gem 'ransack'
+

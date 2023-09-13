@@ -7,7 +7,7 @@
           <label for="drawer-input" class="drawer-open row justify-content-center"><span></span></label>
           <nav class="nav-content">
             <ul class="nav-list">
-              <% if current_user.admin? %>
+              <% if current_user.try(:admin?) %>
                 <li class="nav-item"><%= link_to '管理者画面', rails_admin_path, class: "text-light" %></li>
                 <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: "text-light" %></li>
               <% end %>

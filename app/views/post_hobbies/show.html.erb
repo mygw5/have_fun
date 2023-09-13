@@ -16,23 +16,21 @@
       <h4><%= @post_hobby.title %></h4>
       <p class="text"><%= safe_join(@post_hobby.text.split("\n"),tag(:br)) %></p>
     </div>
+
     <div class="category row">
       <p class="hobby-tag mr-auto"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
-      <div class="like px-2 mr-5">
-        <% if @post_hobby.favorited_by?(current_user) %>
-          <%= link_to post_hobby_favorite_path(@post_hobby),method: :delete do %>
-            <i class="fas fa-heart">お気に入り</i>
-          <% end %>
-        <% else %>
-          <%= link_to post_hobby_favorites_path(@post_hobby), method: :post do %>
-            <i class="far fa-heart">お気に入り</i>
-          <% end %>
-        <% end %>
+
+      <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
+        <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
       </div>
     </div>
   </div>
 
   <div class="col-6">
-    <%= render 'comments/comment', post_hobby: @post_hobby, comment: @comment %>
+    <div id="comment-index" class="comment-area p-2">
+      <%= render 'comments/index', post_hobby: @post_hobby %>
+    </div>
+    <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
+    <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
   </div>
 </div>

@@ -13,6 +13,7 @@
 
 
 .group-img {
+    width: 100%;
     object-fit: cover;
   }
 
@@ -30,12 +31,21 @@
 .card {
    width: 100%;
    height: 600px;
+
+  .group-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+
+
   }
 
 .chat-area {
   width: 100%;
   height: 500px;
-  background-color: ;
+  overflow: scroll;
 }
 
 

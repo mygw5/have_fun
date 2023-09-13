@@ -1,6 +1,6 @@
 <div class="row justify-content-center pt-5">
   <div class="col-6">
-    <h4>ユーザー情報編集</h4>
+    <h4><span>ユーザー情報編集</span></h4>
     <%= form_with model: @user, local: true do |f| %>
       <div class="form-group">
         <%= f.label :name, "名前" %>
@@ -19,6 +19,11 @@
         <%= f.text_field :hobby, class: "form-control" %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :introduction, "自己紹介" %>
+        <%= f.text_field :introduction, class: "form-control" %>
+      </div>
+
       <% if current_user.admin? %>
         <div>
           <%= f.label :is_status, "会員ステータス" %>
@@ -32,7 +37,9 @@
       <div class="action">
         <%= f.submit '編集内容を保存する', class: "btn btn-success" %>
         <% if @user == current_user %>
-          <%= link_to '退会する', user_confirm_withdraw_path(@user), class: "btn btn-danger" %>
+          <% unless current_user.admin? %>
+            <%= link_to '退会する', user_confirm_withdraw_path(@user), class: "btn btn-danger" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

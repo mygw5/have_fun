@@ -1,8 +1,8 @@
 <div class="row py-3">
   <% if @q.title_cont != nil %>
-    <h3>"<%= "#{@q.title_cont}" %>"の検索一覧</h3>
+    <h3><span>"<%= "#{@q.title_cont}" %>"の検索一覧</span></h3>
   <% else %>
-    <h3>投稿一覧</h3>
+    <h3><span>投稿一覧</span></h3>
   <% end %>
   <div class="search-form">
     <%= render 'search', q: @q %>
