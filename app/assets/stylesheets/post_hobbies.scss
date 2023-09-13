@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
+$skyblue: #00bfff;
 //投稿フォームの画像投稿デザイン
 .image-label {
   display: block;
@@ -12,9 +12,9 @@
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1px solid #00bfff;
+  border: 1px solid $skyblue;
   padding-top: 2px;
-  color: #00bfff;
+  color: $skyblue;
   text-decoration: none;
   text-align: center;
 }
@@ -132,15 +132,19 @@
 
 //新規投稿リンク固定
 .new-post {
-  top: 150px;
+  top: 200px;
   left: 80px;
   position: fixed;
+  background-color: #3cb371;
+  border-radius: 50px;
 }
 
 .draft-index {
-  top: 180px;
+  top: 240px;
   left: 80px;
   position: fixed;
+  background-color: $skyblue;
+  border-radius: 50px;
 }
 
 .post-img {
@@ -149,3 +153,16 @@
   object-fit: cover;
 }
 
+//レスポンシブ
+@media screen and (max-width: 768px) {
+  .new-post {
+    left: 30px;
+  }
+
+  .draft-index {
+    left: 30px;
+  }
+
+
+
+}

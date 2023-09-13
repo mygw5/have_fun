@@ -26,6 +26,8 @@ $bgcolor: #fffacd;
 
 body {
   background: repeating-linear-gradient(90deg, #fafad2 10px, #fff 20px);
+  position: relative;
+  height: 100vh;
 }
 
 header {
@@ -38,12 +40,15 @@ header {
 
 main {
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 footer {
   width: 100%;
   height: 50px;
   background-color: $bgcolor;
+  position: sticky;
+	top: 100vh;
 }
 
 //ハンバーガーメニューレイアウト、位置固定
@@ -158,7 +163,7 @@ footer {
 
 //ページタイトル固定
 h3 {
-  top: 20px;
+  top: 100px;
   left: 50px;
   position: fixed;
 
@@ -177,11 +182,24 @@ h4 {
 
 //検索バー
 .search-form {
-  top: 60px;
+  top: 150px;
   left: 50px;
   position: fixed;
 }
 
 .index-head {
   z-index: 1;
+}
+
+//レスポンシブ
+@media screen and (max-width: 768px) {
+
+  .search-form {
+    top: 18px;
+    left: 300px;
+    z-index: 99;
+  }
+
+
+
 }
