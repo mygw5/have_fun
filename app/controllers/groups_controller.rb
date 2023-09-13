@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update]
+
   def index
     @q = Group.ransack(params[:q])
     @groups = @q.result(distinct: true)
@@ -51,5 +53,11 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:group_name, :introduction, :group_image)
   end
 
+  def ensure_correct_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to groups_path
+    end
+  end
 
 end
