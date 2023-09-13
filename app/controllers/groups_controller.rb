@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.create(group_params.merge(owner_id: current_user.id))
+    @group.users << current_user
     if @group.save
       flash[:notice] = "グループ作成に成功しました"
       redirect_to groups_path
@@ -46,6 +47,7 @@ class GroupsController < ApplicationController
   def member
    @group = Group.find(params[:group_id])
    @members = @group.users
+   @user = @group.owner
   end
 
   private

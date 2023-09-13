@@ -4,7 +4,7 @@
 
 
 .new-group {
-  top: 150px;
+  top: 220px;
   left: 80px;
   position: fixed;
   background-color: #9400d3;
@@ -19,13 +19,35 @@
 
 
 //index
-.group-list {
 
-  th{
+.member-list {
 
+  .profile-img {
+    width: 50%;
+    border-radius: 50%;
   }
 
+  td {
+    width: 100px;
+    vertical-align: baseline;
+  }
+
+  td:first-child {
+    width: 30px;
+  }
 }
+  .group-list {
+
+  th {
+    background-color: #ffe4c4;
+  }
+
+  td {
+    width: 100px;
+    vertical-align: baseline;
+  }
+ }
+
 
 //show
 .card {
@@ -69,4 +91,21 @@ $purple: #9370db;
 
 .image-form {
   display: none;
+}
+
+//レスポンシブ
+@media screen and (max-width: 768px) {
+
+  table {
+    margin-top: 50px;
+  }
+
+  .new-group {
+    top: 150px;
+    left: 300px;
+    position: fixed;
+    background-color: #9400d3;
+    border-radius: 50px;
+  }
+
 }
