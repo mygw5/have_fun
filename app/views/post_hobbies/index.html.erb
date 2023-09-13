@@ -1,32 +1,30 @@
-<div class="row py-3">
-  <% if @q.title_cont != nil %>
-    <h3><span>"<%= "#{@q.title_cont}" %>"の検索一覧</span></h3>
-  <% else %>
-    <h3><span>投稿一覧</span></h3>
-  <% end %>
+<div class="index-head">
+  <ul class="d-flex justify-content-between">
+    <li>
+      <%= link_to new_post_hobby_path, class: "text-secondary px-3" do %>
+        <i class="fas fa-plus">新規投稿する</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to unpublished_post_hobbies_path, class: "text-secondary px-3" do %>
+        <i class="fas fa-less-than">下書き/非公開一覧</i>
+      <% end %>
+    </li>
+    <li class="search-form"><%= render 'search', q: @q %></li>
+  </ul>
 </div>
 
-<div class="row">
-  <div class="col-lg-4 col-md-3">
-    <div class="search-form">
-    <%= render 'search', q: @q %>
-  </div>
-  <p class="new-post">
-    <%= link_to new_post_hobby_path, class: "text-light px-3" do %>
-      <i class="fas fa-plus">新規投稿する</i>
-    <% end %>
-  </p>
-  <p class="draft-index">
-    <%= link_to unpublished_post_hobbies_path, class: "text-light px-3" do %>
-      <i class="fas fa-less-than">下書き/非公開一覧</i>
-    <% end %>
-  </p>
-   </div>
-  <div class="col-lg-5 col-md-6 offset-1">
+<% if @q.title_cont != nil %>
+  <h3><span>"<%= "#{@q.title_cont}" %>"の検索一覧</span></h3>
+<% else %>
+  <h3><span>投稿一覧</span></h3>
+<% end %>
+
+<div class="row justify-content-center pt-5">
+  <div class="col-lg-6 col-md-6 offset-1">
     <% if @q.title_cont != nil %>
       <p>検索結果 <%= @post_hobbies.count %>件です</p>
     <% end %>
-
     <%= render 'index', post_hobbies: @post_hobbies %>
   </div>
 </div>

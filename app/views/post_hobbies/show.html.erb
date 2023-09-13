@@ -18,11 +18,13 @@
     </div>
 
     <div class="category row">
-      <p class="hobby-tag mr-auto"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+      <p class="hobby-tag mr-auto"><%= @post_hobby.tags.map(&:tag_name).join(',') %></p>
 
-      <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
-        <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
-      </div>
+      <% unless current_user == @post_hobby.user %>
+        <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
+          <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -31,6 +33,9 @@
       <%= render 'comments/index', post_hobby: @post_hobby %>
     </div>
     <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
-    <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
+
+    <div class="action">
+      <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
+    </div>
   </div>
 </div>

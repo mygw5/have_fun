@@ -63,8 +63,6 @@ footer {
 .drawer-open {
   height: 50px;
   width: 50px;
-  top: 20px;
-  right: 50px;
   align-items: center;
   z-index: 100;
 
@@ -164,7 +162,7 @@ footer {
 //ページタイトル固定
 h3 {
   top: 100px;
-  left: 50px;
+  left: 40px;
   position: fixed;
 
   span {
@@ -180,22 +178,32 @@ h4 {
   }
 }
 
-//検索バー
-.search-form {
-  top: 150px;
-  left: 50px;
-  position: fixed;
-}
-
 .index-head {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(250,235,215,0.5);
+  position: fixed;
   z-index: 1;
-}
 
-//レスポンシブ
-@media screen and (max-width: 768px) {
+  ul {
+    margin: 0 150px;
+  }
 
-  .search-form {
-    top: 150px;
-    left: 20px;
+  li {
+    list-style-type: none;
+    line-height: 40px;
+  }
+
+  li:last-child {
+    display: flex;
+    align-items: center;
+
+    div {
+      display: inline-block;
+    }
+
+    .keyword{
+      height: 25px;
+    }
   }
 }
