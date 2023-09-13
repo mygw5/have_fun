@@ -7,10 +7,26 @@
       <span><%= link_to '新規登録', new_user_registration_path, class: "text-decoration-none text-light m-2" %></span>
       <span><%= link_to 'ログイン', user_session_path, class: "text-decoration-none text-light m-2" %></span>
     </div>
+
     <div class="img-box">
       <div></div>
       <div></div>
       <div></div>
     </div>
+
   </div>
 </div>
+<div class="row justify-content-center my-5">
+  <div class="fadein px-5">
+    <%= render 'about' %>
+  </div>
+
+  <div class="fadein px-5">
+    <%= render 'post' %>
+  </div>
+
+  <div class="fadein px-5">
+    <%= render 'group' %>
+  </div>
+</div>
+<%= javascript_pack_tag 'script/fadein' %>
