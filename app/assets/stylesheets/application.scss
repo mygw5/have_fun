@@ -142,11 +142,27 @@ h3 {
   top: 20px;
   left: 50px;
   position: fixed;
+
+  span {
+    background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);
+    display: inline;
+  }
+}
+
+h4 {
+  span {
+    background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);
+    display: inline;
+  }
 }
 
 //検索バー
 .search-form {
   top: 60px;
   left: 50px;
-   position: fixed;
+  position: fixed;
+}
+
+.index-head {
+  z-index: 1;
 }

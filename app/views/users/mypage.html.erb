@@ -1,32 +1,16 @@
 <div class="row justify-content-center mt-5">
-  <div class="col-4">
-    <%= image_tag @user.get_profile_image, size: "200x200", class: "profile-img" %>
+  <div class="col-lg-2 col-md-4">
+    <%= image_tag @user.get_profile_image, class: "rounded-circle profile-img" %>
   </div>
-  <div class="col-4">
-    <h4>マイページ</h4>
+
+  <div class="col-lg-4 offset-lg-1 col-md-10 info">
+    <h4><span>マイページ</span></h4>
     <%= render 'info', user: @user %>
   </div>
 </div>
-<div class="row justify-content-center mt-5">
-  <div class="col-9 d-flex flex-wrap">
-    <% @post_hobbies.each do |post_hobby| %>
-  <div class="card pb-2 mb-2">
-    <%= image_tag post_hobby.get_post_image, size: "250x250", class: "card-img p-2" %>
-    <p class="px-3">
-      <%= post_hobby.post_status_i18n %>
-    </p>
-    <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
-    <div class="card-content px-4">
-      <%= safe_join(post_hobby.text.split("\n"),tag(:br)).truncate(150) %>
-      <% if post_hobby.text.size >= 150 %><br>
-        <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
-      <% end %>
-    </div>
-    <div class="px-3">
-      <%= link_to post_hobby.tags.map(&:tag_name).join(',') %>
-    </div>
-  </div>
-<% end %>
 
+<div class="row justify-content-center mt-5">
+  <div class="col-lg-10 d-flex flex-wrap col-md-10">
+    <%= render 'post', post_hobbies: @post_hobbies, user: @user %>
   </div>
 </div>
