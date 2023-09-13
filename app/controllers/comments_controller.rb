@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     post_hobby = PostHobby.find(params[:post_hobby_id])

@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
+
   def index
     @q = Group.ransack(params[:q])
     @groups = @q.result(distinct: true)
@@ -10,6 +13,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.create(group_params.merge(owner_id: current_user.id))
+    @group.users << current_user
     if @group.save
       flash[:notice] = "グループ作成に成功しました"
       redirect_to groups_path
@@ -43,6 +47,7 @@ class GroupsController < ApplicationController
   def member
    @group = Group.find(params[:group_id])
    @members = @group.users
+   @owner = @group.owner
   end
 
   private
@@ -51,5 +56,11 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:group_name, :introduction, :group_image)
   end
 
+  def ensure_correct_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to groups_path
+    end
+  end
 
 end

@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     group = Group.find(params[:group_id])

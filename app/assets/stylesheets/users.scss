@@ -61,11 +61,6 @@ $coral: #ff7f50;
   h4 {
     font-size: 20px;
   }
-
-  .card-content {
-    height: 150px;
-    overflow: scroll;
-  }
 }
 
 .card-img {
@@ -100,8 +95,6 @@ $coral: #ff7f50;
 }
 
 //退会確認画面
-
-
 .marker {
   background:linear-gradient(transparent 70%, rgba(220, 20, 60,0.5) 70%);
   display: inline;
@@ -133,17 +126,19 @@ $coral: #ff7f50;
     margin-right: auto;
   }
 
-  .index-head {
-    width: 100%;
-    height: 60px;
-    background-color: #ffdead;
-    display: flex;
-    align-items: flex-start;
-    position: fixed;
+  table {
+    margin-top: 50px;
+  }
 
-    .search-form {
-      top: 25px;
-      left: 200px;
+  .index-head {
+    ul {
+      margin: 0;
+      display: inline-block;
+    }
+
+    li {
+      margin-right: 50px;
     }
   }
+
 }

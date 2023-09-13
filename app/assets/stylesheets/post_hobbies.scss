@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
+$skyblue: #00bfff;
 //投稿フォームの画像投稿デザイン
 .image-label {
   display: block;
@@ -12,9 +12,9 @@
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1px solid #00bfff;
+  border: 1px solid $skyblue;
   padding-top: 2px;
-  color: #00bfff;
+  color: $skyblue;
   text-decoration: none;
   text-align: center;
 }
@@ -30,6 +30,7 @@
   height: 500px;
 
   .card-img {
+    height: 350px;
     object-fit: cover;
   }
 
@@ -54,12 +55,14 @@
 
 .post-detail {
   width: 100%;
-  height: 350px;
+  height: 250px;
 
   .text {
+    height: 200px;
     font-size: 20px;
     //自動的に改行する
     overflow-wrap: break-word;
+    overflow: scroll;
   }
 }
 
@@ -92,7 +95,7 @@
 //showコメント欄
 .comment-area{
   width: 100%;
-  height: 550px;
+  height: 400px;
   background: rgba(255,255,255,0.7);
   //スクロールする
   overflow: scroll;
@@ -112,6 +115,7 @@
   table {
     table-layout: fixed;
     width: 100%;
+    margin: 10px 0;
   }
 
   tr {
@@ -130,18 +134,6 @@
   }
 }
 
-//新規投稿リンク固定
-.new-post {
-  top: 150px;
-  left: 80px;
-  position: fixed;
-}
-
-.draft-index {
-  top: 180px;
-  left: 80px;
-  position: fixed;
-}
 
 .post-img {
   width: 100%;
@@ -149,3 +141,32 @@
   object-fit: cover;
 }
 
+.private-list {
+  th {
+    background-color: #ffe4c4;
+  }
+}
+
+//レスポンシブ
+@media screen and (max-width: 768px) {
+
+  .card {
+    height: 550px;
+  }
+
+  table {
+    margin-top: 50px;
+  }
+
+  .index-head {
+    ul {
+      margin: 0;
+      display: inline-block;
+    }
+
+    li {
+      margin-right: auto;
+    }
+  }
+
+}

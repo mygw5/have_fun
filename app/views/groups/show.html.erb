@@ -1,5 +1,5 @@
 <div class="row justify-content-center py-5">
-  <div class="col-3">
+  <div class="col-lg-3 col-md-10">
     <div class="card">
       <div class="card-head p-2">
         <%= image_tag @group.get_group_image, class: "group-img" %>
@@ -17,8 +17,8 @@
       </div>
     </div>
   </div>
-  <div class="col-7">
-    <div>
+  <div class="col-lg-7 col-md-10">
+    <div class="content">
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
         <div id="chat-index" class="chat-area">
           <div id="scroll">
@@ -29,11 +29,11 @@
           <%= render 'chats/form', group: @group, chat: @chat %>
         </div>
       <% else %>
-        <p>
-          グループに参加することでグループチャットが利用することができます。
+        <p class="mt-5 text-center">
+          グループに参加することでグループチャットが利用することができます。<br>
           参加して交流を深めましょう！
         </p>
-        <p><%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-success" %></p>
+        <p class="text-center"><%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-success" %></p>
       <% end %>
     </div>
   </div>

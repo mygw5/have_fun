@@ -1,5 +1,5 @@
-<div class="row pt-5">
-  <div class="col-4 offset-1">
+<div class="row justify-content-center pt-5">
+  <div class="col-lg-4 offset-lg-1 col-md-8">
     <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
     <p class="created">
       <%= @post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
@@ -18,19 +18,24 @@
     </div>
 
     <div class="category row">
-      <p class="hobby-tag mr-auto"><%= link_to @post_hobby.tags.map(&:tag_name).join(',') %></p>
+      <p class="hobby-tag mr-auto"><%= @post_hobby.tags.map(&:tag_name).join(',') %></p>
 
-      <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
-        <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
-      </div>
+      <% unless current_user == @post_hobby.user %>
+        <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
+          <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-lg-6 col-md-10">
     <div id="comment-index" class="comment-area p-2">
       <%= render 'comments/index', post_hobby: @post_hobby %>
     </div>
     <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
-    <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
+
+    <div class="action">
+      <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
+    </div>
   </div>
 </div>

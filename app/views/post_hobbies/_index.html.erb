@@ -1,17 +1,20 @@
 <% post_hobbies.each do |post_hobby| %>
-  <div class="card pb-2 mb-2">
-    <%= image_tag post_hobby.get_post_image, size: "250x250", class: "card-img p-2" %>
+  <div class="card pb-2 mb-4">
+    <%= image_tag post_hobby.get_post_image, class: "card-img p-3" %>
     <p class="px-3">
       <%= link_to post_hobby.user.name, user_path(post_hobby.user), class: "px-1" %>さんが
       <%= post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>に投稿しました
     </p>
+
     <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
     <div class="card-content px-4">
-      <%= safe_join(post_hobby.text.split("\n"),tag(:br)).truncate(150) %>
-      <% if post_hobby.text.size >= 150 %><br>
+      <%= post_hobby.text.truncate(30) %>
+      <% if post_hobby.text.size >= 30 %><br>
         <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
       <% end %>
     </div>
+
+
     <div class="px-3">
       <%= link_to post_hobby.tags.map(&:tag_name).join(',') %>
     </div>
