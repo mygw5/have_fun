@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
   def member
    @group = Group.find(params[:group_id])
    @members = @group.users
-   @user = @group.owner
+   @owner = @group.owner
   end
 
   private
