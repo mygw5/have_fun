@@ -1,5 +1,5 @@
-<div class="row pt-5">
-  <div class="col-4 offset-1">
+<div class="row justify-content-center pt-5">
+  <div class="col-lg-4 offset-lg-1 col-md-8">
     <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
     <p class="created">
       <%= @post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-lg-6 col-md-10">
     <div id="comment-index" class="comment-area p-2">
       <%= render 'comments/index', post_hobby: @post_hobby %>
     </div>

@@ -1,31 +1,35 @@
 <div class="row py-3">
-    <h3><span>下書き/非公開一覧</span></h3>
+  <h3><span>下書き/非公開一覧</span></h3>
 </div>
 
-<div class="row justify-content-center">
-  <div class="col-7">
-    <table class="table table-hover">
-      <thead>
-        <th></th>
-        <th>タイトル</th>
-        <th>テキスト</th>
-        <th>ステータス</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <% @post_hobbies.each do |post_hobby| %>
-        <% unless post_hobby.published? %>
-            <tr>
-              <td><%= image_tag post_hobby.get_post_image, size: "100x50" %></td>
-              <td><%= post_hobby.title %></td>
-              <td><%= post_hobby.text %></td>
-              <td><%= post_hobby.post_status_i18n %></td>
-              <td><%= link_to '編集する', edit_post_hobby_path(post_hobby) %></td>
-            </tr>
+<div class="row justify-content-center pt-5">
+  <div class="col-lg-8 col-md-10 offset-lg-2">
+    <div class="private-list">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>テキスト</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @post_hobbies.each do |post_hobby| %>
+            <% unless post_hobby.published? %>
+              <tr>
+                <td><%= image_tag post_hobby.get_post_image, size: "100x50" %></td>
+                <td><%= post_hobby.title %></td>
+                <td><%= post_hobby.text %></td>
+                <td><%= post_hobby.post_status_i18n %></td>
+                <td><%= link_to '編集する', edit_post_hobby_path(post_hobby) %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

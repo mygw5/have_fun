@@ -4,13 +4,13 @@
   <% else %>
     <h3><span>投稿一覧</span></h3>
   <% end %>
-  <div class="search-form">
-    <%= render 'search', q: @q %>
-  </div>
 </div>
 
 <div class="row">
   <div class="col-lg-4 col-md-3">
+    <div class="search-form">
+    <%= render 'search', q: @q %>
+  </div>
   <p class="new-post">
     <%= link_to new_post_hobby_path, class: "text-light px-3" do %>
       <i class="fas fa-plus">新規投稿する</i>

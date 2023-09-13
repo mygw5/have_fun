@@ -112,6 +112,7 @@ $skyblue: #00bfff;
   table {
     table-layout: fixed;
     width: 100%;
+    margin-top: 50px;
   }
 
   tr {
@@ -132,7 +133,7 @@ $skyblue: #00bfff;
 
 //新規投稿リンク固定
 .new-post {
-  top: 200px;
+  top: 220px;
   left: 80px;
   position: fixed;
   background-color: #3cb371;
@@ -140,7 +141,7 @@ $skyblue: #00bfff;
 }
 
 .draft-index {
-  top: 240px;
+  top: 250px;
   left: 80px;
   position: fixed;
   background-color: $skyblue;
@@ -153,16 +154,26 @@ $skyblue: #00bfff;
   object-fit: cover;
 }
 
+.private-list {
+  th {
+    background-color: #ffe4c4;
+  }
+}
+
 //レスポンシブ
 @media screen and (max-width: 768px) {
   .new-post {
     left: 30px;
+    top: 240px;
   }
 
   .draft-index {
     left: 30px;
+    top: 270px;
   }
 
-
+  table {
+    margin-top: 50px;
+  }
 
 }
