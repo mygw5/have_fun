@@ -207,3 +207,34 @@ h4 {
     }
   }
 }
+
+$bg-pagination: #1e90ff;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+
+.pagination {
+  a {
+    border: none;
+    color: $bg-pagination;
+  }
+}
+
+
+.pagination .active {
+  a {
+    border-radius: 15px;
+  }
+}
+
+
+.pagination {
+  a:hover {
+    background: $bg-pagination;
+    color: #fff;
+    border-radius: 15px;
+  }
+}

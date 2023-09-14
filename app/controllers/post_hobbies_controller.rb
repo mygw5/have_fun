@@ -42,7 +42,7 @@ class PostHobbiesController < ApplicationController
   def index
     #公開設定のみ一覧へ表示させる
     @q = PostHobby.ransack(params[:q])
-    @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc)
+    @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 
@@ -97,7 +97,7 @@ class PostHobbiesController < ApplicationController
 
   def unpublished
     #下書き保存した分のみ表示する
-    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id)
+    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id).page(params[:page])
   end
 
   def favorites

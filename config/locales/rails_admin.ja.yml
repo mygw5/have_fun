@@ -230,6 +230,7 @@ ja:
         email: メールアドレス
         encrypted_password: パスワード
         hobby: 趣味
+        introduction: 自己紹介
         is_status: 会員ステータス
         comment: コメント
         favorites: お気に入り登録
