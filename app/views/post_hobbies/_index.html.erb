@@ -16,7 +16,7 @@
 
 
     <div class="px-3">
-      <%= link_to post_hobby.tags.map(&:tag_name).join(',') %>
+      <i class="fas fa-tag"><%= link_to post_hobby.tags.map(&:tag_name).join(',') %></i>
     </div>
   </div>
 <% end %>

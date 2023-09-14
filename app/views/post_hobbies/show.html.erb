@@ -18,7 +18,9 @@
     </div>
 
     <div class="category row">
-      <p class="hobby-tag mr-auto"><%= @post_hobby.tags.map(&:tag_name).join(',') %></p>
+      <p class="hobby-tag mr-auto">
+        <i class="fas fa-tag"><%= @post_hobby.tags.map(&:tag_name).join(',') %></i>
+      </p>
 
       <% unless current_user == @post_hobby.user %>
         <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">

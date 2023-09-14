@@ -22,13 +22,7 @@ class PostHobbiesController < ApplicationController
     else
       @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
       tag_list = params[:post_hobby][:tag_name].split(',')
-      if tag_list == []
-        tag = Tag.new()
-        tag.tag_name = ""
-        tag.save
-        flash.now[:alert] = "タグを入力してください"
-        render :new
-      elsif @post_hobby.save
+      if @post_hobby.save
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿に成功しました"
         redirect_to post_hobby_path(@post_hobby)
@@ -71,12 +65,6 @@ class PostHobbiesController < ApplicationController
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿を非公開にしました"
         redirect_to post_hobby_path(@post_hobby)
-      elsif tag_list == []
-        tag = Tag.new()
-        tag.tag_name = ""
-        tag.save
-        flash.now[:alert] = "タグを入力してください"
-        render :edit
       else @post_hobby.update(post_status: :published)
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿内容の更新に成功しました"
