@@ -186,3 +186,11 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  simple_form:
+    hints:
+      post_hobby:
+        tag_name: '<p class="tip">半角,をつけることで複数タグをつけられます</p>'
+      user:
+        password: '<p class="tip">パスワードは6文字以上入力してください</p>'
+    required:
+        html: '<abbr class="nec">必須</abbr>'

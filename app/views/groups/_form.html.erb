@@ -1,7 +1,7 @@
 <%= simple_form_for @group do |f| %>
-  <%= f.input :group_name, :class => "form-control" %>
+  <%= f.input :group_name, autofocus: true, required: true,:class => "form-control" %>
 
-  <%= f.input :introduction, as: :text, :class => "form-control" %>
+  <%= f.input :introduction, as: :text, required: true, :class => "form-control" %>
 
   <%= f.label :group_image, class: "image-label" do %>
     <i class="far fa-image"> グループ画像</i>

@@ -11,7 +11,7 @@ class PostHobby < ApplicationRecord
 
   with_options presence: true, if: :published? do
     validates  :title, length: { maximum: 20 }
-    validates  :text,  length:{ maximum: 300 }
+    validates  :text,  length: { maximum: 300 }
   end
 
   enum post_status: { published: 0, draft: 1, unpublished: 2 }
@@ -32,8 +32,8 @@ class PostHobby < ApplicationRecord
     end
 
     new_tags.each do |new_name|
-      tag = Tag.find_or_create_by(tag_name:new_name)
-      self.tags << tag
+      post_tag = Tag.find_or_create_by(tag_name:new_name)
+      self.tags << post_tag
     end
   end
 

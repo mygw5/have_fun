@@ -238,3 +238,19 @@ $bg-pagination: #1e90ff;
     border-radius: 15px;
   }
 }
+
+//form必須
+.nec {
+  background-color: #ff4500;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 10px;
+  padding: 0px 4px 2px 4px;
+}
+
+//formヒント
+.tip {
+  font-size: 13px;
+  color: #c0c0c0;
+}

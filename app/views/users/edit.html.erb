@@ -4,7 +4,7 @@
 
     <%= simple_form_for @user do |f| %>
 
-      <%= f.input :name, autofocus: true, :class => "form-control" %>
+      <%= f.input :name, autofocus: true, required: true,:class => "form-control" %>
 
       <%= f.label :profile_image, class: "image-label" do %>
         <i class="fas fa-portrait"></i>　プロフィール画像
