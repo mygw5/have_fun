@@ -5,9 +5,9 @@
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <%= f.input :email, autocomplete: "email", :class => "form-control" %>
+        <%= f.input :email, autocomplete: "email", required: true, :class => "form-control" %>
 
-        <%= f.input :password, autocomplete: "current-password", id: "passwordcheck", :class => "form-control" %>
+        <%= f.input :password, autocomplete: "current-password", required: true, :class => "form-control" %>
 
         <div class="pt-3">
           <% if devise_mapping.rememberable? %>
