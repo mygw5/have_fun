@@ -1,37 +1,27 @@
 <div class="row justify-content-center pt-5">
   <div class="col-lg-6 col-md-10">
     <h4><span>ユーザー情報編集</span></h4>
-    <%= form_with model: @user, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :name, "名前" %>
-        <%= f.text_field :name, autofocus: true, class: "form-control" %>
-      </div>
 
-      <div class="form-group">
-        <%= f.label :profile_image, class: "image-label" do %>
-          <i class="fas fa-portrait"></i>　プロフィール画像
-        <% end %>
-        <%= f.file_field :profile_image, accept: 'image/*', class: "image-form" %>
-      </div>
+    <%= simple_form_for @user do |f| %>
 
-      <div class="form-group">
-        <%= f.label :hobby, "趣味" %>
-        <%= f.text_field :hobby, class: "form-control" %>
-      </div>
+      <%= f.input :name, autofocus: true, required: true,:class => "form-control" %>
 
-      <div class="form-group">
-        <%= f.label :introduction, "自己紹介" %>
-        <%= f.text_field :introduction, class: "form-control" %>
-      </div>
+      <%= f.label :profile_image, class: "image-label" do %>
+        <i class="fas fa-portrait"></i>　プロフィール画像
+      <% end %>
+      <%= f.file_field :profile_image, accept: 'image/*', class: "image-form" %>
+
+      <%= f.input :hobby, :class => "form-control" %>
+
+      <%= f.input :introduction, :class => "form-control" %>
+
 
       <% if current_user.admin? %>
-        <div>
-          <%= f.label :is_status, "会員ステータス" %>
-          <%= f.radio_button :is_status, true %>
-          <%= f.label :is_status_true, "有効" %>
-          <%= f.radio_button :is_status, false %>
-          <%= f.label :is_status_false, "退会" %>
-        </div>
+        <%= f.label :is_status, "会員ステータス" %>
+        <%= f.radio_button :is_status, true %>
+        <%= f.label :is_status_true, "有効" %>
+        <%= f.radio_button :is_status, false %>
+        <%= f.label :is_status_false, "退会" %>
       <% end %>
 
       <div class="action">

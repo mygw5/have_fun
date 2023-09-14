@@ -96,8 +96,7 @@ class PostHobbiesController < ApplicationController
   end
 
   def unpublished
-    #下書き保存した分のみ表示する
-    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id).page(params[:page])
+    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id)
   end
 
   def favorites
@@ -117,7 +116,5 @@ class PostHobbiesController < ApplicationController
       redirect_to post_hobbies_path
     end
   end
-
-
 
 end

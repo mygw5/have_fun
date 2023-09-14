@@ -204,7 +204,7 @@ ja:
       post_hobby:
         user: ユーザー
         title: タイトル
-        text: 本文
+        text: テキスト
         post_status: 投稿ステータス
         favorites: お気に入り登録
         comments: コメント

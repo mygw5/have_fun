@@ -67,3 +67,4 @@ gem 'cancancan'
 
 gem 'ransack'
 
+gem 'simple_form'
