@@ -69,10 +69,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def guest_user?
-    email == GUEST_USER_EMAIL
-  end
-
   def if_not_admin
     redirect_to user_path(current_user) unless current_user.admin?
   end
