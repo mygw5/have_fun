@@ -25,7 +25,7 @@ class PostHobbiesController < ApplicationController
       if @post_hobby.save
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿に成功しました"
-        redirect_to post_hobby_path(@post_hobby)
+        redirect_to post_hobbies_path
       else
         flash.now[:alert] = "投稿に失敗しました"
         render :new
@@ -64,11 +64,11 @@ class PostHobbiesController < ApplicationController
         @post_hobby.update(post_status: :unpublished)
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿を非公開にしました"
-        redirect_to post_hobby_path(@post_hobby)
+        redirect_to unpublished_post_hobbies_path
       else @post_hobby.update(post_status: :published)
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿内容の更新に成功しました"
-        redirect_to post_hobby_path(@post_hobby)
+        redirect_to post_hobbies_path
       end
     else
       flash.now[:alert] = "投稿内容の更新に失敗しました"
@@ -80,7 +80,7 @@ class PostHobbiesController < ApplicationController
     post_hobby = PostHobby.find(params[:id])
     post_hobby.destroy
     flash[:notice] = "投稿削除に成功しました"
-    redirect_to post_hobbies_path
+    redirect_to request.referer
   end
 
   def unpublished

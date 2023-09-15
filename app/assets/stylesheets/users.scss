@@ -73,10 +73,15 @@ $coral: #ff7f50;
 //indexレイアウト
 .list {
   th {
+    width: 30%;
     background-color: #ffe4c4;
   }
+
+  td {
+    background: rgba(255,255,255,0.5);
+  }
+
   th:last-child {
-    width: 200px;
     text-align: center;
   }
 
@@ -85,7 +90,7 @@ $coral: #ff7f50;
   }
 
   th:first-child {
-    width: 100px;
+    width: 10%;
     text-align: center;
   }
 
