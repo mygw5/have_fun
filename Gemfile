@@ -70,3 +70,5 @@ gem 'ransack'
 gem 'simple_form'
 
 gem 'whenever', require: false
+
+gem 'dotenv-rails'
