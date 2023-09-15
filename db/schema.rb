@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_03_043852) do
+ActiveRecord::Schema.define(version: 2023_09_15_123959) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 2023_09_03_043852) do
     t.index ["group_name"], name: "index_groups_on_group_name", unique: true
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visiter_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_hobby_id"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_hobbies", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
@@ -110,7 +119,7 @@ ActiveRecord::Schema.define(version: 2023_09_03_043852) do
     t.string "name", default: "", null: false
     t.boolean "admin", default: false
     t.string "hobby"
-    t.string "introduction"
+    t.string "introduction", default: "よろしくね！"
     t.boolean "is_status", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

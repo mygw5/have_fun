@@ -2,10 +2,11 @@ class PostHobby < ApplicationRecord
 
   belongs_to  :user
 
-  has_many  :comments,  dependent: :destroy
-  has_many  :favorites, dependent: :destroy
-  has_many  :post_tags, dependent: :destroy
-  has_many  :tags,      through:   :post_tags
+  has_many :comments,      dependent: :destroy
+  has_many :favorites,     dependent: :destroy
+  has_many :post_tags,     dependent: :destroy
+  has_many :tags,          through:   :post_tags
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :post_image, dependent: :destroy
 
@@ -47,5 +48,14 @@ class PostHobby < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["title"]
+  end
+
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id)
+    #自分のコメント通知は削除する
+    if notification.visiter_id == notification.visited_id
+      notification.destroy
+    end
+    notification.save if notification.valid?
   end
 end
