@@ -65,14 +65,17 @@ class PostHobbiesController < ApplicationController
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿を非公開にしました"
         redirect_to post_hobby_path(@post_hobby)
-      else @post_hobby.update(post_status: :published)
+      elsif @post_hobby.update(post_status: :published)
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿内容の更新に成功しました"
         redirect_to post_hobby_path(@post_hobby)
+      else
+        flash.now[:alert] = "投稿内容の更新に失敗しました"
+        render :edit
       end
     else
-      flash.now[:alert] = "投稿内容の更新に失敗しました"
-      render :edit
+        flash.now[:alert] = "変更を保存できませんでした"
+        render :edit
     end
   end
 
@@ -104,5 +107,4 @@ class PostHobbiesController < ApplicationController
       redirect_to post_hobbies_path
     end
   end
-
 end
