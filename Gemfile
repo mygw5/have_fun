@@ -68,3 +68,5 @@ gem 'cancancan'
 gem 'ransack'
 
 gem 'simple_form'
+
+gem 'whenever', require: false
