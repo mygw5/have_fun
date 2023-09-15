@@ -14,28 +14,44 @@
 .member-list {
 
   .profile-img {
-    width: 50%;
     border-radius: 50%;
   }
 
   td {
-    width: 100px;
+    width: 25%;
     vertical-align: baseline;
+     background: rgba(255,255,255,0.5);
   }
 
   td:first-child {
-    width: 30px;
+    width: 10%;
+  }
+
+  td:last-child {
+    width: 40%;
   }
 }
-  .group-list {
+.group-list {
+
+  .group-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+  }
 
   th {
+    width: 30%;
     background-color: #ffe4c4;
+  }
+
+  th:nth-child(2n) {
+    width: 20%;
   }
 
   td {
     width: 100px;
     vertical-align: baseline;
+    background: rgba(255,255,255,0.5);
   }
  }
 
@@ -86,6 +102,25 @@ $purple: #9370db;
 
 .image-form {
   display: none;
+}
+
+//ページタイトル固定
+.heading {
+  color: rgba(169,169,169,0.2);
+  font-size: 15em;
+  position: fixed;
+  //要素の幅高さを指定
+  transform-origin: 15% 50%;
+  //要素の回転
+  transform: rotate(90deg);
+}
+
+.member-heading {
+  color: rgba(169,169,169,0.2);
+  font-size: 12em;
+  position: fixed;
+  transform-origin: 15% 40%;
+  transform: rotate(90deg);
 }
 
 //レスポンシブ

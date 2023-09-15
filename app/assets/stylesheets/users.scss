@@ -5,7 +5,8 @@
 
 //mypage,showレイアウト
 .profile-img {
-  width: 80%;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -105,8 +106,10 @@ $coral: #ff7f50;
 
   //mypage,show
   .profile-img {
-    width: 100%;
+    width: 300px;
+    height: 300px;
   }
+
   .info {
     h4 {
       margin-top: 10px;
