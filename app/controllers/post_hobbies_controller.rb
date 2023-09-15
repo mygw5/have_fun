@@ -94,7 +94,7 @@ class PostHobbiesController < ApplicationController
   private
 
   def post_hobby_params
-    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image, tag_ids: [])
+    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
   end
 
   def ensure_correct_user
