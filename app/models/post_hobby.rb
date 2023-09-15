@@ -52,8 +52,9 @@ class PostHobby < ApplicationRecord
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id)
+    #自分のコメント通知は削除する
     if notification.visiter_id == notification.visited_id
-      notification.checked = true
+      notification.destroy
     end
     notification.save if notification.valid?
   end

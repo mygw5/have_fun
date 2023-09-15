@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2023_09_15_123959) do
     t.string "name", default: "", null: false
     t.boolean "admin", default: false
     t.string "hobby"
-    t.string "introduction"
+    t.string "introduction", default: "よろしくね！"
     t.boolean "is_status", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
