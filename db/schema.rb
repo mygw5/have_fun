@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2023_09_15_123959) do
     t.integer "visiter_id", null: false
     t.integer "visited_id", null: false
     t.integer "post_hobby_id"
-    t.integer "comment"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

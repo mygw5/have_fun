@@ -9,7 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name,               null: false, default: ""
       t.boolean:admin,                           default: false
       t.string :hobby
-      t.string :introduction
+      t.string :introduction,                    defaukt: "よろしく"
       t.boolean:is_status,          null: false, default: true
 
       ## Recoverable

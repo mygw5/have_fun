@@ -51,11 +51,7 @@ class PostHobby < ApplicationRecord
   end
 
   def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-      post_hobby_id: id,
-      visited_id: user_id
-    )
-
+    notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id)
     if notification.visiter_id == notification.visited_id
       notification.checked = true
     end
