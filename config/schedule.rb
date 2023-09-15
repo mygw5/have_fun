@@ -30,9 +30,8 @@ set :environment, rails_env
 # ログの出力先の設定
 set :output, 'log/cron.log'
 
-#どれくらいの期間で何をするか決める
-#1週間とかにしたい場合には
-#every 1.week do
+
+#処理時間の指定(2分)、1週間の場合→every 1.week
 every 2.minute do
   begin
     runner "Batch::RemoveUnuseTag.remove_unuse_tag"

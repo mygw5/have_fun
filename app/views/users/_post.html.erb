@@ -11,7 +11,9 @@
     <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
 
     <div class="px-3">
-      <i class="fas fa-tag"><%= post_hobby.tags.map(&:tag_name).join(',') %></i>
+      <% if post_hobby.tags.present? %>
+        <i class="fas fa-tag"><%= post_hobby.tags.map(&:tag_name).join(',') %></i>
+      <% end %>
     </div>
   </div>
 <% end %>

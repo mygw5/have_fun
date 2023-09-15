@@ -1,18 +1,18 @@
-<div class="row py-3">
-  <h3><span>メンバー一覧</span></h3>
-</div>
+<h2 class="member-heading">Member</h2>
 
 <div class="row justify-content-center p-5">
-  <div class="col-lg-6 col-md-8 member-list">
-    <table class="table">
+  <div class="col-lg-10 col-md-12 member-list">
+    <table class="table table-hover">
       <% @members.each do |member| %>
       <tr>
-        <td>
+        <td class="text-center">
           <% if member == @owner %>
             <i class="fas fa-star"></i>
+          <% else %>
+            <i class="far fa-star"></i>
           <% end %>
         </td>
-        <td><%= image_tag member.get_profile_image, class: "profile-img" %></td>
+        <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "profile-img" %></td>
         <td><%= link_to member.name, user_path(member) %></td>
         <td><%= member.introduction %></td>
       </tr>

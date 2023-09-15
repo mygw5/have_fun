@@ -5,7 +5,8 @@
 
 //mypage,showレイアウト
 .profile-img {
-  width: 80%;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -72,10 +73,15 @@ $coral: #ff7f50;
 //indexレイアウト
 .list {
   th {
+    width: 30%;
     background-color: #ffe4c4;
   }
+
+  td {
+    background: rgba(255,255,255,0.5);
+  }
+
   th:last-child {
-    width: 200px;
     text-align: center;
   }
 
@@ -84,7 +90,7 @@ $coral: #ff7f50;
   }
 
   th:first-child {
-    width: 100px;
+    width: 10%;
     text-align: center;
   }
 
@@ -105,8 +111,10 @@ $coral: #ff7f50;
 
   //mypage,show
   .profile-img {
-    width: 100%;
+    width: 300px;
+    height: 300px;
   }
+
   .info {
     h4 {
       margin-top: 10px;

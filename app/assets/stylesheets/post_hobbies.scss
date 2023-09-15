@@ -26,7 +26,7 @@ $skyblue: #00bfff;
 
 //投稿デザイン
 .card {
-  width: 100%;
+  width: 600px;
   height: 500px;
 
   .card-img {
@@ -142,8 +142,24 @@ $skyblue: #00bfff;
 }
 
 .private-list {
+
+  .post-img {
+    height: 130px;
+  }
+
   th {
     background-color: #ffe4c4;
+  }
+
+  td {
+    width: 20%;
+    vertical-align: baseline;
+    background: rgba(255,255,255,0.5);
+  }
+
+  td:nth-child(5),
+  td:last-child {
+    width: 10%;
   }
 }
 
