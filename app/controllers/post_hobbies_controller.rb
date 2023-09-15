@@ -55,23 +55,27 @@ class PostHobbiesController < ApplicationController
   def update
     @post_hobby = PostHobby.find(params[:id])
     tag_list = params[:post_hobby][:tag_name].split(',')
-    @post_hobby.update(post_hobby_params)
-    if params[:commit] == "下書き保存"
-      @post_hobby.update(post_status: :draft)
-      flash[:notice] = "下書きの更新に成功しました"
-      redirect_to unpublished_post_hobbies_path
-    elsif params[:commit] == "非公開にする"
-      @post_hobby.update(post_status: :unpublished)
-      @post_hobby.save_tags(tag_list)
-      flash[:notice] = "投稿を非公開にしました"
-      redirect_to post_hobby_path(@post_hobby)
-    elsif @post_hobby.update(post_status: :published)
-      @post_hobby.save_tags(tag_list)
-      flash[:notice] = "投稿内容の更新に成功しました"
-      redirect_to post_hobby_path(@post_hobby)
+    if @post_hobby.update(post_hobby_params)
+      if params[:commit] == "下書き保存"
+        @post_hobby.update(post_status: :draft)
+        flash[:notice] = "下書きの更新に成功しました"
+        redirect_to unpublished_post_hobbies_path
+      elsif params[:commit] == "非公開にする"
+        @post_hobby.update(post_status: :unpublished)
+        @post_hobby.save_tags(tag_list)
+        flash[:notice] = "投稿を非公開にしました"
+        redirect_to post_hobby_path(@post_hobby)
+      elsif @post_hobby.update(post_status: :published)
+        @post_hobby.save_tags(tag_list)
+        flash[:notice] = "投稿内容の更新に成功しました"
+        redirect_to post_hobby_path(@post_hobby)
+      else
+        flash.now[:alert] = "投稿内容の更新に失敗しました"
+        render :edit
+      end
     else
-      flash.now[:alert] = "投稿内容の更新に失敗しました"
-      render :edit
+        flash.now[:alert] = "変更を保存できませんでした"
+        render :edit
     end
   end
 
