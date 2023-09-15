@@ -57,7 +57,13 @@
   height: 500px;
   overflow: scroll;
   background: rgba(255,255,255,0.7);
+
+  .user-name {
+    text-align: center;
+    font-size: xx-small;
+  }
 }
+
 
 
 //new
@@ -96,6 +102,7 @@ $purple: #9370db;
 
     .group-img {
       margin: 10px;
+      width: 350px;
     }
   }
 

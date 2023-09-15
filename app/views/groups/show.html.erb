@@ -20,7 +20,7 @@
   <div class="col-lg-7 col-md-10">
     <div class="content">
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
-        <div id="chat-index" class="chat-area">
+        <div id="chat-index" class="chat-area p-2">
           <div id="scroll">
             <%= render 'chats/index', group: @group %>
           </div>
