@@ -103,5 +103,4 @@ class PostHobbiesController < ApplicationController
       redirect_to post_hobbies_path
     end
   end
-
 end
