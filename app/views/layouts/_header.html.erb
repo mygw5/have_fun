@@ -5,7 +5,21 @@
         <%= image_tag 'pf-logo.png' %>
       <% end %>
     </div>
+
     <% if user_signed_in? %>
+        <% if unchecked_notifications.any? %>
+          <%= link_to notifications_path, class: "py-2 pr-4 notice" do %>
+            <i class="fa-solid fa-bell"></i>
+          <% end %>
+        <% else %>
+          <%= link_to notifications_path, class: "py-2 pr-4 unnotice" do %>
+            <i class="fa-regular fa-bell"></i>
+          <% end %>
+        <% end %>
+
+
+
+
       <div class="col-1">
         <div class="menu">
           <div class="nav">

@@ -1,0 +1,14 @@
+<% visiter = notification.visiter %>
+<% post_hobby = notification.post_hobby %>
+
+<ul>
+  <li>
+    <%= link_to user_path(visiter) do %>
+      <%= visiter.name %>
+    <% end %>
+    さんが
+    <%= link_to '投稿', post_hobby_path(notification.post_hobby_id) %>
+    にコメントしました。
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+  </li>
+</ul>

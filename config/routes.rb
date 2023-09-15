@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     resources :group_users, only: [:create, :destroy]
     resources :chats, only: [:create]
   end
+
+  resources :notifications, only: [:index, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
