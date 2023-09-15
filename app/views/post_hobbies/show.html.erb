@@ -19,7 +19,9 @@
 
     <div class="category row">
       <p class="hobby-tag mr-auto">
-        <i class="fas fa-tag"><%= @post_hobby.tags.map(&:tag_name).join(',') %></i>
+        <% if @post_hobby.tags.present? %>
+          <i class="fas fa-tag"><%= @post_hobby.tags.map(&:tag_name).join(',') %></i>
+        <% end %>
       </p>
 
       <% unless current_user == @post_hobby.user %>
