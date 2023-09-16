@@ -1,0 +1,49 @@
+<h2 class="heading">User</h2>
+
+<div class="index-head">
+  <ul class="d-flex justify-content-end">
+    <li class="search-form"><%= render 'user_search', q: @q %></li>
+  </ul>
+</div>
+
+<% if @q.name_cont != nil %>
+  <h3><span>"<%= "#{@q.name_cont}" %>"検索一覧</span></h3>
+<% end %>
+
+<div class="row justify-content-center p-5">
+  <div class="col-lg-10 col-md-12 list">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <!-- 管理者は一覧に含めない -->
+          <% unless user.admin %>
+            <tr>
+              <td><%= user.id %></td>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td><%= user.email %></td>
+              <% if user.is_status == true %>
+                <td class="text-success">有効</td>
+              <% else %>
+                <td class="text-danger">退会</td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= paginate @users %>

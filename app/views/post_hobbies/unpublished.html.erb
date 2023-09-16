@@ -1,0 +1,44 @@
+<div class="row py-3">
+  <h3><span>下書き/非公開</span></h3>
+</div>
+
+<div class="row justify-content-center pt-5">
+  <div class="col-10">
+    <div class="private-list">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>テキスト</th>
+            <th>ステータス</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @post_hobbies.each do |post_hobby| %>
+            <% unless post_hobby.published? %>
+              <tr>
+                <td><%= image_tag post_hobby.get_post_image, class: "post-img" %></td>
+                <td><%= post_hobby.title %></td>
+                <td><%= post_hobby.text %></td>
+                <td><%= post_hobby.post_status_i18n %></td>
+                <td>
+                  <%= link_to edit_post_hobby_path(post_hobby), class: "mr-2" do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to post_hobby_path(post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？" do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%= search_form_for q do |f| %>
+  <div>
+    <%= f.search_field :name_cont, placeholder: "ユーザー名", class: "form-control keyword" %>
+  </div>
+  <div>
+    <%= f.submit '検索', class: "btn-sm py-0" %>
+  </div>
+<% end %>

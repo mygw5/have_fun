@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HaveFun</title>
+    <title>Let's have fun!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/f94369044a.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- controller単位でレイアウトを調整するため -->
+    <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag('favicon.png') %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <main>
+      <div class="container-fulid">
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
