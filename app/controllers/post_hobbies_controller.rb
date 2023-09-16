@@ -87,7 +87,7 @@ class PostHobbiesController < ApplicationController
   end
 
   def unpublished
-    @post_hobbies = PostHobby.order(crated_at: :desc).where(user_id: current_user.id)
+    @post_hobbies = PostHobby.order(created_at: :desc).where(user_id: current_user.id)
   end
 
   def favorites
