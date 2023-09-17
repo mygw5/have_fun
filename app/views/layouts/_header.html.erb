@@ -1,43 +1,49 @@
 <div class="container-fulid">
-  <div class="row justify-content-center">
-    <div class="col-5 offset-1 mr-auto">
+  <div class="row">
+    <div class="col-3 pl-5 logo">
       <%= link_to root_path do %>
         <%= image_tag 'pf-logo.png' %>
       <% end %>
     </div>
 
+
     <% if user_signed_in? %>
-        <% if unchecked_notifications.any? %>
-          <%= link_to notifications_path, class: "py-2 pr-4 notice" do %>
-            <i class="fa-solid fa-bell"></i>
-          <% end %>
-        <% else %>
-          <%= link_to notifications_path, class: "py-2 pr-4 unnotice" do %>
-            <i class="fa-regular fa-bell"></i>
-          <% end %>
-        <% end %>
-
-
-
-
-      <div class="col-1">
-        <div class="menu">
-          <div class="nav">
-            <input id="drawer-input" class="drawer-hidden" type="checkbox">
-            <label for="drawer-input" class="drawer-open row justify-content-center"><span></span></label>
-            <nav class="nav-content">
-              <ul class="nav-list">
-                <% if current_user.try(:admin?) %>
-                  <li class="nav-item"><%= link_to '管理者画面', rails_admin_path, class: "text-light" %></li>
-                  <li class="nav-item"><%= link_to 'ユーザ一覧', users_path, class: "text-light" %></li>
+      <div class="col-lg-9 col-md-3">
+        <div class="row">
+          <div class="col-lg-1 col-md-4">
+            <div class="notice">
+              <% if unchecked_notifications.any? %>
+                <%= link_to notifications_path, class: "new-notice" do %>
+                  <i class="fa-solid fa-bell"></i>
                 <% end %>
-                <li class="nav-item"><%= link_to 'マイページ', mypage_users_path, class: "text-light" %></li>
-                <li class="nav-item"><%= link_to '投稿一覧', post_hobbies_path, class: "text-light" %></li>
-                <li class="nav-item"><%= link_to 'グループ一覧', groups_path, class: "text-light" %></li>
-                <li class="nav-item"><%= link_to 'お気に入り', favorites_post_hobbies_path, class: "text-light" %></li>
-                <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light" %></li>
-              </ul>
-            </nav>
+              <% else %>
+                <%= link_to notifications_path, class: "unnotice" do %>
+                  <i class="fa-regular fa-bell"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-lg-11 col-md-8">
+            <div class="menu">
+              <div class="nav">
+                <input id="drawer-input" class="drawer-hidden" type="checkbox">
+                <label for="drawer-input" class="drawer-open"><span></span></label>
+                <nav class="nav-content">
+                  <ul class="nav-list">
+                    <% if current_user.try(:admin?) %>
+                      <li class="nav-item"><%= link_to '管理者画面', rails_admin_path %></li>
+                      <li class="nav-item"><%= link_to 'ユーザ一覧', users_path %></li>
+                    <% end %>
+                    <li class="nav-item"><%= link_to 'マイページ', mypage_users_path %></li>
+                    <li class="nav-item"><%= link_to '投稿一覧', post_hobbies_path %></li>
+                    <li class="nav-item"><%= link_to 'グループ一覧', groups_path %></li>
+                    <li class="nav-item"><%= link_to 'お気に入り', favorites_post_hobbies_path %></li>
+                    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
       </div>
