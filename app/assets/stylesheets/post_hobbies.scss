@@ -47,6 +47,29 @@ $skyblue: #00bfff;
   }
 }
 
+.fadein {
+  opacity: 0;
+}
+
+.fadein.active {
+  opacity: 1;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+    transition-duration: 1s;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-duration: 1s;
+  }
+}
+
 //showデザイン
 .tag-area {
   width: 100%;
@@ -103,13 +126,11 @@ $skyblue: #00bfff;
   .user-icon {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
   }
 
   .user-name {
-    width: 50px;
     text-align: center;
-    font-size: 10px;
+    font-size: xx-small;
   }
 
   table {

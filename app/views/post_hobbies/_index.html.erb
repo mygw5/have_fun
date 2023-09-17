@@ -1,5 +1,6 @@
 <% post_hobbies.each do |post_hobby| %>
-  <div class="card pb-2 mb-4">
+<div class="fadein">
+  <div class="card pb-2 shadow mb-5 rounded">
     <%= image_tag post_hobby.get_post_image, class: "card-img p-3" %>
     <p class="px-3">
       <%= link_to post_hobby.user.name, user_path(post_hobby.user), class: "px-1" %>さんが
@@ -14,11 +15,11 @@
       <% end %>
     </div>
 
-
     <div class="px-3">
       <% if post_hobby.tags.present? %>
         <i class="fas fa-tag"><%= link_to post_hobby.tags.map(&:tag_name).join(',') %></i>
       <% end %>
     </div>
+  </div>
   </div>
 <% end %>
