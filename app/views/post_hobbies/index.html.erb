@@ -16,6 +16,8 @@
   </ul>
 </div>
 
+<div class="pt-5"><%= render 'layouts/flash' %></div>
+
 <% if @q.title_cont != nil %>
   <h3><span>"<%= "#{@q.title_cont}" %>"の検索結果</span></h3>
 <% end %>
@@ -30,3 +32,4 @@
 </div>
 
 <%= paginate @post_hobbies %>
+<%= javascript_pack_tag 'script/fadein' %>

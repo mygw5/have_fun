@@ -1,3 +1,4 @@
+<%= render 'layouts/flash' %>
 <div class="row justify-content-center pt-5">
   <div class="col-lg-4 offset-lg-1 col-md-8">
     <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
@@ -34,7 +35,10 @@
 
   <div class="col-lg-6 col-md-10">
     <div id="comment-index" class="comment-area p-2">
-      <%= render 'comments/index', post_hobby: @post_hobby %>
+      <div id="scroll">
+        <%= render 'comments/index', post_hobby: @post_hobby %>
+      </div>
+
     </div>
     <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
 
@@ -43,3 +47,4 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'script/scroll' %>

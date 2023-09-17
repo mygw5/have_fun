@@ -3,6 +3,6 @@ class Users::SessionsController < ApplicationController
     user = User.guest
     sign_in user
     flash[:notice] = "ゲストユーザーでログインしました"
-    redirect_to user_path(user)
+    redirect_to mypage_users_path
   end
 end

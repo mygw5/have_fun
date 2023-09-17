@@ -7,9 +7,11 @@
 
         <%= f.input :email, autocomplete: "email", required: true, :class => "form-control" %>
 
-        <%= f.input :password, autocomplete: "current-password", required: true, :class => "form-control" %>
+        <%= f.input :password, autocomplete: "current-password", input_html: { id: "pass"}, hint: false, required: true, :class => "form-control" %>
+        <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+        パスワードを表示する
 
-        <div class="pt-3">
+        <div class="pt-5">
           <% if devise_mapping.rememberable? %>
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me, "ログインしたままにする" %>
