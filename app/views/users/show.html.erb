@@ -9,12 +9,14 @@
   </div>
 </div>
 <div class="row justify-content-center mt-5">
-  <div class="col-lg-10 d-flex flex-wrap col-md-10">
-    <% if @post_hobbies.present? %>
+  <% if @post_hobbies.present? %>
+    <div class="col-lg-10 d-flex flex-wrap col-md-10">
       <%= render 'post', post_hobbies: @post_hobbies, user: @user %>
-    <% else %>
-      <p class="text-center">投稿がありません</p>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="pt-5">
+      <p>投稿がありません</p>
+    </div>
+  <% end %>
 </div>
 <%= paginate @post_hobbies %>

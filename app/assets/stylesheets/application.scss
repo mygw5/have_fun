@@ -203,6 +203,7 @@ $bg-pagination: #1e90ff;
 .tip {
   font-size: 13px;
   color: #c0c0c0;
+  margin: 0;
 }
 
 //通知デザイン
@@ -210,6 +211,27 @@ $bg-pagination: #1e90ff;
   font-size: 25px;
   color: #ff4500;
 }
+
+.fa-solid {transform-origin: center top;
+  animation: sway 2s linear infinite;
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+//通知あり揺らす
+
 
 .unnotice {
   font-size: 25px;
