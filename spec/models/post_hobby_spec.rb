@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '投稿のテスト' do
@@ -6,7 +8,7 @@ describe '投稿のテスト' do
     before do
       visit root_path
     end
-    cotntext '表示の確認' do
+    context '表示の確認' do
       it 'root_pathが"/"であるか' do
         expect(current_path).to eq('/')
       end
@@ -79,7 +81,7 @@ describe '投稿のテスト' do
     end
   end
 
-  descript '編集画面のテスト' do
+  describe '編集画面のテスト' do
     before do
       visit edit_post_hobby_path
     end
