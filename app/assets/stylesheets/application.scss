@@ -36,6 +36,11 @@ header {
   background-color: $bgcolor;
   position: fixed;
   z-index: 98;
+
+  .notification {
+    text-align: center;
+    line-height: 60px;
+  }
 }
 
 main {
@@ -49,11 +54,6 @@ footer {
   background-color: $bgcolor;
   position: sticky;
 	top: 100vh;
-}
-
-.notice {
-  line-height: 60px;
-  text-align: center;
 }
 
 .drawer-hidden {
@@ -80,19 +80,19 @@ footer {
 
 //flashメッセージレイアウト
 .flash-message {
-  padding: 0 5px;
   text-align: center;
 }
 
 .flash-message.notice {
-    background-color: #98fb98;
-    color: #3cb371;
-  }
+  padding: 12px 20px;
+  background-color: #98fb98;
+  color: #3cb371;
+ }
 
 .flash-message.alert {
-    background-color: #ffd4d1;
-    color: #930403;
-  }
+  background-color: #ffd4d1;
+  color: #930403;
+}
 
 //ボタン位置
 .action {
@@ -112,9 +112,7 @@ footer {
 
 
 h3 {
-  top: 100px;
-  left: 40px;
-  position: fixed;
+  margin-left: 100px;
 
   span {
     background:linear-gradient(transparent 70%, rgba(255, 153, 0,0.5) 70%);

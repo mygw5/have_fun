@@ -70,7 +70,7 @@ class PostHobbiesController < ApplicationController
         flash[:notice] = "投稿内容の更新に成功しました"
         redirect_to post_hobbies_path
       else
-        flash.now[:alert] = "投稿内容の更新に失敗しました"
+        flash.now[:alert] = "投稿に失敗しました"
         render :edit
       end
     else
@@ -83,7 +83,7 @@ class PostHobbiesController < ApplicationController
     post_hobby = PostHobby.find(params[:id])
     post_hobby.destroy
     flash[:notice] = "投稿削除に成功しました"
-    redirect_to request.referer
+    redirect_to post_hobbies_path
   end
 
   def unpublished

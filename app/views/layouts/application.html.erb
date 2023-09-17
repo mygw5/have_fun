@@ -23,9 +23,6 @@
     </header>
     <main>
       <div class="container-fulid">
-        <% flash.each do |message_type, message| %>
-          <div class="flash-message <%= message_type %>"><%= message %></div>
-        <% end %>
         <%= yield %>
       </div>
     </main>

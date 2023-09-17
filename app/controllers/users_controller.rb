@@ -21,8 +21,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "ユーザー情報の更新に成功しました"
-      redirect_to mypage_users_path
+      if @user != current_user
+        flash[:notice] = "ユーザー情報の更新に成功しました"
+        redirect_to user_path(@user)
+      else
+        flash[:notice] = "ユーザー情報の更新に成功しました"
+        redirect_to mypage_users_path
+      end
     else
       flash.now[:alert] = "ユーザー情報の更新に失敗しました"
       render :edit
@@ -65,12 +70,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.guest_user?
       flash.now[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
-      redirect_to user_path(current_user)
+      redirect_to mypage_users_path
     end
   end
 
   def if_not_admin
-    redirect_to user_path(current_user) unless current_user.admin?
+    redirect_to mypage_users_path unless current_user.admin?
   end
 
 end

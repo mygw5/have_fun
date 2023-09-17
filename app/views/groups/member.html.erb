@@ -12,7 +12,7 @@
             <i class="far fa-star"></i>
           <% end %>
         </td>
-        <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "profile-img" %></td>
+        <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle" %></td>
         <td><%= link_to member.name, user_path(member) %></td>
         <td><%= member.introduction %></td>
       </tr>
