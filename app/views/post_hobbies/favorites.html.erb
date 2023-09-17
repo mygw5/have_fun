@@ -3,11 +3,12 @@
 </div>
 
 <div class="row justify-content-center pt-5">
-  <div class="col-lg-5 col-md-6 offset-md-2">
-    <% if @post_hobbies.present? %>
+  <% if @post_hobbies.present? %>
+    <div class="col-lg-5 col-md-6 offset-md-2">
       <%= render 'index',  post_hobbies: @post_hobbies %>
-    <% else %>
-      <p>お気に入り登録がありません</p>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <p class="text-center">お気に入り登録がありません</p>
+  <% end %>
 </div>
+<%= javascript_pack_tag 'script/fadein' %>
