@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-  name:                  "管理者",
-  email:                 "admin@admin",
-  password:              "adminpass",
-  password_confirmation: "adminpass",
+  name:                  ENV["ADMINUSER_NAME"],
+  email:                 ENV["ADMINUSER_MAIL"],
+  password:              ENV["ADMINUSER_PASSWORD"],
+  password_confirmation: ENV["ADMINUSER_PASSWORD"],
   admin:                 true
 )
