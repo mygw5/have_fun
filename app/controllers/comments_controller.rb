@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_hobby_id = @post_hobby.id
     @comment.save
-    #通知機能
+    # 通知機能
     @post_hobby.create_notification_by(current_user)
   end
 
@@ -16,9 +16,7 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def comment_params
-    params.require(:comment).permit(:comment)
-
-  end
+    def comment_params
+      params.require(:comment).permit(:comment)
+    end
 end

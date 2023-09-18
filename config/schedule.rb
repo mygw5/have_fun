@@ -28,15 +28,13 @@ rails_env = Rails.env.to_sym
 # 環境変数の設定
 set :environment, rails_env
 # ログの出力先の設定
-set :output, 'log/cron.log'
+set :output, "log/cron.log"
 
 
-#処理時間の指定(2分)、1週間の場合→every 1.week
+# 処理時間の指定(2分)、1週間の場合→every 1.week
 every 2.minute do
-  begin
-    runner "Batch::RemoveUnuseTag.remove_unuse_tag"
-  rescue => e
-    Rails.logger.error("aborted rails runner")
-    raise e
-  end
+  runner "Batch::RemoveUnuseTag.remove_unuse_tag"
+rescue => e
+  Rails.logger.error("aborted rails runner")
+  raise e
 end

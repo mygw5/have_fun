@@ -30,18 +30,18 @@
 .group-list {
 
   .group-img {
-    width: 100%;
+    width: 80%;
     height: 130px;
     object-fit: cover;
   }
 
   th {
-    width: 30%;
+    width: 35%;
     background-color: #ffe4c4;
   }
 
-  th:nth-child(2n) {
-    width: 20%;
+  th:nth-child(2) {
+    width: 30%;
   }
 
   td {
