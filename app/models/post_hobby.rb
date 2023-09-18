@@ -1,6 +1,5 @@
 class PostHobby < ApplicationRecord
-
-  belongs_to  :user
+  belongs_to :user
 
   has_many :comments,      dependent: :destroy
   has_many :favorites,     dependent: :destroy
@@ -29,21 +28,21 @@ class PostHobby < ApplicationRecord
     new_tags = sent_tags - current_tags
 
     old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(tag_name:old_name)
+      self.tags.delete Tag.find_by(tag_name: old_name)
     end
 
     new_tags.each do |new_name|
-      post_tag = Tag.find_or_create_by(tag_name:new_name)
+      post_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << post_tag
     end
   end
 
   def get_post_image
-    (post_image.attached?) ? post_image : 'no_image.jpg'
+    (post_image.attached?) ? post_image : "no_image.jpg"
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["tags"] #アソシエーション先を記述
+    ["tags"] # アソシエーション先を記述
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -52,7 +51,7 @@ class PostHobby < ApplicationRecord
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id)
-    #自分のコメント通知は削除する
+    # 自分のコメント通知は削除する
     if notification.visiter_id == notification.visited_id
       notification.destroy
     end

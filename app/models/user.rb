@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :chats,       dependent: :destroy
 
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
-  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 100 }
 
 
-  #ゲストログイン
+  # ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    (profile_image.attached?) ? profile_image : "no_image.jpg"
   end
 
   def active_for_authentication?

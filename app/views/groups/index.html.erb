@@ -12,12 +12,12 @@
 </div>
 
 <% if @q.group_name_cont != nil %>
- <h3><span>"<%= "#{@q.group_name_cont}" %>"の検索一覧</span></h3>
+ <h3 class="pt-5"><span>"<%= "#{@q.group_name_cont}" %>"の検索一覧</span></h3>
 <% end %>
 
 <div class="pt-5"><%= render 'layouts/flash' %></div>
 
-<div class="row justify-content-center p-5">
+<div class="row justify-content-center p-3">
 
   <div class="col-lg-10 col-md-12 group-list">
     <table class="table table-hover">
@@ -26,8 +26,6 @@
           <th></th>
           <th>グループ名</th>
           <th>紹介</th>
-          <!-- カテゴリー追加する -->
-          <th>カテゴリー</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +34,6 @@
           <td><%= image_tag group.get_group_image, size: "100x50", class: "group-img" %></td>
           <td><%= link_to group.group_name, group_path(group) %></td>
           <td><%= group.introduction %></td>
-          <td>カテゴリー</td>
         </tr>
         <% end %>
       </tbody>
