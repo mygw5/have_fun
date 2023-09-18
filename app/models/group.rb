@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-
   belongs_to :owner, class_name: "User"
 
   has_many :chats,       dependent: :destroy
@@ -12,15 +11,15 @@ class Group < ApplicationRecord
   validates :introduction, presence: true
 
   def get_group_image
-    (group_image.attached?) ? group_image : 'no_image.jpg'
+    (group_image.attached?) ? group_image : "no_image.jpg"
   end
 
   def is_owned_by?(user)
-      owner.id == user.id
+    owner.id == user.id
   end
 
   def includesUser?(user)
-      group_users.exists?(user_id: user.id)
+    group_users.exists?(user_id: user.id)
   end
 
   def self.ransackable_attributes(auth_object = nil)

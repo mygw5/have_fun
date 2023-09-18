@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
       flash[:notice] = "グループ情報を更新しました"
       redirect_to group_path(@group)
     else
-      flash.now[:alert] ="グループ編集に失敗しました"
+      flash.now[:alert] = "グループ編集に失敗しました"
       render :edit
     end
   end
@@ -45,22 +45,20 @@ class GroupsController < ApplicationController
   end
 
   def member
-   @group = Group.find(params[:group_id])
-   @members = @group.users
-   @owner = @group.owner
+    @group = Group.find(params[:group_id])
+    @members = @group.users
+    @owner = @group.owner
   end
 
   private
-
-  def group_params
-    params.require(:group).permit(:group_name, :introduction, :group_image)
-  end
-
-  def ensure_correct_user
-    @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to groups_path
+    def group_params
+      params.require(:group).permit(:group_name, :introduction, :group_image)
     end
-  end
 
+    def ensure_correct_user
+      @group = Group.find(params[:id])
+      unless @group.owner_id == current_user.id
+        redirect_to groups_path
+      end
+    end
 end

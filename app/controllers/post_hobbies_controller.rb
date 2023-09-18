@@ -4,7 +4,7 @@ class PostHobbiesController < ApplicationController
 
   def new
     @post_hobby = PostHobby.new
-    @tag_list = @post_hobby.tags.pluck(:tag_name).join(',')
+    @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
     @isDraft = @post_hobby.draft?
   end
 
@@ -21,7 +21,7 @@ class PostHobbiesController < ApplicationController
       end
     else
       @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
-      tag_list = params[:post_hobby][:tag_name].split(',')
+      tag_list = params[:post_hobby][:tag_name].split(",")
       if @post_hobby.save
         @post_hobby.save_tags(tag_list)
         flash[:notice] = "投稿に成功しました"
@@ -34,7 +34,7 @@ class PostHobbiesController < ApplicationController
   end
 
   def index
-    #公開設定のみ一覧へ表示させる
+    # 公開設定のみ一覧へ表示させる
     @q = PostHobby.ransack(params[:q])
     @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
@@ -48,13 +48,13 @@ class PostHobbiesController < ApplicationController
 
   def edit
     @post_hobby = PostHobby.find(params[:id])
-    @tag_list = @post_hobby.tags.pluck(:tag_name).join(',')
+    @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
     @isDraft = @post_hobby.draft?
   end
 
   def update
     @post_hobby = PostHobby.find(params[:id])
-    tag_list = params[:post_hobby][:tag_name].split(',')
+    tag_list = params[:post_hobby][:tag_name].split(",")
     if @post_hobby.update(post_hobby_params)
       if params[:commit] == "下書き保存"
         @post_hobby.update(post_status: :draft)
@@ -74,8 +74,8 @@ class PostHobbiesController < ApplicationController
         render :edit
       end
     else
-        flash.now[:alert] = "変更を保存できませんでした"
-        render :edit
+      flash.now[:alert] = "変更を保存できませんでした"
+      render :edit
     end
   end
 
@@ -96,15 +96,14 @@ class PostHobbiesController < ApplicationController
   end
 
   private
-
-  def post_hobby_params
-    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
-  end
-
-  def ensure_correct_user
-    @post_hobby = PostHobby.find(params[:id])
-    unless @post_hobby.user == current_user || current_user.admin?
-      redirect_to post_hobbies_path
+    def post_hobby_params
+      params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
     end
-  end
+
+    def ensure_correct_user
+      @post_hobby = PostHobby.find(params[:id])
+      unless @post_hobby.user == current_user || current_user.admin?
+        redirect_to post_hobbies_path
+      end
+    end
 end
