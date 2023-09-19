@@ -31,6 +31,7 @@ body {
 }
 
 header {
+  font-size: 15px;
   width: 100%;
   height: 60px;
   background-color: $bgcolor;
@@ -38,7 +39,7 @@ header {
   z-index: 98;
 
   .notification {
-    text-align: center;
+    text-align: end;
     line-height: 60px;
   }
 }
@@ -212,7 +213,9 @@ $bg-pagination: #1e90ff;
   color: #ff4500;
 }
 
-.fa-solid {transform-origin: center top;
+//通知あり揺らす
+.fa-solid {
+  transform-origin: center top;
   animation: sway 2s linear infinite;
 }
 
@@ -230,8 +233,6 @@ $bg-pagination: #1e90ff;
   }
 }
 
-//通知あり揺らす
-
 
 .unnotice {
   font-size: 25px;
@@ -239,14 +240,13 @@ $bg-pagination: #1e90ff;
 }
 
 //レスポンシブ
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   .logo {
     margin-right: auto;
   }
 
-  .notice {
+  .notification {
     width: 100%;
-    margin-right: 30px;
   }
 
   //ハンバーガーメニューレイアウト、位置固定
