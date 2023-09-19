@@ -67,7 +67,7 @@
   }
  }
 
-//show
+//グループ詳細
 .card {
    width: 100%;
    height: 600px;
@@ -113,8 +113,6 @@ $purple: #9370db;
   display: none;
 }
 
-
-
 //レスポンシブ
 @media screen and (max-width: 768px) {
   table {
@@ -132,11 +130,11 @@ $purple: #9370db;
     }
   }
 
-  .chat-area {
+  .chat-display {
     margin: 20px 0;
   }
 
-  .index-head {
+  .function-contents{
     ul {
       margin: 0;
       display: inline-block;
