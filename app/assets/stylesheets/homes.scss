@@ -13,7 +13,6 @@
   z-index: 11;
   color: #fff;
 
-
   span {
     display: inline-block;
     position: relative;
@@ -45,13 +44,14 @@
 }
 
 //スライドショー
-.img-box{
+.slideshow {
   width: 100%;
   height: 55vw; //10vw→viewportが100pxの場合、画像の高さ10pxとなる(1/10になる)
   overflow: hidden;
   position: relative;
 }
-.img-box>div{
+
+.slideshow > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -70,35 +70,40 @@
   //アニメーションを繰り返す回数
   animation-iteration-count: infinite;
 }
+
 @keyframes fade {
-  0%{
+  0% {
     opacity: 0;
   }
-  20%{
+
+  20% {
     opacity: 7;
   }
-  80%{
+
+  80% {
     opacity: 0;
     transform: scale(1.2);
   }
-  100%{
+
+  100% {
     z-index: 0;
     opacity: 0;
   }
 }
+
 // 1枚目のスライド
-.img-box>div:first-of-type{
+.slideshow > div:first-of-type {
   background-image: image-url('camera.jpg');
 }
 
 // 2枚目のスライド
-.img-box>div:nth-of-type(2){
+.slideshow > div:nth-of-type(2) {
   background-image: image-url('Fruitcake.jpg');
   animation-delay: 4s;
 }
 
 // 3枚目のスライド
-.img-box>div:last-of-type{
+.slideshow > div:last-of-type {
   background-image: image-url('camp.jpg');
   animation-delay: 8s;
 }
@@ -140,13 +145,11 @@
 
 //レスポンシブ
 @media screen and (max-width: 768px) {
-
   .top-text {
     margin-top: 30px;
     position: initial;
     color: #000;
     background-color: transparent;
-
 
     .link {
       color: #000;
@@ -158,8 +161,6 @@
       display: block;
       margin: 10px auto 0;
     }
-
-
 
     span:after {
       background-color: #000;
@@ -173,6 +174,5 @@
       margin: 60px auto;
       width: 550px;
     }
-
   }
 }

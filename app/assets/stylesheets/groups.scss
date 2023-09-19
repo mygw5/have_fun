@@ -3,10 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-//index
-
+//member
 .member-list {
-
   td {
     width: 25%;
     vertical-align: baseline;
@@ -21,8 +19,9 @@
     width: 40%;
   }
 }
-.group-list {
 
+//index
+.group-list {
   .group-img {
     width: 80%;
     height: 130px;
@@ -118,7 +117,6 @@ $purple: #9370db;
 
 //レスポンシブ
 @media screen and (max-width: 768px) {
-
   table {
     margin-top: 50px;
   }
@@ -152,5 +150,4 @@ $purple: #9370db;
       margin-right: 50px;
     }
   }
-
 }

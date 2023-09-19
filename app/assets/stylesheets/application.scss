@@ -57,6 +57,7 @@ footer {
 	top: 100vh;
 }
 
+//ヘッダーメニュー
 .drawer-hidden {
   display: none;
 }
@@ -77,8 +78,6 @@ footer {
   }
 }
 
-
-
 //flashメッセージレイアウト
 .flash-message {
   text-align: center;
@@ -95,7 +94,7 @@ footer {
   color: #930403;
 }
 
-//ボタン位置
+//submitボタン位置
 .action {
   text-align: right;
 }
@@ -111,7 +110,7 @@ footer {
   transform: rotate(90deg);
 }
 
-
+//ページ見出しレイアウト
 h3 {
   margin-left: 100px;
 
@@ -166,7 +165,7 @@ $bg-pagination: #1e90ff;
   justify-content: center;
 }
 
-
+//ページネーションレイアウト
 .pagination {
   a {
     border: none;
@@ -174,13 +173,11 @@ $bg-pagination: #1e90ff;
   }
 }
 
-
 .pagination .active {
   a {
     border-radius: 15px;
   }
 }
-
 
 .pagination {
   a:hover {
@@ -283,7 +280,6 @@ $bg-pagination: #1e90ff;
   }
 
   #drawer-input:checked ~ .drawer-open {
-
     span{
       background: rgba(0,0,0,0);
     }
@@ -331,6 +327,4 @@ $bg-pagination: #1e90ff;
   #drawer-input:checked ~ .nav-content {
     left: 0;
   }
-
-
 }

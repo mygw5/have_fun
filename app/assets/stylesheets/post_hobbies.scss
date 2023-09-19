@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 $skyblue: #00bfff;
+
 //投稿フォームの画像投稿デザイン
 .image-label {
   display: block;
@@ -114,7 +116,6 @@ $skyblue: #00bfff;
   border-radius: 5px;
 }
 
-
 //showコメント欄
 .comment-area{
   width: 100%;
@@ -155,7 +156,6 @@ $skyblue: #00bfff;
   }
 }
 
-
 .post-img {
   width: 100%;
   height: 300px;
@@ -163,7 +163,6 @@ $skyblue: #00bfff;
 }
 
 .private-list {
-
   .post-img {
     height: 130px;
   }
@@ -190,7 +189,6 @@ $skyblue: #00bfff;
 
 //レスポンシブ
 @media screen and (max-width: 768px) {
-
   .card {
     height: 550px;
   }
@@ -209,5 +207,4 @@ $skyblue: #00bfff;
       margin-right: auto;
     }
   }
-
 }

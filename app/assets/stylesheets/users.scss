@@ -12,7 +12,6 @@
 
 
 .profile {
-
   th {
     width: 150px;
     height: 30px;
@@ -23,7 +22,6 @@
     border-bottom: 1px solid;
     vertical-align: bottom;
   }
-
 }
 
 //編集画面の画像投稿デザイン
@@ -103,7 +101,6 @@ $coral: #ff7f50;
   td:first-child {
     text-align: center;
   }
-
 }
 
 //退会確認画面
@@ -114,7 +111,6 @@ $coral: #ff7f50;
 
 //レスポンシブ
 @media screen and (max-width: 768px) {
-
   //mypage,show
   .profile-img {
     width: 300px;
@@ -154,5 +150,4 @@ $coral: #ff7f50;
       margin-right: 50px;
     }
   }
-
 }
