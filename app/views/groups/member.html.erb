@@ -3,6 +3,7 @@
 <div class="row justify-content-center p-5">
   <div class="col-lg-10 col-md-12 member-list">
     <table class="table table-hover">
+      <p><%= link_to 'グループ詳細に戻る', group_path(@group) %></p>
       <% @members.each do |member| %>
       <tr>
         <td class="text-center">
@@ -12,7 +13,7 @@
             <i class="far fa-star"></i>
           <% end %>
         </td>
-        <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle" %></td>
+        <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle user_img" %></td>
         <td><%= link_to member.name, user_path(member) %></td>
         <td><%= member.introduction %></td>
       </tr>

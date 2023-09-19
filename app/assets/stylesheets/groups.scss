@@ -3,12 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-.group-img {
-    width: 100%;
-    object-fit: cover;
-  }
-
-
 //index
 
 .member-list {
@@ -76,6 +70,9 @@
   }
 }
 
+.user_img {
+  object-fit: cover;
+}
 
 
 //new
