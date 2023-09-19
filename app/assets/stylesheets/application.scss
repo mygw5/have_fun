@@ -22,8 +22,6 @@
   font-family: monospace, "ヒラギノ丸ゴ ProN", "ヒラギノ角ゴシック", メイリオ, Arial, sans-serif;
 }
 
-$bgcolor: #fffacd;
-
 body {
   background: repeating-linear-gradient(90deg, #fafad2 10px, #fff 20px);
   position: relative;
@@ -34,6 +32,8 @@ main {
   padding-top: 60px;
   padding-bottom: 50px;
 }
+
+$bgcolor: #fffacd;
 
 footer {
   width: 100%;
@@ -122,6 +122,7 @@ h4 {
   }
 }
 
+//user,post_hobby,group-indexの新規機能・検索機能等レイアウト
 .function-contents {
   width: 100%;
   height: 40px;
@@ -153,15 +154,12 @@ h4 {
   }
 }
 
+//ページネーションレイアウト
 $bg-pagination: #1e90ff;
 
 .pagination {
   display: flex;
   justify-content: center;
-}
-
-//ページネーションレイアウト
-.pagination {
   a {
     border: none;
     color: $bg-pagination;
@@ -210,7 +208,7 @@ $bg-pagination: #1e90ff;
   color: #ff4500;
 }
 
-//通知あり揺らす
+//通知ベルアイコンレイアウト
 .fa-solid {
   transform-origin: center top;
   animation: sway 2s linear infinite;
@@ -229,7 +227,6 @@ $bg-pagination: #1e90ff;
     transform: rotate(10deg);
   }
 }
-
 
 .unnotice {
   font-size: 25px;
@@ -308,18 +305,18 @@ $bg-pagination: #1e90ff;
     transition: .5s;
   }
 
-  .nav-list {
-    flex-direction: column;
-    text-align: center;
-    padding: 50px;
+  .nav {
+    .nav-list {
+      flex-direction: column;
+      text-align: center;
+      padding: 50px;
 
-
-    a {
-      color: #fff;
-      padding-bottom: 10px;
+      a {
+        color: #fff;
+        padding-bottom: 10px;
+      }
     }
   }
-
   .nav-item {
     font-size: 30px;
   }
