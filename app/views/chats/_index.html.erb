@@ -5,7 +5,7 @@
         <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %>
         <p class="user-name"><%= chat.user.name %></p>
       </div>
-      <p class="p-3 bg-primary rounded text-light"><%= chat.message %></p>
+      <p class="p-3 bg-primary text-light rounded"><%= chat.message %></p>
     </div>
   <% else %>
     <div class="d-flex">

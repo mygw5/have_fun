@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-.top-text {
+//トップ画面タイトル・ログインリンク
+.top-heading {
   width: 100%;
   top: 40%;
   background: rgba(192,192,192,0.7);
@@ -37,7 +38,7 @@
     transform: translate(0, 0);
   }
 
-  .link {
+  .login-link {
     text-decoration: none;
     color: #fff;
   }
@@ -108,7 +109,7 @@
   animation-delay: 8s;
 }
 
-.content {
+.description {
   display: flex;
   justify-content: center;
 
@@ -145,13 +146,14 @@
 
 //レスポンシブ
 @media screen and (max-width: 768px) {
-  .top-text {
+  //トップ画面タイトル・ログインリンク
+  .top-heading {
     margin-top: 30px;
     position: initial;
     color: #000;
     background-color: transparent;
 
-    .link {
+    .login-link {
       color: #000;
     }
 
@@ -166,8 +168,9 @@
       background-color: #000;
     }
   }
-
-  .content {
+  
+  //フェードイン
+  .description {
       display: block;
 
     .fadein {

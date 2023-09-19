@@ -30,20 +30,6 @@ body {
   height: 100vh;
 }
 
-header {
-  font-size: 15px;
-  width: 100%;
-  height: 60px;
-  background-color: $bgcolor;
-  position: fixed;
-  z-index: 98;
-
-  .notification {
-    text-align: end;
-    line-height: 60px;
-  }
-}
-
 main {
   padding-top: 60px;
   padding-bottom: 50px;
@@ -57,24 +43,33 @@ footer {
 	top: 100vh;
 }
 
-//ヘッダーメニュー
-.drawer-hidden {
-  display: none;
-}
-
-.nav {
+//ヘッダーレイアウト
+header {
+  font-size: 15px;
   width: 100%;
+  height: 60px;
+  background-color: $bgcolor;
+  position: fixed;
+  z-index: 98;
 
-  .nav-list {
-    list-style: none;
-    display: flex;
-    justify-content: center;
+  .drawer-hidden {
+    display: none;
   }
 
-  a {
-    padding-right: 20px;
-    color: #808080;
-    line-height: 60px;
+  .nav {
+    width: 100%;
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      padding-right: 20px;
+      color: #808080;
+      line-height: 60px;
+    }
   }
 }
 
@@ -127,7 +122,7 @@ h4 {
   }
 }
 
-.index-head {
+.function-contents {
   width: 100%;
   height: 40px;
   background-color: rgba(250,235,215,0.7);
@@ -205,6 +200,11 @@ $bg-pagination: #1e90ff;
 }
 
 //通知デザイン
+.notification {
+  text-align: end;
+  line-height: 60px;
+}
+
 .new-notice {
   font-size: 25px;
   color: #ff4500;
