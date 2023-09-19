@@ -96,14 +96,15 @@ class PostHobbiesController < ApplicationController
   end
 
   private
-    def post_hobby_params
-      params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
-    end
 
-    def ensure_correct_user
-      @post_hobby = PostHobby.find(params[:id])
-      unless @post_hobby.user == current_user || current_user.admin?
-        redirect_to post_hobbies_path
-      end
+  def post_hobby_params
+    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
+  end
+
+  def ensure_correct_user
+    @post_hobby = PostHobby.find(params[:id])
+    unless @post_hobby.user == current_user || current_user.admin?
+      redirect_to post_hobbies_path
     end
+  end
 end

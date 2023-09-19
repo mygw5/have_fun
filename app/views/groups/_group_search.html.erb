@@ -1,8 +1,8 @@
 <%= search_form_for q do |f| %>
-  <div>
+  <div class="search_field">
     <%= f.search_field :group_name_cont, placeholder: "グループ名", class: "form-control keyword" %>
   </div>
-  <div>
+  <div class="search_field">
     <%= f.submit '検索', class: "btn-sm py-0" %>
   </div>
 <% end %>

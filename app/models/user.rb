@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :chats,       dependent: :destroy
 
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :passive_notifications,class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -33,7 +33,6 @@ class User < ApplicationRecord
   def guest_user?
     email == GUEST_USER_EMAIL
   end
-
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : "no_image.jpg"

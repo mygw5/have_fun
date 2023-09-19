@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @notifications = current_user.passive_notifications
     # 未読の通知を取り出し、既読にする

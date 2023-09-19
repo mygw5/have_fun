@@ -16,6 +16,9 @@ User.create!(
 
 
 # テストデータ
+confectionery = Tag.create!(tag_name: "お菓子作り")
+cake = Tag.create!(tag_name: "ケーキ")
+
 # ユーザー1
 momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.name = "椛"
@@ -28,6 +31,8 @@ PostHobby.find_or_create_by!(title: "パウンドケーキ") do |post_hobby|
   post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename: "sample-post1.jpg")
   post_hobby.text = "スーパーカップを用いてパウンドケーキを作りました！"
   post_hobby.user = momiji
+  post_hobby.tags << confectionery
+  post_hobby.tags << cake
 end
 
 PostHobby.find_or_create_by!(title: "星空") do |post_hobby|
@@ -40,6 +45,7 @@ end
 sakura = User.find_or_create_by!(email: "sakura@example.com") do |user|
   user.name = "さくら"
   user.hobby = "料理,キャンプ"
+  user.introduction = "料理大好きです！よろしくお願いします。"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")
 end
@@ -48,6 +54,7 @@ PostHobby.find_or_create_by!(title: "料理") do |post_hobby|
   post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename: "sample-post2.jpg")
   post_hobby.text = "クリームチーズと砂糖と牛乳をミキサーで混ぜて、湯煎焼きして作りました。市販のチーズケーキプリンみたいで美味しいです！"
   post_hobby.user = sakura
+  post_hobby.tags << confectionery
 end
 
 

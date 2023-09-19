@@ -3,11 +3,13 @@
     <h4 class="text-center">
       <i class="fas fa-bell">通知</i>
     </h4>
+
     <p class="text-right">
       <%= link_to notification_path(@notifications), method: :delete,class: "btn btn-light" do %>
         <i class="fas fa-trash-alt">全削除</i>
       <% end %>
     </p>
+
     <% if @notifications.exists? %>
       <%= render @notifications %>
     <% else %>
