@@ -2,7 +2,7 @@
   <div class="search_field">
     <%= f.search_field :title_cont, placeholder: "キーワード検索", class: "form-control keyword" %>
   </div>
-  <div class"search_field">
+  <div class="search_field">
     <%= f.collection_select :tags_id_eq, Tag.all, :id, :tag_name, include_blank: 'タグを選択', class: "form-control" %>
   </div>
   <div class="search_field">

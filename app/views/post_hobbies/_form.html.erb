@@ -12,7 +12,7 @@
 
   <div class="action">
     <%= f.submit '投稿する', name: 'commit', class: "btn btn-success" %>
-    <% if post_hobby.new_record? || isDraft %>
+    <% if post_hobby.new_record? || is_draft %>
       <%= f.submit '下書き保存', name: 'commit', class: "btn btn-primary" %>
     <% else %>
       <%= f.submit '非公開にする', name: 'commit', class: "btn btn-primary" %>

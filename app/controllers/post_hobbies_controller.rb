@@ -5,7 +5,7 @@ class PostHobbiesController < ApplicationController
   def new
     @post_hobby = PostHobby.new
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
-    @isDraft = @post_hobby.draft?
+    @is_draft = @post_hobby.draft?
   end
 
   def create
@@ -49,7 +49,7 @@ class PostHobbiesController < ApplicationController
   def edit
     @post_hobby = PostHobby.find(params[:id])
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
-    @isDraft = @post_hobby.draft?
+    @is_draft = @post_hobby.draft?
   end
 
   def update
