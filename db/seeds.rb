@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "seedの実行を開始"
+
 User.create!(
   name:                  ENV["ADMINUSER_NAME"],
   email:                 ENV["ADMINUSER_MAIL"],
@@ -74,3 +76,5 @@ Group.find_or_create_by!(group_name: "写真に収めたい！") do |group|
   group.owner = momiji
   group.users << momiji
 end
+
+puts "seedの実行が完了"
