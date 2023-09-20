@@ -18,8 +18,8 @@ User.create!(
 
 
 # テストデータ
-confectionery = Tag.create!(tag_name: "お菓子作り")
-cake = Tag.create!(tag_name: "ケーキ")
+confectionery = Tag.find_or_create_by!(tag_name: "お菓子作り")
+cake = Tag.find_or_create_by!(tag_name: "ケーキ")
 
 # ユーザー1
 momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
