@@ -135,6 +135,7 @@ h4 {
   }
 
   li {
+    font-size: 15px;
     color: #fff;
     list-style-type: none;
     line-height: 40px;
@@ -149,6 +150,7 @@ h4 {
     }
 
     .keyword{
+      width: 140px;
       height: 25px;
     }
   }
@@ -234,11 +236,8 @@ $bg-pagination: #1e90ff;
 }
 
 //レスポンシブ
-@media screen and (max-width: 1023px) {
-  .logo {
-    margin-right: auto;
-  }
-
+//ヘッダーメニューがズレる為、991pxで指定
+@media screen and (max-width: 991px) {
   .notification {
     width: 100%;
   }
@@ -323,5 +322,12 @@ $bg-pagination: #1e90ff;
 
   #drawer-input:checked ~ .nav-content {
     left: 0;
+  }
+
+  .function-contents{
+    ul {
+      margin: 0;
+      display: inline-block;
+    }
   }
 }

@@ -129,6 +129,7 @@ $skyblue: #00bfff;
   .user-img {
     width: 60px;
     height: 60px;
+    object-fit: cover
   }
 
   .user-name {
@@ -191,11 +192,6 @@ $skyblue: #00bfff;
   }
 
   .function-contents {
-    ul {
-      margin: 0;
-      display: inline-block;
-    }
-
     li {
       margin-right: auto;
     }
