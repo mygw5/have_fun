@@ -14,7 +14,11 @@
             <% end %>
           </td>
           <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle user_img" %></td>
-          <td><%= link_to member.name, user_path(member) %></td>
+          <% if member == current_user %>
+            <td><%= link_to member.name, mypage_users_path %></td>
+          <% else %>
+            <td><%= link_to member.name, user_path(member) %></td>
+          <% end %>
           <td><%= member.introduction %></td>
         </tr>
       <% end %>
