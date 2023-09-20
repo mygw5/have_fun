@@ -2,16 +2,16 @@
   <% if current_user.id == chat.user.id %>
     <div class="d-flex flex-row-reverse">
       <div class="mx-3">
-        <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %><br>
-         <p class="user-name"><%= chat.user.name %></p>
+        <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %>
+        <p class="user-name"><%= chat.user.name %></p>
       </div>
-      <p class="p-3 bg-primary rounded text-light"><%= chat.message %></p>
+      <p class="p-3 bg-primary text-light rounded"><%= chat.message %></p>
     </div>
   <% else %>
     <div class="d-flex">
       <%= link_to user_path(chat.user.id),class: "text-reset" do %>
         <div class="mx-3">
-          <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %><br>
+          <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %>
           <p class="user-name"><%= chat.user.name %></p>
         </div>
       <% end %>

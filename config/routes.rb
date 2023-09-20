@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get :unpublished,     on: :collection
     get :favorites,       on: :collection
     resources :comments,  only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites,  only: [:create, :destroy]
   end
 
   resources :users,       only: [:index, :show, :edit, :update] do
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :create, :index, :show, :edit, :update] do
     get :member
     resources :group_users, only: [:create, :destroy]
-    resources :chats, only: [:create]
+    resources :chats,       only: [:create]
   end
 
   resources :notifications, only: [:index, :destroy]

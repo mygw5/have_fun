@@ -1,25 +1,25 @@
 <% post_hobbies.each do |post_hobby| %>
-<div class="fadein">
-  <div class="card pb-2 shadow mb-5 rounded">
-    <%= image_tag post_hobby.get_post_image, class: "card-img p-3" %>
-    <p class="px-3">
-      <%= link_to post_hobby.user.name, user_path(post_hobby.user), class: "px-1" %>さんが
-      <%= post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>に投稿しました
-    </p>
+  <div class="fadein">
+    <div class="card pb-2 shadow mb-5 rounded">
+      <%= image_tag post_hobby.get_post_image, class: "card-img p-3" %>
+      <p class="px-3">
+        <%= link_to post_hobby.user.name, user_path(post_hobby.user), class: "px-1" %>さんが
+        <%= post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>に投稿しました
+      </p>
 
-    <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
-    <div class="card-content px-4">
-      <%= post_hobby.text.truncate(30) %>
-      <% if post_hobby.text.size >= 30 %><br>
-        <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
-      <% end %>
-    </div>
+      <h4 class="px-3"><%= link_to post_hobby.title, post_hobby_path(post_hobby) %></h4>
+      <div class="card-content px-4">
+        <%= post_hobby.text.truncate(30) %>
+        <% if post_hobby.text.size >= 30 %><br>
+          <%= link_to '続きを読む', post_hobby_path(post_hobby) %>
+        <% end %>
+      </div>
 
-    <div class="px-3">
-      <% if post_hobby.tags.present? %>
-        <i class="fas fa-tag"><%= link_to post_hobby.tags.map(&:tag_name).join(',') %></i>
-      <% end %>
+      <div class="px-3">
+        <% if post_hobby.tags.present? %>
+          <i class="fas fa-tag"><%= post_hobby.tags.map(&:tag_name).join(',') %></i>
+        <% end %>
+      </div>
     </div>
-  </div>
   </div>
 <% end %>

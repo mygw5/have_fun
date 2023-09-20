@@ -1,13 +1,16 @@
 <%= render 'layouts/flash' %>
+
 <div class="row justify-content-center mt-5">
   <div class="col-lg-2 col-md-4">
     <%= image_tag @user.get_profile_image, class: "rounded-circle profile-img" %>
   </div>
+  
   <div class="col-lg-4 offset-lg-1 col-md-10 info">
     <h4><span><%= @user.name %>さんのページ</span></h4>
     <%= render 'info', user: @user %>
   </div>
 </div>
+
 <div class="row justify-content-center mt-5">
   <% if @post_hobbies.present? %>
     <div class="col-lg-10 d-flex flex-wrap col-md-10">
@@ -19,4 +22,5 @@
     </div>
   <% end %>
 </div>
+
 <%= paginate @post_hobbies %>

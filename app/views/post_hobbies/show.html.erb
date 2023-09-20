@@ -1,32 +1,33 @@
 <%= render 'layouts/flash' %>
+
 <div class="row justify-content-center pt-5">
   <div class="col-lg-4 offset-lg-1 col-md-8">
     <%= image_tag @post_hobby.get_post_image, class: "post-img" %>
-    <p class="created">
+    <p class="post-date">
       <%= @post_hobby.created_at.strftime('%Y/%m/%d %H:%M') %>
       <% if @post_hobby.user == current_user %>
         <%= link_to '編集する', edit_post_hobby_path(@post_hobby), class: "text-primary" %>
         <%= link_to '削除する', post_hobby_path(@post_hobby), method: :delete, "data-confirm" => "削除するとコメントやお気に入り登録などのが全て消えます。本当に削除しますか？", class: "text-danger" %>
-        <span class="status px-2"><%= @post_hobby.post_status_i18n %></span>
+        <span class="px-2 status"><%= @post_hobby.post_status_i18n %></span>
       <% else %>
         <%= link_to "#{ @post_hobby.user.name }", user_path(@post_hobby.user) %>さんの投稿
       <% end %>
     </p>
 
-    <div class="post-detail">
+    <div class="post-content">
       <h4><%= @post_hobby.title %></h4>
-      <p class="text"><%= safe_join(@post_hobby.text.split("\n"),tag(:br)) %></p>
+      <p class="post-text"><%= safe_join(@post_hobby.text.split("\n"),tag(:br)) %></p>
     </div>
 
-    <div class="category row">
-      <p class="hobby-tag mr-auto">
+    <div class="row">
+      <p class="mr-auto">
         <% if @post_hobby.tags.present? %>
           <i class="fas fa-tag"><%= @post_hobby.tags.map(&:tag_name).join(',') %></i>
         <% end %>
       </p>
 
       <% unless current_user == @post_hobby.user %>
-        <div id=<%="favorite-" + @post_hobby.id.to_s %> class= "like px-2 mr-5">
+        <div id="<%="favorite-" + @post_hobby.id.to_s %>" class= "px-2 mr-5 like">
           <%= render 'favorites/favorite_btn', post_hobby: @post_hobby %>
         </div>
       <% end %>
@@ -34,17 +35,15 @@
   </div>
 
   <div class="col-lg-6 col-md-10">
-    <div id="comment-index" class="comment-area p-2">
+    <div id="comment-asynchronous" class="p-2 comment-display">
       <div id="scroll">
         <%= render 'comments/index', post_hobby: @post_hobby %>
       </div>
-
     </div>
+
     <p id="counter" class="pt-4"><%= render 'comments/count', post_hobby: @post_hobby %></p>
-
-    <div class="action">
-      <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
-    </div>
+    <%= render 'comments/form', post_hobby: @post_hobby, comment: @comment %>
   </div>
 </div>
+
 <%= javascript_pack_tag 'script/scroll' %>

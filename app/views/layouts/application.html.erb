@@ -13,7 +13,7 @@
 
     <!-- controller単位でレイアウトを調整するため -->
     <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track': 'reload' %>
-
+    <!-- ファビコン設定 -->
     <%= favicon_link_tag('favicon.png') %>
 
   </head>
@@ -28,8 +28,6 @@
       </div>
     </main>
 
-    <footer>
-      <%= render 'layouts/footer' %>
-    </footer>
+    <footer></footer>
   </body>
 </html>
