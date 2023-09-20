@@ -67,7 +67,7 @@
   //使用するアニメーション名
   animation-name: fade;
   //アニメーションの進行度合い
-  animation-duration: 12s;
+  animation-duration: 16s;
   //アニメーションを繰り返す回数
   animation-iteration-count: infinite;
 }
@@ -104,9 +104,15 @@
 }
 
 // 3枚目のスライド
-.slideshow > div:last-of-type {
+.slideshow > div:nth-of-type(3) {
   background-image: image-url('camp.jpg');
   animation-delay: 8s;
+}
+
+// 4枚目のスライド
+.slideshow > div:last-of-type {
+  background-image: image-url('book.jpg');
+  animation-delay: 12s;
 }
 
 .description {
@@ -168,7 +174,7 @@
       background-color: #000;
     }
   }
-  
+
   //フェードイン
   .description {
       display: block;
