@@ -9,7 +9,13 @@
       <div class="card-body">
         <h5><%= @group.group_name %></h5>
         <p><%= @group.introduction %></p>
-        <p>オーナー: <%= link_to @group.owner.name, user_path(@user) %></p>
+        <p>オーナー:
+          <% if @group.owner == current_user %>
+            <%= link_to @group.owner.name, mypage_users_path %>
+          <% else %>
+            <%= link_to @group.owner.name, user_path(@user) %>
+          <% end %>
+        </p>
         <p>グループメンバー: <%= link_to @group.group_users.count, group_member_path(@group) %>名</p>
         <% if @group.is_owned_by?(current_user) %>
           <p><%= link_to '編集', edit_group_path(@group), class: "btn btn-success" %></p>
