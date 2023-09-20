@@ -83,7 +83,6 @@ gem "whenever", require: false
 
 gem "dotenv-rails"
 
-<<<<<<< HEAD
 group :production do
   gem 'mysql2'
 end
@@ -91,6 +90,3 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
-=======
-gem "net-smtp"
->>>>>>> origin/develop
