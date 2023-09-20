@@ -10,7 +10,6 @@
   object-fit: cover;
 }
 
-
 .profile {
   th {
     width: 150px;
@@ -75,7 +74,7 @@ $coral: #ff7f50;
 }
 
 //indexレイアウト
-.list {
+.user-list {
   th {
     width: 30%;
     background-color: #ffe4c4;
@@ -136,11 +135,13 @@ $coral: #ff7f50;
     margin-right: auto;
   }
 
+  //indexレイアウト
   table {
     margin-top: 50px;
   }
 
-  .index-head {
+  //index検索機能
+  .function-contents {
     ul {
       margin: 0;
       display: inline-block;
