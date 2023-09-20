@@ -1,8 +1,9 @@
 <%= render 'layouts/flash' %>
+
 <div class="row justify-content-center py-5">
   <div class="col-lg-3 col-md-10">
     <div class="card">
-      <div class="card-head p-2">
+      <div class="p-2 card-head">
         <%= image_tag @group.get_group_image, class: "group-img" %>
       </div>
       <div class="card-body">
@@ -21,7 +22,7 @@
   <div class="col-lg-7 col-md-10">
     <div class="content">
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
-        <div id="chat-index" class="chat-area p-2">
+        <div id="chat-asynchronous" class="p-2 chat-display">
           <div id="scroll">
             <%= render 'chats/index', group: @group %>
           </div>
@@ -39,4 +40,5 @@
     </div>
   </div>
 </div>
+
 <%= javascript_pack_tag 'script/scroll' %>

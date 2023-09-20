@@ -5,6 +5,7 @@
   <li>
     <%= link_to "#{ visiter.name }", user_path(visiter) %>さんが、
     <%= link_to 'あなたの投稿', post_hobby_path(notification.post_hobby_id) %>にコメントしました。
+    <!-- 通知時間を表示(○分前) -->
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   </li>
 </ul>

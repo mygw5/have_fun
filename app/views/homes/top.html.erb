@@ -1,34 +1,37 @@
 <%= render 'layouts/flash' %>
+
 <div class="row">
   <div class="col-12 p-0">
-
-    <div class="img-box">
+    <div class="slideshow">
+      <!-- scssで画像挿入するため、空のdivを用意  -->
+      <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
 
-    <div class="top-text">
+    <div class="top-heading">
       <h1>Let's have fun!</h1>
       <p>Give color to your life.</p>
-      <span><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "link m-2" %></span>
-      <span><%= link_to '新規登録', new_user_registration_path, class: "link m-2" %></span>
-      <span><%= link_to 'ログイン', user_session_path, class: "link m-2" %></span>
+      <span><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "m-2 login-link" %></span>
+      <span><%= link_to '新規登録', new_user_registration_path, class: "m-2 login-link" %></span>
+      <span><%= link_to 'ログイン', user_session_path, class: "m-2 login-link" %></span>
     </div>
   </div>
 </div>
 
-<div class="row content mt-5">
-  <div class="fadein px-5">
+<div class="row mt-5 description">
+  <div class="px-5 fadein">
     <%= render 'about' %>
   </div>
 
-  <div class="fadein px-5">
+  <div class="px-5 fadein">
     <%= render 'post' %>
   </div>
 
-  <div class="fadein px-5">
+  <div class="px-5 fadein">
     <%= render 'group' %>
   </div>
 </div>
+
 <%= javascript_pack_tag 'script/fadein' %>

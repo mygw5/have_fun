@@ -10,14 +10,15 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    end
 
-    def user_status
-      @user = User.find_by(email: params[:user][:email])
-      return if !@user
-      if @user.valid_password?(params[:user][:password])
-      end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
+  def user_status
+    @user = User.find_by(email: params[:user][:email])
+    return if !@user
+    if @user.valid_password?(params[:user][:password])
     end
+  end
 end
