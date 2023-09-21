@@ -121,7 +121,7 @@ $skyblue: #00bfff;
 //showコメント欄
 .comment-display {
   width: 100%;
-  height: 400px;
+  height: 500px;
   background: rgba(255,255,255,0.7);
   //スクロールする
   overflow: scroll;
@@ -133,63 +133,23 @@ $skyblue: #00bfff;
   }
 
   .user-name {
-    text-align: center;
     font-size: xx-small;
   }
 
-  table {
-    table-layout: fixed;
-    width: 100%;
-    margin: 10px 0;
+  .post-date {
+    font-size: 10px;
   }
 
-  tr {
-     background: #fffaf0;
-
-    td:first-child {
-      width: 70px;
-    }
-
-    td:last-child {
-      font-size: 12px;
-      vertical-align: middle;
-      //改行する
-      overflow-wrap: break-word;
-    }
+  .comment-content {
+    font-size: 12px;
   }
 
   button {
     display: none;
   }
-
-  .reply-display {
-    .user-img {
-      width: 40px;
-      height: 40px;
-      object-fit: cover
-    }
-
-    tr {
-      background: #808080;
-
-    td:last-child {
-      width: 70px;
-      vertical-align: middle;
-      //改行する
-      overflow-wrap: break-word;
-    }
-  }
-
-  .reply-form {
-    td:first-child {
-      width: 120px;
-    }
-
-    td:last-child {
-      width: 70px;
-    }
-  }
 }
+
+
 
 //下書き・非公開レイアウト
 .private-list {
@@ -212,7 +172,7 @@ $skyblue: #00bfff;
     width: 10%;
   }
 }
-}
+
 
 //レスポンシブ
 @media screen and (max-width: 768px) {

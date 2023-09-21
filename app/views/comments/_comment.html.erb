@@ -1,54 +1,54 @@
-<table class="table table-borderless">
-  <tbody>
-    <tr class="mb-2">
-      <td rowspan="2">
-        <%= link_to user_path(comment.user) do %>
-          <%= image_tag comment.user.get_profile_image, class: "rounded-circle user-img" %>
-          <p class="user-name"><%= comment.user.name %></p>
-        <% end %>
-      </td>
-      <td><%= comment.comment %></td>
-    </tr>
-    <tr>
-      <td class="post-date">
-        <%= comment.created_at.strftime('%Y/%m/%d') %>
-        <% if comment.user == current_user || current_user.admin? %>
-          <%= link_to "コメントを削除する", post_hobby_comment_path(post_hobby, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
-        <% end %>
-      </td>
-    </tr>
-
-    <% comment.replies.each do |reply| %>
-      <tr class="reply-display">
-        <td rowspan="2">
-          <i class="fas fa-reply"></i><%= image_tag reply.user.get_profile_image, class: "rounded-circle user-img" %>
-          <p class="user-name"><%= reply.user.name %></p>
-        </td>
-        <td><%= reply.comment %></td>
-      </tr>
-      <tr>
-        <td class="post-date">
-          <%= reply.created_at.strftime('%Y/%m/%d') %>
-          <% if reply.user == current_user || current_user.admin? %>
-            <%= link_to "コメントを削除する", post_hobby_comment_path(comment.post_hobby, reply), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
-          <% end %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="col-2">
+    <%= link_to user_path(comment.user) do %>
+      <div class="text-center"><%= image_tag comment.user.get_profile_image, class: "rounded-circle user-img" %></div>
+      <p class="text-center user-name"><%= comment.user.name %></p>
     <% end %>
-
-    <tr class="bg-white">
-      <%= form_with(model: [post_hobby, reply_comment], local: false) do |f| %>
-        <td class="reply-form">
-          <%= f.text_area :comment, placeholder: "コメント返信", size: "2x2", class: "form-control" %>
-          <%= f.hidden_field :parent_id, value: comment.id %>
-        </td>
-        <td>
-          <%= f.submit "返信", class: "btn-sm btn-primary" %>
-        </td>
+  </div>
+  <div class="col-10">
+    <p class="post-date">
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <% if comment.user == current_user || current_user.admin? %>
+        <%= link_to "コメントを削除する", post_hobby_comment_path(post_hobby, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
       <% end %>
-    </tr>
-  </tbody>
-</table>
+    </p>
+    <p class="comment-content"><%= comment.comment %></p>
+  </div>
+</div>
 
+
+<% comment.replies.each do |reply| %>
+  <div class="row justify-content-center reply-display">
+    <div class="col-1 text-center">
+      <i class="fas fa-reply"></i>
+    </div>
+
+    <div class="col-2">
+      <div class="text-center"><%= image_tag reply.user.get_profile_image, class: "rounded-circle user-img" %></div>
+      <p class="text-center user-name"><%= reply.user.name %></p>
+    </div>
+    <div class="col-8">
+      <p class="post-date">
+        <%= reply.created_at.strftime('%Y/%m/%d') %>
+        <% if reply.user == current_user || current_user.admin? %>
+          <%= link_to "コメントを削除する", post_hobby_comment_path(comment.post_hobby, reply), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
+        <% end %>
+      </p>
+      <p class="comment-content"><%= reply.comment %></p>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <%= form_with(model: [post_hobby, reply_comment], local: false) do |f| %>
+    <div class="col-8 reply-form">
+      <%= f.text_area :comment, placeholder: "コメント返信", size: "2x2", class: "form-control" %>
+      <%= f.hidden_field :parent_id, value: comment.id %>
+    </div>
+    <div class="col-2 action">
+      <%= f.submit "返信", class: "btn-sm btn-primary" %>
+    </div>
+  <% end %>
+</div>
 
 
