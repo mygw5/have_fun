@@ -149,15 +149,16 @@ $skyblue: #00bfff;
   button {
     display: none;
   }
-
+  
+  //親コメント
   .parent-content {
-    background-color: #fffaf0;
+    background-color: #fff5ee;
   }
 
   //返信デザイン
   .reply-content {
     border-top: 1px dashed #dcdcdc;
-    background-color: #fff5ee;
+    background-color: #fffaf0;
 
   }
 }
