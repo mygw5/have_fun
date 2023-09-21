@@ -18,6 +18,28 @@
           <% end %>
         </td>
       </tr>
+
+      <% comment.reply_comments.each do |reply| %>
+        <tr>
+          <td>
+            <%= image_tag reply.user.get_profile_image %>
+            <p class="user-name"><%= reply.user.name %></p>
+          </td>
+          <td>返信<% reply.comment %></td>
+           <% end %>
+          <td>
+
+            <%= form_with(model:[post_hobby, reply_comment], local: false) do |f| %>
+              <%= f.text_area :comment, placeholder: "返信", class: "w-100 textarea" %>
+              <%= f.hidden_field :parent_id, value: comment.id %>
+              <div class="action">
+                <%= f.submit "返信する", class: "btn-sm btn-primary" %>
+              </div>
+            <% end %>
+            </td>
+        </tr>
+
+
     </tbody>
   </table>
 <% end %>

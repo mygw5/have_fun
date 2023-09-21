@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     @post_hobby = PostHobby.find(params[:post_hobby_id])
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_hobby_id = @post_hobby.id
+    @comment = Comment.create(comment_params.merge(user_id: current_user.id, post_hobby_id: @post_hobby.id))
+    @reply_comment = @post_hobby.reply_comments.new
     @comment.save
     # 通知機能
     @post_hobby.create_notification_by(current_user)
