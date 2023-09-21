@@ -144,18 +144,50 @@ $skyblue: #00bfff;
   }
 
   tr {
-    background: #fffaf0;
+     background: #fffaf0;
+
+    td:first-child {
+      width: 70px;
+    }
+
+    td:last-child {
+      font-size: 12px;
+      vertical-align: middle;
+      //改行する
+      overflow-wrap: break-word;
+    }
   }
 
-  td:first-child {
-    width: 70px;
+  button {
+    display: none;
   }
 
-  td:last-child {
-    font-size: 12px;
-    vertical-align: middle;
-    //改行する
-    overflow-wrap: break-word;
+  .reply-display {
+    .user-img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover
+    }
+
+    tr {
+      background: #808080;
+
+    td:last-child {
+      width: 70px;
+      vertical-align: middle;
+      //改行する
+      overflow-wrap: break-word;
+    }
+  }
+
+  .reply-form {
+    td:first-child {
+      width: 120px;
+    }
+
+    td:last-child {
+      width: 70px;
+    }
   }
 }
 
@@ -179,6 +211,7 @@ $skyblue: #00bfff;
   td:last-child {
     width: 10%;
   }
+}
 }
 
 //レスポンシブ

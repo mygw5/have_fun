@@ -7,8 +7,6 @@ class PostHobby < ApplicationRecord
   has_many :tags,          through:   :post_tags
   has_many :notifications, dependent: :destroy
 
-  has_many :reply_comments, class_name: "Comment"
-
   has_one_attached :post_image, dependent: :destroy
 
   with_options presence: true, if: :published? do

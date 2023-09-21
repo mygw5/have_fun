@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :post_hobbies do
     get :unpublished,     on: :collection
     get :favorites,       on: :collection
-    resources :comments,  only: [:create, :destroy]
+    resources :comments,  only: [:create, :destroy, :show]
     resource :favorites,  only: [:create, :destroy]
   end
 
