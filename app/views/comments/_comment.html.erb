@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mx-2 pt-2 parent-content">
   <div class="col-2">
     <%= link_to user_path(comment.user) do %>
       <div class="text-center"><%= image_tag comment.user.get_profile_image, class: "rounded-circle user-img" %></div>
@@ -18,8 +18,8 @@
 
 
 <% comment.replies.each do |reply| %>
-  <div class="row justify-content-center reply-display">
-    <div class="col-1 text-center">
+  <div class="row justify-content-center reply-content mx-2 pt-2">
+    <div class="col-1 text-center pt-3">
       <i class="fas fa-reply"></i>
     </div>
 
@@ -41,14 +41,13 @@
 
 <div class="row">
   <%= form_with(model: [post_hobby, reply_comment], local: false) do |f| %>
-    <div class="col-8 reply-form">
-      <%= f.text_area :comment, placeholder: "コメント返信", size: "2x2", class: "form-control" %>
+    <div class="mx-5 reply-form d-inline">
+      <%= f.text_area :comment, placeholder: "コメント返信", rows: "1", cols: "30", class: "mt-2" %>
       <%= f.hidden_field :parent_id, value: comment.id %>
-    </div>
-    <div class="col-2 action">
-      <%= f.submit "返信", class: "btn-sm btn-primary" %>
+      <%= f.submit "返信", class: "btn-sm btn-success py-0" %>
     </div>
   <% end %>
 </div>
 
+<div class="border my-3 mx-5"></div>
 

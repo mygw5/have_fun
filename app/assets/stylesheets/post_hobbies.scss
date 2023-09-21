@@ -142,10 +142,23 @@ $skyblue: #00bfff;
 
   .comment-content {
     font-size: 12px;
+    //改行
+    overflow-wrap: break-word;
   }
 
   button {
     display: none;
+  }
+
+  .parent-content {
+    background-color: #fffaf0;
+  }
+
+  //返信デザイン
+  .reply-content {
+    border-top: 1px dashed #dcdcdc;
+    background-color: #fff5ee;
+
   }
 }
 
