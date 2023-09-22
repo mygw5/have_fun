@@ -1,16 +1,30 @@
 <% post_hobby.comments.where(parent_id: nil).each do |comment| %>
-  <%= render 'comments/comment', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
+  <div class="row mx-2 pt-2 parent-content">
+    <div class="col-2">
+      <%= link_to user_path(comment.user) do %>
+        <div class="text-center"><%= image_tag comment.user.get_profile_image, class: "rounded-circle user-img" %></div>
+        <p class="text-center user-name"><%= comment.user.name %></p>
+      <% end %>
+    </div>
+    <div class="col-10">
+      <p class="post-date">
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+        <% if comment.user == current_user || current_user.admin? %>
+          <%= link_to "コメントを削除する", post_hobby_comment_path(post_hobby, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
+        <% end %>
+      </p>
+      <p class="comment-content"><%= comment.comment %></p>
+      <p class="text-right reply-count"><%= render 'comments/reply_count', comment: comment %></p>
+    </div>
+  </div>
+
+  <div class="collapse" id="collapseExample">
+    <%= render 'comments/reply_index', comment: comment %>
+  </div>
+
+  <div class="row">
+    <%= render 'comments/reply_form', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
+  </div>
 <% end %>
 
-<!-- 記載しないとoffset数超えたら2重にコメントがされてしまう -->
-<% post_hobby.comments.where(parent_id: nil).offset(2).any? %>
-<div clss"text-reight">
-  <button data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-</div>
-
-<!-- offset入力しないと2重にコメントされる -->
-<div id="collapseExample" class="collapse">
-    <% post_hobby.comments.where(parent_id: nil).offset(2).each do |comment| %>
-     <%= render 'comments/comment', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
-  <% end %>
-</div>
+<div class="border my-3 mx-5"></div>

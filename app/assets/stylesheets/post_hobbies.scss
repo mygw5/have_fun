@@ -146,10 +146,6 @@ $skyblue: #00bfff;
     overflow-wrap: break-word;
   }
 
-  button {
-    display: none;
-  }
-  
   //親コメント
   .parent-content {
     background-color: #fff5ee;
@@ -159,11 +155,13 @@ $skyblue: #00bfff;
   .reply-content {
     border-top: 1px dashed #dcdcdc;
     background-color: #fffaf0;
+  }
 
+  .reply-count,
+  .reply-open {
+    font-size: 12px;
   }
 }
-
-
 
 //下書き・非公開レイアウト
 .private-list {
