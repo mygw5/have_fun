@@ -18,8 +18,8 @@
       <p class="text-right reply-count"><%= render 'comments/reply_count', comment: comment %></p>
     </div>
   </div>
-  
-  <!-- リプレイコメント非表示 
+
+  <!-- リプレイコメント非表示 -->
   <div class="collapse" id="collapseExample">
     <%= render 'comments/reply_index', comment: comment %>
   </div>
@@ -27,6 +27,7 @@
   <div class="row">
     <%= render 'comments/reply_form', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
   </div>
+
+  <div class="border my-3 mx-5"></div>
 <% end %>
 
-<div class="border my-3 mx-5"></div>

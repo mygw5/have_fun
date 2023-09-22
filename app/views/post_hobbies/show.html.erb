@@ -35,11 +35,10 @@
   </div>
 
   <div class="col-lg-6 col-md-10">
+    <a class="text-info reply-open" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      返信を表示する
+    </a>
     <div id="comment-asynchronous" class="p-2 comment-display">
-      <a class="text-info reply-open" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        返信を表示する
-      </a>
-
       <div id="scroll">
         <%= render 'comments/index', post_hobby: @post_hobby, reply_comment: @reply_comment, post_hobby: @post_hobby %>
       </div>
