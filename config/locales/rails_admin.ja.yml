@@ -180,6 +180,8 @@ ja:
         user: ユーザー
         post_hobby: 投稿
         comment: コメント
+        parent: 親コメント
+        replies: 返信
         created_at: 登録日時
         updated_at: 更新日時
       favorite:
@@ -195,6 +197,7 @@ ja:
         chats: チャット
         users: ユーザー
         group_image: グループ画像
+        notifications: 通知
         created_at: 登録日時
         updated_at: 更新日時
       group_user:
@@ -212,6 +215,7 @@ ja:
         post_tags: ポストタグ
         tags: タグ
         post_image: 投稿画像
+        notifications: 通知
         created_at: 登録日時
         updated_at: 更新日時
       post_tag:
@@ -246,5 +250,7 @@ ja:
         visited: 受信者
         post_hobby: 投稿
         checked: チェック
+        group: グループ
+        action: アクション
         created_at: 登録日時
         updated_at: 更新日時
