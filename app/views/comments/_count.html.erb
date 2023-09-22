@@ -1,1 +1,2 @@
-コメント: <%= post_hobby.comments.count %>件
+<!-- 返信コメント含まない -->
+コメント: <%= post_hobby.comments.where(parent_id: nil).count %>件

@@ -44,6 +44,7 @@ class PostHobbiesController < ApplicationController
     @post_hobby = PostHobby.find(params[:id])
     @user = @post_hobby.user
     @comment = Comment.new
+    @reply_comment = @post_hobby.comments.new
   end
 
   def edit
