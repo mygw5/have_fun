@@ -1,6 +1,8 @@
+<!-- 返信用コメントフォーム -->
 <%= form_with(model: [post_hobby, reply_comment], local: false) do |f| %>
   <div class="mx-5 reply-form d-inline">
     <%= f.text_area :comment, placeholder: "コメント返信", rows: "1", cols: "30", class: "mt-2" %>
+    <!-- フォームとIDの関連付け -->
     <%= f.hidden_field :parent_id, value: comment.id %>
 
     <%= f.submit "返信", class: "btn-sm btn-success py-0" %>
