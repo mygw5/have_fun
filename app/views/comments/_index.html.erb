@@ -24,9 +24,11 @@
     <%= render 'comments/reply_index', comment: comment %>
   </div>
 
-  <div class="row">
-    <%= render 'comments/reply_form', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
-  </div>
+  <% if post_hobby.user == current_user || comment.user == current_user %>
+    <div class="row">
+      <%= render 'comments/reply_form', comment: comment, reply_comment: reply_comment, post_hobby: post_hobby %>
+    </div>
+  <% end %>
 
   <div class="border my-3 mx-5"></div>
 <% end %>

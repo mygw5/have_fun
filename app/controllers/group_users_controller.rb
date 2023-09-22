@@ -5,6 +5,7 @@ class GroupUsersController < ApplicationController
     group_user = current_user.group_users.new(group_id: params[:group_id])
     group_user.save
     redirect_to request.referer
+    group_user.create_notification_by(current_user)
   end
 
   def destroy
