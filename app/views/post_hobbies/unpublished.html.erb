@@ -1,10 +1,10 @@
 <%= render 'layouts/flash' %>
 
-<div class="row py-3">
+<div class="row py-5">
   <h3><span>下書き/非公開</span></h3>
 </div>
 
-<div class="row justify-content-center pt-5">
+<div class="row justify-content-center">
   <div class="col-10">
     <div class="private-list">
       <table class="table table-hover">
@@ -25,15 +25,17 @@
                 <td><%= image_tag post_hobby.get_post_image, class: "post-img" %></td>
                 <td><%= post_hobby.title %></td>
                 <td><%= post_hobby.text %></td>
-                <td><%= post_hobby.post_status_i18n %></td>
+                <td class="text-info">
+                  <strong><%= post_hobby.post_status_i18n %></strong>
+                </td>
                 <td>
-                  <%= link_to edit_post_hobby_path(post_hobby), class: "mr-2" do %>
-                    <i class="fas fa-edit"></i>
+                  <%= link_to edit_post_hobby_path(post_hobby) do %>
+                    <i class="fas fa-edit text-primary"></i>
                   <% end %>
                 </td>
                 <td>
                   <%= link_to post_hobby_path(post_hobby), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                    <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-trash-alt text-danger"></i>
                   <% end %>
                 </td>
               </tr>

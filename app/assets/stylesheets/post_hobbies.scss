@@ -167,7 +167,8 @@ $skyblue: #00bfff;
 //下書き・非公開レイアウト
 .private-list {
   .post-img {
-    height: 130px;
+    width: 285px;
+    height: 200px;
   }
 
   th {
@@ -191,6 +192,10 @@ $skyblue: #00bfff;
 @media screen and (max-width: 991px) {
   table {
     margin-top: 50px;
+
+    th {
+      font-size: 13px;
+    }
   }
 
   .function-contents {
