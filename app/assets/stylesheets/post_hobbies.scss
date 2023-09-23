@@ -28,8 +28,8 @@ $skyblue: #00bfff;
 
 //投稿デザイン
 .card {
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 550px;
 
   .card-img {
     height: 350px;
@@ -75,13 +75,13 @@ $skyblue: #00bfff;
 
 //showレイアウト
 .post-img {
-  width: 100%;
-  height: 300px;
+  width: 500px;
+  height: 350px;
   object-fit: cover;
 }
 
 .post-content {
-  width: 100%;
+  width: 500px;
   height: 250px;
 
   .post-text {
@@ -110,6 +110,7 @@ $skyblue: #00bfff;
 
 .post-date {
   font-size: 13px;
+  width: 500px;
 }
 
 .status {
@@ -187,11 +188,7 @@ $skyblue: #00bfff;
 
 
 //レスポンシブ
-@media screen and (max-width: 768px) {
-  .card {
-    height: 550px;
-  }
-
+@media screen and (max-width: 991px) {
   table {
     margin-top: 50px;
   }

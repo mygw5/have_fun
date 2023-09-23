@@ -1,7 +1,7 @@
 <% post_hobbies.each do |post_hobby| %>
   <div class="fadein">
-    <div class="card pb-2 shadow mb-5 rounded">
-      <%= image_tag post_hobby.get_post_image, class: "card-img p-3" %>
+    <div class="card pb-2 shadow mb-5 rounded mx-auto">
+      <%= image_tag post_hobby.get_post_image, class: "card-img" %>
       <p class="px-3">
         <% if post_hobby.user == current_user %>
           <%= post_hobby.user.name %>
