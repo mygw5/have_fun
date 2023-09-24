@@ -125,7 +125,7 @@ h4 {
 //user,post_hobby,group-indexの新規機能・検索機能等レイアウト
 .function-contents {
   width: 100%;
-  height: 40px;
+  height: auto;
   background-color: rgba(250,235,215,0.7);
   position: fixed;
   z-index: 1;
@@ -162,6 +162,7 @@ $bg-pagination: #1e90ff;
 .pagination {
   display: flex;
   justify-content: center;
+
   a {
     border: none;
     color: $bg-pagination;
