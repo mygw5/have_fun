@@ -8,13 +8,11 @@ $skyblue: #00bfff;
 
 .image-label {
   display: block;
-  background-color: #fff;
-  width: 180px;
-  height: 30px;
-  margin-top: 10px;
-  margin-left: 10px;
-  border-radius: 5px;
   border: 1px solid $skyblue;
+  background-color: #f0f8ff;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
   padding-top: 2px;
   color: $skyblue;
   text-decoration: none;
@@ -28,8 +26,8 @@ $skyblue: #00bfff;
 
 //投稿デザイン
 .card {
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 550px;
 
   .card-img {
     height: 350px;
@@ -75,13 +73,13 @@ $skyblue: #00bfff;
 
 //showレイアウト
 .post-img {
-  width: 100%;
-  height: 300px;
+  width: 500px;
+  height: 350px;
   object-fit: cover;
 }
 
 .post-content {
-  width: 100%;
+  width: 500px;
   height: 250px;
 
   .post-text {
@@ -110,6 +108,7 @@ $skyblue: #00bfff;
 
 .post-date {
   font-size: 13px;
+  width: 500px;
 }
 
 .status {
@@ -166,7 +165,8 @@ $skyblue: #00bfff;
 //下書き・非公開レイアウト
 .private-list {
   .post-img {
-    height: 130px;
+    width: 350px;
+    height: 200px;
   }
 
   th {
@@ -174,31 +174,77 @@ $skyblue: #00bfff;
   }
 
   td {
-    width: 20%;
+    width: 30%;
     vertical-align: baseline;
     background: rgba(255,255,255,0.5);
   }
 
-  td:nth-child(5),
+  td:nth-child(4),
   td:last-child {
-    width: 10%;
+    width: 5%;
   }
 }
 
 
 //レスポンシブ
-@media screen and (max-width: 768px) {
-  .card {
-    height: 550px;
+@media screen and (max-width: 991px) {
+  .post-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .post-content {
+    width: 100%;
+    height: 250px;
+  }
+
+  .private-list {
+    width: 100%;
+
+    .post-img {
+      width: 100%;
+      height: 150px;
+    }
   }
 
   table {
     margin-top: 50px;
+
+    th {
+      font-size: 13px;
+    }
   }
 
   .function-contents {
     li {
       margin-right: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .private-list {
+    width: 100%;
+
+    .post-img {
+      width: 100%;
+      height: 100px;
+    }
+  }
+
+
+  .function-contents {
+    li {
+      font-size: 12px;
+    }
+
+    li:last-child {
+      .keyword {
+        width: 100px;
+        padding: 2px;
+        font-size: 12px;
+      }
     }
   }
 }

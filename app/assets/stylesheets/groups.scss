@@ -46,8 +46,8 @@
 
 .group-list {
   .group-img {
-    width: 100%;
-    height: 130px;
+    width: 200px;
+    height: 150px;
     object-fit: cover;
   }
 
@@ -69,11 +69,11 @@
 
 //グループ詳細
 .card {
-   width: 100%;
-   height: 600px;
+  width: 380px;
+  height: 600px;
 
   .group-img {
-    width: 100%;
+    width: 350px;
     height: 250px;
     object-fit: cover;
   }
@@ -98,10 +98,8 @@ $purple: #9370db;
   display: block;
   border: 1px solid $purple;
   background-color: #e6e6fa;
-  width: 180px;
+  width: 100%;
   height: 30px;
-  margin-top: 10px;
-  margin-left: 10px;
   border-radius: 5px;
   padding-top: 2px;
   color: $purple;
@@ -114,33 +112,25 @@ $purple: #9370db;
 }
 
 //レスポンシブ
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   table {
     margin-top: 50px;
   }
 
   .card {
-   display: flex;
-   flex-wrap: wrap;
-   height: 300px;
+    width: 100%;
+    height: auto;
 
     .group-img {
-      margin: 10px;
-      width: 350px;
+      width: 100%;
+    }
+
+    .card-body > p {
+      overflow-wrap: break-word;
     }
   }
 
   .chat-display {
     margin: 20px 0;
-  }
-
-  .function-contents{
-    li:first-child {
-      margin-left: 50px;
-    }
-
-    li:last-child {
-      margin-right: 50px;
-    }
   }
 }

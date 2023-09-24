@@ -18,15 +18,18 @@
 
 <div class="pt-5"><%= render 'layouts/flash' %></div>
 
-<% if @q.title_cont != nil %>
-  <h3><span>"<%= "#{@q.title_cont}" %>"の検索結果</span></h3>
-<% end %>
+<div>
+  <% if @q.title_cont != nil %>
+    <h3><span>"<%= "#{@q.title_cont}" %>"の検索結果</span></h3>
+  <% end %>
 
-<div class="row justify-content-center pt-3">
-  <div class="col-lg-5 col-md-10">
-    <% if @q.title_cont != nil %>
-      <p>検索結果 <%= @post_hobbies.count %>件です</p>
-    <% end %>
+  <% if @q.title_cont != nil %>
+    <p class="ml-5 pl-5">検索結果 <%= @post_hobbies.count %>件です</p>
+  <% end %>
+</div>
+
+<div class="row pt-3">
+  <div class="col-12">
     <%= render 'index', post_hobbies: @post_hobbies %>
   </div>
 </div>
