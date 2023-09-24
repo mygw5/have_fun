@@ -5,14 +5,13 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-10">
+  <div class="col-11">
     <div class="private-list">
       <table class="table table-hover">
         <thead>
           <tr>
             <th></th>
             <th>タイトル</th>
-            <th>テキスト</th>
             <th>ステータス</th>
             <th></th>
             <th></th>
@@ -24,7 +23,6 @@
               <tr>
                 <td><%= image_tag post_hobby.get_post_image, class: "post-img" %></td>
                 <td><%= post_hobby.title %></td>
-                <td><%= post_hobby.text %></td>
                 <td class="text-info">
                   <strong><%= post_hobby.post_status_i18n %></strong>
                 </td>

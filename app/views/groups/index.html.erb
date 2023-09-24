@@ -1,9 +1,9 @@
 <h2 class="group-heading">Group</h2>
 
-<div class="function-contents">
+<div class="function-contents px-2">
   <ul class="d-flex justify-content-between">
     <li>
-      <%= link_to  new_group_path, class: "text-secondary px-3" do %>
+      <%= link_to  new_group_path, class: "text-secondary px-2" do %>
         <i class="fas fa-user-friends">グループ作成</i>
       <% end %>
     </li>
@@ -17,8 +17,8 @@
 
 <div class="pt-5"><%= render 'layouts/flash' %></div>
 
-<div class="row justify-content-center p-3">
-  <div class="col-lg-10 col-md-12 group-list">
+<div class="row justify-content-center pt-3">
+  <div class="col-10 group-list">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -30,7 +30,7 @@
       <tbody>
         <% @groups.each do |group| %>
           <tr>
-            <td><%= image_tag group.get_group_image, size: "100x50", class: "group-img" %></td>
+            <td><%= image_tag group.get_group_image, class: "group-img" %></td>
             <td><%= link_to group.group_name, group_path(group) %></td>
             <td><%= group.introduction %></td>
           </tr>

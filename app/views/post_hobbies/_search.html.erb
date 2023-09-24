@@ -6,6 +6,6 @@
     <%= f.collection_select :tags_id_eq, Tag.all, :id, :tag_name, include_blank: 'タグを選択', class: "form-control tag_search" %>
   </div>
   <div class="search_field">
-    <%= f.submit '検索', class: "btn-sm py-0" %>
+    <%= f.submit '検索', class: "btn-sm p-0" %>
   </div>
 <% end %>

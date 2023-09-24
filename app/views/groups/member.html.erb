@@ -1,9 +1,9 @@
 <h2 class="member-heading">Member</h2>
 
-<div class="row justify-content-center p-5">
-  <div class="col-lg-10 col-md-12 member-list">
+<div class="row justify-content-center pt-3">
+  <div class="col-10 member-list">
     <table class="table table-hover">
-      <p><%= link_to 'グループ詳細に戻る', group_path(@group) %></p>
+      <p><%= link_to 'グループ詳細に戻る', group_path(@group), class: "text-info" %></p>
       <% @members.each do |member| %>
         <tr>
           <td class="text-center">
@@ -13,11 +13,24 @@
               <i class="far fa-star"></i>
             <% end %>
           </td>
-          <td class="text-center"><%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle user_img" %></td>
           <% if member == current_user %>
-            <td><%= link_to member.name, mypage_users_path %></td>
+            <td class="text-center">
+              <%= link_to mypage_users_path do %>
+                <%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle user_img" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to member.name, mypage_users_path, class: "text-dark" %>
+            </td>
           <% else %>
-            <td><%= link_to member.name, user_path(member) %></td>
+            <td class="text-center">
+              <%= link_to user_path(member) do %>
+                <%= image_tag member.get_profile_image, size: "80x80", class: "rounded-circle user_img" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to member.name, user_path(member), class: "text-dark" %>
+            </td>
           <% end %>
           <td><%= member.introduction %></td>
         </tr>

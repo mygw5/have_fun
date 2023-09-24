@@ -1,11 +1,11 @@
 <%= render 'layouts/flash' %>
 
 <div class="row justify-content-center mt-5">
-  <div class="col-lg-2 col-md-4 col-sm-5">
+  <div class="col-lg-5 col-md-10 col-sm-10 col-10 text-center">
     <%= image_tag @user.get_profile_image, class: "rounded-circle profile-img" %>
   </div>
 
-  <div class="col-lg-4 offset-lg-1 col-md-10 info">
+  <div class="col-lg-4 col-md-10 col-sm-10 col-10 info">
     <h4><span>マイページ</span></h4>
     <%= render 'info', user: @user %>
   </div>
@@ -13,7 +13,7 @@
 
 <div class="row justify-content-center mt-5">
   <% if @post_hobbies.present? %>
-    <div class="col-lg-10 d-flex flex-wrap col-md-10">
+    <div class="col-lg-10 d-flex flex-wrap col-md-10 col-sm-10 col-10">
       <%= render 'post', post_hobbies: @post_hobbies, user: @user %>
     </div>
   <% else %>

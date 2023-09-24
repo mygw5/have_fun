@@ -1,9 +1,9 @@
 <%= render 'layouts/flash' %>
 
-<div class="row justify-content-center py-5">
-  <div class="col-lg-3 col-md-10">
-    <div class="card">
-      <div class="p-2 card-head">
+<div class="row py-5">
+  <div class="col-lg-4 col-md-10 col-sm-11 col-12 mx-auto">
+    <div class="mx-auto card">
+      <div class="mx-auto pt-2 card-head">
         <%= image_tag @group.get_group_image, class: "group-img" %>
       </div>
       <div class="card-body">
@@ -25,7 +25,8 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-7 col-md-10">
+
+  <div class="col-lg-6 offset-lg-1 col-md-10 col-sm-11 col-11 mx-auto">
     <div class="content">
       <% if @group.includesUser?(current_user) || @group.is_owned_by?(current_user) %>
         <div id="chat-asynchronous" class="p-2 chat-display">
@@ -33,7 +34,7 @@
             <%= render 'chats/index', group: @group %>
           </div>
         </div>
-        <div>
+        <div class="px-2">
           <%= render 'chats/form', group: @group, chat: @chat %>
         </div>
       <% else %>
