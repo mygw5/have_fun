@@ -26,7 +26,7 @@ momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.name = "椛"
   user.hobby = "製菓,カメラ"
   user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("db/fixtures/sample-user1.jpg")), filename: "sample-user1.jpg")
 end
 
 PostHobby.find_or_create_by!(title: "パウンドケーキ") do |post_hobby|
