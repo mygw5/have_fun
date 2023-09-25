@@ -1,17 +1,10 @@
 <% visiter = notification.visiter %>
 <% post_hobby = notification.post_hobby %>
-<% group = notification.group %>
-
 
 <ul>
   <li>
     <%= link_to "#{ visiter.name }", user_path(visiter) %>さんが、
-    <% case notification.action %>
-      <% when "comment" then %>
-        <%= link_to 'あなたの投稿', post_hobby_path(notification.post_hobby_id) %>にコメントしました。
-      <% when "participation" then %>
-        <%= link_to "あなたのグループ", group_path(notification.group_id) %>に参加しました
-    <% end %>
+    <%= link_to 'あなたの投稿', post_hobby_path(notification.post_hobby_id) %>にコメントしました。
     <!-- 通知時間を表示(○分前) -->
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   </li>
