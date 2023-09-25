@@ -9,6 +9,7 @@
 puts "seedの実行を開始"
 
 User.create!(
+  id:                                       1,
   name:                  ENV["ADMINUSER_NAME"],
   email:                 ENV["ADMINUSER_MAIL"],
   password:              ENV["ADMINUSER_PASSWORD"],
@@ -26,11 +27,11 @@ momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.name = "椛"
   user.hobby = "製菓,カメラ"
   user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("db/fixtures/sample-user1.jpg")), filename: "sample-user1.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")
 end
 
 PostHobby.find_or_create_by!(title: "パウンドケーキ") do |post_hobby|
-  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/sample-post1.jpg")), filename: "sample-post1.jpg")
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename: "sample-post1.jpg")
   post_hobby.text = "スーパーカップを用いてパウンドケーキを作りました！"
   post_hobby.user = momiji
   post_hobby.tags << confectionery
