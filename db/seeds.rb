@@ -30,7 +30,7 @@ momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
 end
 
 PostHobby.find_or_create_by!(title: "パウンドケーキ") do |post_hobby|
-  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename: "sample-post1.jpg")
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/sample-post1.jpg")), filename: "sample-post1.jpg")
   post_hobby.text = "スーパーカップを用いてパウンドケーキを作りました！"
   post_hobby.user = momiji
   post_hobby.tags << confectionery
