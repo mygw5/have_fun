@@ -22,22 +22,22 @@ cake = Tag.create!(tag_name: "ケーキ")
 # ユーザー1
 momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.name = "椛"
-  user.hobby = "製菓,カメラ"
+  user.hobby = "製菓,神社巡り"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")
 end
 
-PostHobby.find_or_create_by!(title: "パウンドケーキ") do |post_hobby|
+PostHobby.find_or_create_by!(title: "ベイクドケーキ") do |post_hobby|
   post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename: "sample-post1.jpg")
-  post_hobby.text = "スーパーカップを用いてパウンドケーキを作りました！"
+  post_hobby.text = "ベイクドチーズケーキを作りました！甘くてふんわりして美味しい◎"
   post_hobby.user = momiji
   post_hobby.tags << confectionery
   post_hobby.tags << cake
 end
 
-PostHobby.find_or_create_by!(title: "星空") do |post_hobby|
+PostHobby.find_or_create_by!(title: "神社巡り") do |post_hobby|
   post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename: "sample-post3.jpg")
-  post_hobby.text = "綺麗な星空だったので、撮ってみました。皆さんにお裾分けです☆"
+  post_hobby.text = "綺麗な梅の花が咲いていたので、共有！！平日でも人が多い！"
   post_hobby.user = momiji
 end
 
