@@ -49,12 +49,26 @@ class PostHobby < ApplicationRecord
     ["title"]
   end
 
-  def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id, action: "comment")
-    # 自分のコメント通知は削除する
+  def create_notification_by(current_user, comment_id)
+    #自分以外のコメントしている人を全て取得し、全員に通知を送る
+    comment_user_ids = Comment.select(:user_id).where(post_hobby_id: id).where.not(user_id: current_user.id).distinct
+
+    comment_user_ids.each do | comment_user_id |
+      save_notification_comment(current_user, comment_id, comment_user_id['user_id'])
+    end
+    #投稿者には全て通知を送る
+    save_notification_comment(current_user, comment_id, user_id)
+  end
+
+  def save_notification_comment(current_user, comment_id, visited_id)
+    #コメントする度に通知を作成する
+    notification = current_user.active_notifications.new(post_hobby_id: id, comment_id: comment_id, visited_id: visited_id, action: "comment")
+    # 自分のコメント通知は確認済みにする
     if notification.visiter_id == notification.visited_id
       notification.destroy
     end
     notification.save if notification.valid?
   end
+
+
 end
