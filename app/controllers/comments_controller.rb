@@ -8,8 +8,9 @@ class CommentsController < ApplicationController
     @reply_comment = @post_hobby.comments.new
     @comment.save
     # 通知機能
-    @post_hobby.create_notification_by(current_user)
+    @post_hobby.create_notification_by(current_user, @comment.id)
   end
+
 
   def destroy
     @post_hobby = PostHobby.find(params[:post_hobby_id])

@@ -1,3 +1,15 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+ul {
+  .comment-icon {
+    display: inline-block;
+    transform: scale(-1, 1);
+  }
+
+  li {
+    list-style: none;
+  }
+}
