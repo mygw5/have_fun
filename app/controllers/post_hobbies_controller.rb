@@ -9,7 +9,36 @@ class PostHobbiesController < ApplicationController
   end
 
   def create
-    if params[:commit] == "下書き保存"
+    @post_hobby = PostHobby.new(post_hobby_params)
+    if post_hobby_params[:post_image].present?
+      result = Vision.image_analysis(post_hobby_params[:post_image])
+      # 画像ありの時の処理
+      if result
+        if params[:commit] == "下書き保存"
+          if @post_hobby.save_draft
+            flash[:notice] = "下書き保存に成功しました"
+            redirect_to unpublished_post_hobbies_path
+          else
+            flash.now[:alert] = "下書き保存に失敗しました"
+            render :new
+          end
+        else
+          tag_list = params[:post_hobby][:tag_name].split(",")
+          if @post_hobby.save
+            @post_hobby.save_tags(tag_list)
+            flash[:notice] = "投稿に成功しました"
+            redirect_to post_hobbies_path
+          else
+            flash.now[:alert] = "投稿に失敗しました"
+            render :new
+          end
+        end
+      else
+        flash.now[:alert] = "画像が不適切です"
+        render :new
+      end
+    # 画像なしの時の処理
+    elsif params[:commit] == "下書き保存"
       @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
       if @post_hobby.post_status = :draft
         @post_hobby.save
@@ -56,7 +85,37 @@ class PostHobbiesController < ApplicationController
   def update
     @post_hobby = PostHobby.find(params[:id])
     tag_list = params[:post_hobby][:tag_name].split(",")
-    if @post_hobby.update(post_hobby_params)
+    if post_hobby_params[:post_image].present?
+      result = Vision.image_analysis(post_hobby_params[:post_image])
+      # 画像ありの処理
+      if result
+        if @post_hobby.update(post_hobby_params)
+          if params[:commit] == "下書き保存"
+            @post_hobby.update(post_status: :draft)
+            flash[:notice] = "下書きの更新に成功しました"
+            redirect_to unpublished_post_hobbies_path
+          elsif params[:commit] == "非公開にする"
+            @post_hobby.update(post_status: :unpublished)
+            @post_hobby.save_tags(tag_list)
+            flash[:notice] = "投稿を非公開にしました"
+            redirect_to unpublished_post_hobbies_path
+          elsif @post_hobby.update(post_status: :published)
+            @post_hobby.save_tags(tag_list)
+            flash[:notice] = "投稿内容の更新に成功しました"
+            redirect_to post_hobby_path(@post_hobby)
+          else
+            flash.now[:alert] = "投稿の更新に失敗しました"
+            render :edit
+          end
+        else
+          flash.now[:alert] = "変更を保存できませんでした"
+          render :edit
+        end
+      else
+        flash.now[:alert] = "画像が不適切です"
+        render :new
+      end
+    elsif @post_hobby.update(post_hobby_params)
       if params[:commit] == "下書き保存"
         @post_hobby.update(post_status: :draft)
         flash[:notice] = "下書きの更新に成功しました"
@@ -99,7 +158,7 @@ class PostHobbiesController < ApplicationController
   private
 
   def post_hobby_params
-    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image)
+    params.require(:post_hobby).permit(:title, :text, :post_status, :post_image).merge(user_id: current_user.id)
   end
 
   def ensure_correct_user
