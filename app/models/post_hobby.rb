@@ -71,7 +71,6 @@ class PostHobby < ApplicationRecord
   end
 
   def save_draft
-    
     self.post_status = :draft
     save
   end

@@ -1,12 +1,13 @@
-<%= simple_form_for @group do |f| %>
+<%= simple_form_for group do |f| %>
+
+  <div class="text-center">
+    <%= f.file_field :group_image, class: 'img-control' %>
+    <%= image_tag group.get_group_image, onClick: "$('.img-control').click()", class: 'img-prev' %>
+  </div>
+
   <%= f.input :group_name, autofocus: true, required: true,:class => "form-control" %>
 
   <%= f.input :introduction, as: :text, required: true, :class => "form-control" %>
-
-  <%= f.label :group_image, class: "image-label" do %>
-    <i class="far fa-image"> グループ画像</i>
-  <% end %>
-  <%= f.file_field :group_image, class: "form-control-file image-form" %>
 
   <div class="action">
     <%= f.submit '登録する', class: "btn btn-success" %>

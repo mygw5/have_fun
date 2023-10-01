@@ -236,6 +236,17 @@ $bg-pagination: #1e90ff;
   color: #808080;
 }
 
+// 画像フォームレイアウト
+.img-control {
+  display: none;
+}
+
+.img-prev {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+}
+
 //レスポンシブ
 //ヘッダーメニューがズレる為、991pxで指定
 @media screen and (max-width: 991px) {

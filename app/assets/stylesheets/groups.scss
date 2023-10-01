@@ -91,26 +91,6 @@
   }
 }
 
-//画像formレイアウト
-$purple: #9370db;
-
-.image-label {
-  display: block;
-  border: 1px solid $purple;
-  background-color: #e6e6fa;
-  width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  padding-top: 2px;
-  color: $purple;
-  text-decoration: none;
-  text-align: center;
-}
-
-.image-form {
-  display: none;
-}
-
 //レスポンシブ
 @media screen and (max-width: 991px) {
   table {
