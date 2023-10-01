@@ -23,26 +23,11 @@
   }
 }
 
-//編集画面の画像投稿デザイン
-$coral: #ff7f50;
-
-.image-label {
-  display: block;
-  border: 1px solid $coral;
-  background-color: #faebd7;
-  width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  padding-top: 2px;
-  color: $coral;
-  text-decoration: none;
-  text-align: center;
+// 画像フォームレイアウト
+.img-prev {
+  width: 300px;
+  height: 300px;
 }
-
-.image-form {
-  display: none;
-}
-
 
 //投稿レイアウト
 .card {

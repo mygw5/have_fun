@@ -70,5 +70,9 @@ class PostHobby < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def save_draft
+    self.post_status = :draft
+    save
+  end
 
 end
