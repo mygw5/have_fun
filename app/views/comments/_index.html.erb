@@ -18,7 +18,7 @@
       <% if comment.score >= -0.2 %>
         <p class="comment-content"><%= comment.comment %></p>
       <% else %>
-        <p class="comment-content">不適切な言葉が含まれている可能性がため非表示にしています。</p>
+        <p class="comment-content">不適切な言葉が含まれている可能性があるため非表示にしています。</p>
       <% end %>
       <p class="text-right reply-count"><%= render 'comments/reply_count', comment: comment %></p>
     </div>
