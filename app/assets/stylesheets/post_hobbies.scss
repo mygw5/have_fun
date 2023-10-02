@@ -3,27 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-//投稿フォームの画像投稿デザイン
-$skyblue: #00bfff;
-
-.image-label {
-  display: block;
-  border: 1px solid $skyblue;
-  background-color: #f0f8ff;
-  width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  padding-top: 2px;
-  color: $skyblue;
-  text-decoration: none;
-  text-align: center;
-}
-
-.image-form {
-  display: none;
-}
-
-
 //投稿デザイン
 .card {
   width: 500px;
@@ -133,6 +112,7 @@ $skyblue: #00bfff;
 
   .user-name {
     font-size: xx-small;
+    margin: 0;
   }
 
   .post-date {
@@ -143,6 +123,11 @@ $skyblue: #00bfff;
     font-size: 12px;
     //改行
     overflow-wrap: break-word;
+  }
+
+  .sentiment-score {
+    margin: 0;
+    font-size: 10px;
   }
 
   //親コメント

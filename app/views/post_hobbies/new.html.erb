@@ -1,5 +1,5 @@
 <%= render 'layouts/flash' %>
-<%= render 'layouts/error_message', obj: @post_hobby %>
+<!--%= render 'layouts/error_message', obj: @post_hobby %-->
 
 <div class="row justify-content-center pt-5">
   <div class="col-lg-6 col-md-8 col-sm-10 col-10">
@@ -7,3 +7,5 @@
     <%= render 'form', post_hobby: @post_hobby, tag_list: @tag_list, is_draft: @is_draft %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'script/preview' %>

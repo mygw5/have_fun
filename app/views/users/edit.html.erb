@@ -6,12 +6,13 @@
     <h4><span>ユーザー情報編集</span></h4>
 
     <%= simple_form_for @user do |f| %>
-      <%= f.input :name, autofocus: true, required: true,:class => "form-control" %>
 
-      <%= f.label :profile_image, class: "image-label" do %>
-        <i class="fas fa-portrait"></i>　プロフィール画像
-      <% end %>
-      <%= f.file_field :profile_image, accept: 'image/*', class: "image-form" %>
+      <div class="text-center">
+        <%= f.file_field :profile_image, class: 'img-control' %>
+        <%= image_tag @user.get_profile_image, onClick: "$('.img-control').click()", class: 'rounded-circle img-prev' %>
+      </div>
+
+      <%= f.input :name, autofocus: true, required: true,:class => "form-control" %>
 
       <%= f.input :hobby, :class => "form-control" %>
 
@@ -37,3 +38,5 @@
     <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'script/preview' %>

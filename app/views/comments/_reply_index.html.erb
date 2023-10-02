@@ -7,6 +7,7 @@
     <div class="col-2">
       <div class="text-center"><%= image_tag reply.user.get_profile_image, class: "rounded-circle user-img" %></div>
       <p class="text-center user-name"><%= reply.user.name %></p>
+      <p class="sentiment-score text-secondary text-center">スコア[<%= reply.score %>]</p>
     </div>
 
     <div class="col-8">
@@ -16,7 +17,11 @@
           <%= link_to "コメントを削除する", post_hobby_comment_path(comment.post_hobby, reply), method: :delete, "data-confirm" => "コメントを削除しますか？", remote: true %>
         <% end %>
       </p>
-      <p class="comment-content"><%= reply.comment %></p>
+      <% if reply.score >= -0.2 %>
+        <p class="comment-content"><%= reply.comment %></p>
+      <% else %>
+        <p class="comment-content">不適切な言葉が含まれている可能性があるため非表示にしています。</p>
+      <% end %>
     </div>
   </div>
 <% end %>

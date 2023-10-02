@@ -29,5 +29,33 @@ class Group < ApplicationRecord
     ["group_name"]
   end
 
+  def create_notification_by(current_user, chat_id)
+    #グループメンバー検索
+    group_users.each do | group_user_id |
+      save_notification_chat(current_user, chat_id, group_user_id['user_id'])
+    end
 
+  end
+
+  def save_notification_chat(current_user, chat_id, visited_id)
+    notification = current_user.active_notifications.new(group_id: id, chat_id: chat_id, visited_id: visited_id, action: "chat")
+    if notification.visiter_id == notification.visited_id
+      notification.destroy
+    end
+    notification.save if notification.valid?
+  end
+
+  def create_notification_join(current_user)
+    group_users.each do | group_user_id |
+      save_notification_join(current_user, group_user_id['user_id'])
+    end
+  end
+
+  def save_notification_join(current_user, visited_id)
+    notification = current_user.active_notifications.new(group_id: id, visited_id: visited_id, action: "participation")
+    if notification.visiter_id == notification.visited_id
+      notification.destroy
+    end
+    notification.save if notification.valid?
+  end
 end

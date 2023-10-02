@@ -16,6 +16,10 @@ class PostHobby < ApplicationRecord
 
   enum post_status: { published: 0, draft: 1, unpublished: 2 }
 
+  def save_draft
+    self.post_status = :draft
+    save
+  end
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -49,9 +53,10 @@ class PostHobby < ApplicationRecord
     ["title"]
   end
 
-  def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(post_hobby_id: id, visited_id: user_id, action: "comment")
-    # 自分のコメント通知は削除する
+  def create_notification_by(current_user, comment_id)
+    #コメントする度に通知を作成する
+    notification = current_user.active_notifications.new(post_hobby_id: id, comment_id: comment_id, visited_id: user_id, action: "comment")
+    # 自分のコメント通知は確認済みにする
     if notification.visiter_id == notification.visited_id
       notification.destroy
     end

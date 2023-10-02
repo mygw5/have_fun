@@ -2,9 +2,10 @@ class GroupUsersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    group_user = current_user.group_users.new(group_id: params[:group_id])
-    group_user.save
-    group_user.create_notification_by(current_user)
+    @group = Group.find(params[:group_id])
+    @group_user = current_user.group_users.new(group_id: params[:group_id])
+    @group_user.save
+    @group.create_notification_join(current_user)
     redirect_to request.referer
   end
 

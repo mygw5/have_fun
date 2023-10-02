@@ -4,12 +4,15 @@ class CommentsController < ApplicationController
   def create
     @post_hobby = PostHobby.find(params[:post_hobby_id])
     @comment = @post_hobby.comments.new(comment_params)
+    @comment.score = Language.get_data(comment_params[:comment])
     @comment.user_id = current_user.id
     @reply_comment = @post_hobby.comments.new
+    @reply_comment.score = Language.get_data(comment_params[:comment])
     @comment.save
     # 通知機能
-    @post_hobby.create_notification_by(current_user)
+    @post_hobby.create_notification_by(current_user, @comment.id)
   end
+
 
   def destroy
     @post_hobby = PostHobby.find(params[:post_hobby_id])
