@@ -26,7 +26,11 @@
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
 
     <p class="text-muted">
-      <%= comment_content %>
+      <% if comment.score >= -0.2 %>
+        <%= comment_content %>
+      <% else %>
+        不適切な言葉が含まれている可能性があるため非表示にしています
+      <% end %>
       <%= chat_content %>
     </p>
   </li>
