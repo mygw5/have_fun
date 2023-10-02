@@ -5,33 +5,38 @@
 <% group = notification.group %>
 <% visiter_chat = notification.chat %>
 
+<!-- 通知時間を表示(○分前) -->
+<% time = " (#{time_ago_in_words(notification.created_at)}前)" %>
+
 <ul>
   <li>
     <span class="comment-icon"><i class="fa-solid fa-comment-dots"></i></span>
     <%= link_to "#{ visiter.name }", user_path(visiter) %>さんが、
+
     <% case notification.action %>
       <% when "comment" then %>
         <% comment = Comment.find_by(id: visiter_comment) %>
         <% comment_content = comment.comment %>
         <%= link_to "あなたの投稿", post_hobby_path(notification.post_hobby) %>にコメントしました。
+        <%= time %>
+        <p class="text-muted">
+          <% if comment.score >= -0.2 %>
+            <%= comment_content %>
+          <% else %>
+            不適切な言葉が含まれている可能性があるため非表示にしています
+          <% end %>
+        </p>
+
       <% when "participation" then %>
         <%= link_to "#{ group.group_name }", group_path(notification.group_id) %>に参加しました。
-      <!-- 後から機能追加する -->
+        <%= time %>
+
       <% when "chat" then %>
         <% chat = Chat.find_by(id: visiter_chat) %>
         <% chat_content = chat.message %>
         <%= link_to "#{ group.group_name }", group_path(notification.group_id) %>にチャットを送りました。
+        <%= time %>
+        <p class="text-muted"><%= chat_content %></p>
     <% end %>
-    <!-- 通知時間を表示(○分前) -->
-    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
-
-    <p class="text-muted">
-      <% if comment.score >= -0.2 %>
-        <%= comment_content %>
-      <% else %>
-        不適切な言葉が含まれている可能性があるため非表示にしています
-      <% end %>
-      <%= chat_content %>
-    </p>
   </li>
 </ul>
