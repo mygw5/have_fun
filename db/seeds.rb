@@ -17,12 +17,13 @@ User.create!(
   admin:                 true
 )
 
-
-# テストデータ
+# タグテストデータ
 confectionery = Tag.find_or_create_by!(tag_name: "お菓子作り")
 cake = Tag.find_or_create_by!(tag_name: "ケーキ")
+shrine = Tag.find_or_create_by!(tag_name: "神社")
+desert = Tag.find_or_create_by!(tag_name: "デザート巡り")
 
-# ユーザー1
+# ユーザーテストデータ
 momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.name = "椛"
   user.hobby = "製菓,神社巡り"
@@ -30,27 +31,46 @@ momiji = User.find_or_create_by!(email: "momiji@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename: "sample-user1.jpg")
 end
 
+sakura = User.find_or_create_by!(email: "sakura@example.com") do |user|
+  user.name = "さくら"
+  user.hobby = "料理,デザート巡り"
+  user.introduction = "料理大好きです！よろしくお願いします。"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")
+end
+
+taro = User.find_or_create_by!(email: "taro@example.com") do |user|
+  user.name = "太郎"
+  user.hobby = "ゲーム"
+  user.introduction = "新しい趣味を見つけたい!"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename: "sample-user3.jpg")
+end
+
+ shin= User.find_or_create_by!(email: "shin@example.com") do |user|
+  user.name = "シン"
+  user.hobby = "映画鑑賞"
+  user.introduction = "ホラー映画とねこ大好き!アイコンの猫ちゃんは猫カフェの猫です"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename: "sample-user4.jpg")
+  user.is_status = false
+end
+
+hana = User.find_or_create_by!(email: "hana@example.com") do |user|
+  user.name = "華"
+  user.hobby = "フラワーアレンジ,デザート巡り"
+  user.introduction = "よろしくお願いします。"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename: "sample-user5.jpg")
+end
+
+# 投稿テストデータ
 PostHobby.find_or_create_by!(title: "ベイクドケーキ") do |post_hobby|
   post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename: "sample-post1.jpg")
   post_hobby.text = "ベイクドチーズケーキを作りました！甘くてふんわりして美味しい◎"
   post_hobby.user = momiji
   post_hobby.tags << confectionery
   post_hobby.tags << cake
-end
-
-PostHobby.find_or_create_by!(title: "神社巡り") do |post_hobby|
-  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename: "sample-post3.jpg")
-  post_hobby.text = "綺麗な梅の花が咲いていたので、共有！！平日でも人が多い！"
-  post_hobby.user = momiji
-end
-
-# ユーザー2
-sakura = User.find_or_create_by!(email: "sakura@example.com") do |user|
-  user.name = "さくら"
-  user.hobby = "料理,キャンプ"
-  user.introduction = "料理大好きです！よろしくお願いします。"
-  user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")
 end
 
 PostHobby.find_or_create_by!(title: "料理") do |post_hobby|
@@ -60,7 +80,32 @@ PostHobby.find_or_create_by!(title: "料理") do |post_hobby|
   post_hobby.tags << confectionery
 end
 
+PostHobby.find_or_create_by!(title: "神社巡り") do |post_hobby|
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename: "sample-post3.jpg")
+  post_hobby.text = "綺麗な梅の花が咲いていたので、共有！！平日でも人が多い！"
+  post_hobby.user = momiji
+  post_hobby.tags << shrine
+end
 
+PostHobby.find_or_create_by!(title: "デザート巡り") do |post_hobby|
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post4.jpg"), filename: "sample-post4.jpg")
+  post_hobby.text = "デザートを求めてカフェに行きました!デザートは撮り忘れたので、カフェオレを代わりに載せときます!カフェオレも美味!!"
+  post_hobby.user = sakura
+  post_hobby.tags << desert
+end
+
+PostHobby.find_or_create_by!(title: "抹茶ティラミス") do |post_hobby|
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post5.jpg"), filename: "sample-post5.jpg")
+  post_hobby.text = "抹茶のティラミス食べに来ました!カフェオレまで最高でした!"
+  post_hobby.user = hana
+  post_hobby.tags << desert
+end
+
+PostHobby.find_or_create_by!(title: "お花") do |post_hobby|
+  post_hobby.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post6.jpg"), filename: "sample-post6.jpg")
+  post_hobby.text = "フラワーアレンジ!まだまだ練習中!"
+  post_hobby.user = hana
+end
 
 # グループテスト
 Group.find_or_create_by!(group_name: "料理研究会") do |group|

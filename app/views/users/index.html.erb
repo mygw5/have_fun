@@ -23,21 +23,18 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <!-- 管理者は一覧に含めない -->
-          <% unless user.admin %>
-            <tr>
-              <td><%= user.id %></td>
-              <td>
-                <%= link_to user.name, user_path(user), class: "text-dark" %>
-              </td>
-              <td><%= user.email %></td>
-              <% if user.is_status == true %>
-                <td class="text-success">有効</td>
-              <% else %>
-                <td class="text-danger">退会</td>
-              <% end %>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to user.name, user_path(user), class: "text-dark" %>
+            </td>
+            <td><%= user.email %></td>
+            <% if user.is_status == true %>
+              <td class="text-success">有効</td>
+            <% else %>
+              <td class="text-danger">退会</td>
+            <% end %>
+          </tr>
         <% end %>
       </tbody>
     </table>
