@@ -10,7 +10,7 @@
 
 <ul>
   <li>
-    <span class="comment-icon"><i class="fa-solid fa-comment-dots"></i></span>
+    <span class="comment-icon"><i class="fas fa-comment-alt"></i></span>
     <%= link_to "#{ visiter.name }", user_path(visiter) %>さんが、
 
     <% case notification.action %>
@@ -19,7 +19,7 @@
         <% comment_content = comment.comment %>
         <%= link_to "あなたの投稿", post_hobby_path(notification.post_hobby) %>にコメントしました。
         <%= time %>
-        <p class="text-muted">
+        <p class="text-muted pl-3">
           <% if comment.score >= -0.2 %>
             <%= comment_content %>
           <% else %>
@@ -36,7 +36,7 @@
         <% chat_content = chat.message %>
         <%= link_to "#{ group.group_name }", group_path(notification.group_id) %>にチャットを送りました。
         <%= time %>
-        <p class="text-muted"><%= chat_content %></p>
+        <p class="text-muted pl-3"><%= chat_content %></p>
     <% end %>
   </li>
 </ul>
