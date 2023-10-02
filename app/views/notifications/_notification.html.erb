@@ -13,7 +13,7 @@
       <% when "comment" then %>
         <% comment = Comment.find_by(id: visiter_comment) %>
         <% comment_content = comment.comment %>
-        <%= link_to "#{ post_hobby.user.name }"+"さんの投稿", post_hobby_path(notification.post_hobby) %>にコメントしました。
+        <%= link_to "あなたの投稿", post_hobby_path(notification.post_hobby) %>にコメントしました。
       <% when "participation" then %>
         <%= link_to "#{ group.group_name }", group_path(notification.group_id) %>に参加しました。
       <!-- 後から機能追加する -->

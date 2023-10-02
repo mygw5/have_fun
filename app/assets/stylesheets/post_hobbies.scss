@@ -112,6 +112,7 @@
 
   .user-name {
     font-size: xx-small;
+    margin: 0;
   }
 
   .post-date {
@@ -122,6 +123,11 @@
     font-size: 12px;
     //改行
     overflow-wrap: break-word;
+  }
+
+  .sentiment-score {
+    margin: 0;
+    font-size: 10px;
   }
 
   //親コメント
