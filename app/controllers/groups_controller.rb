@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :set_group, only: [:show, :edit, :update]
 
   def index
     @q = Group.ransack(params[:q])
@@ -12,34 +13,63 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(group_params.merge(owner_id: current_user.id))
+    @group = Group.new(group_params)
     @group.users << @group.owner
-    if @group.save
-      flash[:notice] = "グループ作成に成功しました"
-      redirect_to groups_path
+    if group_params[:group_image].present?
+      result = Vision.image_analysis(group_params[:group_image])
+      if result
+        if @group.save
+          flash[:notice] = "グループ作成に成功しました"
+          redirect_to groups_path
+        else
+          flash.now[:alert] = "グループ作成に失敗しました"
+          render :new
+        end
+      else
+        flash.now[:alert] = "画像が不適切です"
+        render :new
+      end
     else
-      flash.now[:alert] = "グループ作成に失敗しました"
-      render :new
+      if @group.save
+        flash[:notice] = "グループ作成に成功しました"
+        redirect_to groups_path
+      else
+        flash.now[:alert] = "グループ作成に失敗しました"
+        render :new
+      end
     end
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params[:id])
-    if @group.update(group_params)
-      flash[:notice] = "グループ情報を更新しました"
-      redirect_to group_path(@group)
+    if group_params[:group_image].present?
+      result = Vision.image_analysis(group_params[:group_image])
+      if result
+        if @group.update(group_params)
+          flash[:notice] = "グループ情報を更新しました"
+          redirect_to group_path(@group)
+        else
+          flash.now[:alert] = "グループ編集に失敗しました"
+          render :edit
+        end
+      else
+        flash.now[:alert] = "画像が不適切です"
+        render :edit
+      end
     else
-      flash.now[:alert] = "グループ編集に失敗しました"
-      render :edit
+      if @group.update(group_params)
+        flash[:notice] = "グループ情報を更新しました"
+        redirect_to group_path(@group)
+      else
+        flash.now[:alert] = "グループ編集に失敗しました"
+        render :edit
+      end
     end
   end
 
   def show
-    @group = Group.find(params[:id])
     @user = @group.owner
     @chat = Chat.new
   end
@@ -53,7 +83,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:group_name, :introduction, :group_image)
+    params.require(:group).permit(:group_name, :introduction, :group_image).merge(owner_id: current_user.id)
   end
 
   def ensure_correct_user
@@ -61,5 +91,9 @@ class GroupsController < ApplicationController
     unless @group.owner_id == current_user.id
       redirect_to groups_path
     end
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 end
