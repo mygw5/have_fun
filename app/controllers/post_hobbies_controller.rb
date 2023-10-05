@@ -1,6 +1,7 @@
 class PostHobbiesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_post_hobby, only: [:edit, :show, :update]
 
   def new
     @post_hobby = PostHobby.new
@@ -67,20 +68,17 @@ class PostHobbiesController < ApplicationController
   end
 
   def show
-    @post_hobby = PostHobby.find(params[:id])
     @user = @post_hobby.user
     @comment = Comment.new
     @reply_comment = @post_hobby.comments.new
   end
 
   def edit
-    @post_hobby = PostHobby.find(params[:id])
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
     @is_draft = @post_hobby.draft?
   end
 
   def update
-    @post_hobby = PostHobby.find(params[:id])
     tag_list = params[:post_hobby][:tag_name].split(",")
     if post_hobby_params[:post_image].present?
       result = Vision.image_analysis(post_hobby_params[:post_image])
@@ -163,5 +161,9 @@ class PostHobbiesController < ApplicationController
     unless @post_hobby.user == current_user || current_user.admin?
       redirect_to post_hobbies_path
     end
+  end
+
+  def set_post_hobby
+    @post_hobby = PostHobby.find(params[:id])
   end
 end
