@@ -39,9 +39,7 @@ class PostHobbiesController < ApplicationController
       end
     # 画像なしの時の処理
     elsif params[:commit] == "下書き保存"
-      @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
-      if @post_hobby.post_status = :draft
-        @post_hobby.save
+      if @post_hobby.save_draft
         flash[:notice] = "下書き保存に成功しました"
         redirect_to unpublished_post_hobbies_path
       else
@@ -49,7 +47,6 @@ class PostHobbiesController < ApplicationController
         render :new
       end
     else
-      @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
       tag_list = params[:post_hobby][:tag_name].split(",")
       if @post_hobby.save
         @post_hobby.save_tags(tag_list)
