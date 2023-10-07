@@ -1,8 +1,13 @@
 <%= simple_form_for group do |f| %>
 
   <div class="text-center">
-    <%= f.file_field :group_image, class: 'img-control' %>
-    <%= image_tag group.get_group_image, onClick: "$('.img-control').click()", class: 'img-prev' %>
+    <% if group.errors.any? %>
+      <%= f.file_field :group_image, class: 'img-control' %>
+      <%= image_tag 'no_image.jpg', onClick: "$('.img-control').click()", class: 'img-prev' %>
+    <% else %>
+      <%= f.file_field :group_image, class: 'img-control' %>
+      <%= image_tag group.get_group_image, onClick: "$('.img-control').click()", class: 'img-prev' %>
+    <% end %>
   </div>
 
   <%= f.input :group_name, autofocus: true, required: true,:class => "form-control" %>

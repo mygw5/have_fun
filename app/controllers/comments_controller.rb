@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post_hobby
 
   def create
-    @post_hobby = PostHobby.find(params[:post_hobby_id])
     @comment = @post_hobby.comments.new(comment_params)
     @comment.score = Language.get_data(comment_params[:comment])
     @comment.user_id = current_user.id
@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
 
 
   def destroy
-    @post_hobby = PostHobby.find(params[:post_hobby_id])
     @reply_comment = @post_hobby.comments.new
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -25,5 +24,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment, :parent_id, :user_id, :post_hobby_id)
+  end
+
+  def set_post_hobby
+    @post_hobby = PostHobby.find(params[:post_hobby_id])
   end
 end
