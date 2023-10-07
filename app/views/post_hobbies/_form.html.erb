@@ -4,9 +4,11 @@
     <% if post_hobby.errors.any? %>
       <%= f.file_field :post_image, class: 'img-control' %>
       <%= image_tag 'no_image.jpg', onClick: "$('.img-control').click()", class: 'img-prev' %>
+
     <% else %>
       <%= f.file_field :post_image, class: 'img-control' %>
       <%= image_tag post_hobby.get_post_image, onClick: "$('.img-control').click()", class: 'img-prev' %>
+
     <% end %>
   </div>
 
