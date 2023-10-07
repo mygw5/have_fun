@@ -1,6 +1,7 @@
 class PostHobbiesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_post_hobby, only: [:edit, :show, :update]
 
   def new
     @post_hobby = PostHobby.new
@@ -39,9 +40,7 @@ class PostHobbiesController < ApplicationController
       end
     # 画像なしの時の処理
     elsif params[:commit] == "下書き保存"
-      @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
-      if @post_hobby.post_status = :draft
-        @post_hobby.save
+      if @post_hobby.save_draft
         flash[:notice] = "下書き保存に成功しました"
         redirect_to unpublished_post_hobbies_path
       else
@@ -49,7 +48,6 @@ class PostHobbiesController < ApplicationController
         render :new
       end
     else
-      @post_hobby = PostHobby.create(post_hobby_params.merge(user_id: current_user.id))
       tag_list = params[:post_hobby][:tag_name].split(",")
       if @post_hobby.save
         @post_hobby.save_tags(tag_list)
@@ -70,20 +68,17 @@ class PostHobbiesController < ApplicationController
   end
 
   def show
-    @post_hobby = PostHobby.find(params[:id])
     @user = @post_hobby.user
     @comment = Comment.new
     @reply_comment = @post_hobby.comments.new
   end
 
   def edit
-    @post_hobby = PostHobby.find(params[:id])
     @tag_list = @post_hobby.tags.pluck(:tag_name).join(",")
     @is_draft = @post_hobby.draft?
   end
 
   def update
-    @post_hobby = PostHobby.find(params[:id])
     tag_list = params[:post_hobby][:tag_name].split(",")
     if post_hobby_params[:post_image].present?
       result = Vision.image_analysis(post_hobby_params[:post_image])
@@ -166,5 +161,9 @@ class PostHobbiesController < ApplicationController
     unless @post_hobby.user == current_user || current_user.admin?
       redirect_to post_hobbies_path
     end
+  end
+
+  def set_post_hobby
+    @post_hobby = PostHobby.find(params[:id])
   end
 end
