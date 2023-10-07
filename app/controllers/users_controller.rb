@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_hobbies = @user.post_hobbies.where(post_status: :published).order(created_at: :desc).page(params[:page])
+    @post_hobbies = @user.post_hobbies.where(post_status: :published).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def edit
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @post_hobbies = @user.post_hobbies.order(created_at: :desc).page(params[:page])
+    @post_hobbies = @user.post_hobbies.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def confirm_withdraw
