@@ -168,5 +168,4 @@ class PostHobbiesController < ApplicationController
   def result
     Vision.image_analysis(post_hobby_params[:post_image])
   end
-
 end
