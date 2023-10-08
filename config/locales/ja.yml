@@ -191,6 +191,12 @@ ja:
       post_hobby:
         tag_name: '<p class="tip">半角,をつけることで複数タグをつけられます</p>'
       user:
+        name: '<p class="tip">1~20文字で入力してください</p>'
         password: '<p class="tip">パスワードは6文字以上入力してください</p>'
+        hobby: '<p class="tip">50文字以内で入力してください</p>'
+        introduction: '<p class="tip">100文字以内で入力してください</p>'
+      group:
+        group_name: '<p class="tip">2~20文字で入力してください</p>'
+        introduction: '<p class="tip">150文字以内で入力してください</p>'
     required:
         html: '<abbr class="nec">必須</abbr>'

@@ -8,10 +8,8 @@ class Group < ApplicationRecord
 
   has_one_attached :group_image, dependent: :destroy
 
-  with_options presence: true do
-    validates :group_name, uniqueness: true
-    validates :introduction
-  end
+  validates :group_name,   length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :introduction, length: { maximum: 150 }, presence: true
 
   def get_group_image
     (group_image.attached?) ? group_image : "no_image.jpg"
@@ -34,7 +32,6 @@ class Group < ApplicationRecord
     group_users.each do | group_user_id |
       save_notification_chat(current_user, chat_id, group_user_id['user_id'])
     end
-
   end
 
   def save_notification_chat(current_user, chat_id, visited_id)

@@ -26,8 +26,8 @@
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
 
     <p class="text-muted">
-      <%= comment_content %>
-      <%= chat_content %>
+      <%= truncate(comment_content) %>
+      <%= truncate(chat_content) %>
     </p>
   </li>
 </ul>

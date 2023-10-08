@@ -25,7 +25,8 @@
     </tr>
   <% end %>
 </table>
-<div class="mt-1 action">
+
+<div class="mt-1 text-center">
   <% if current_user == user || current_user.admin? %>
     <% unless user.guest_user? %>
       <%= link_to edit_user_path(user), class: "btn btn-secondary px-5" do %>
@@ -34,6 +35,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-
