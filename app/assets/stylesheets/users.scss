@@ -11,6 +11,8 @@
 }
 
 .profile {
+  table-layout: fixed;
+
   th {
     width: 150px;
     height: 30px;
@@ -20,6 +22,8 @@
     width: 300px;
     border-bottom: 1px solid;
     vertical-align: bottom;
+    word-break: break-all;
+    overflow-wrap : break-word;
   }
 }
 
@@ -58,6 +62,8 @@
 
 //indexレイアウト
 .user-list {
+  table-layout: fixed;
+
   th {
     width: 30%;
     background-color: #ffe4c4;
@@ -65,6 +71,9 @@
 
   td {
     background: rgba(255,255,255,0.5);
+    word-break: break-all;
+    overflow-wrap : break-word;
+    vertical-align: middle;
   }
 
   th:last-child {

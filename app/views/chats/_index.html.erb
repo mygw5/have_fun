@@ -3,9 +3,9 @@
     <div class="d-flex flex-row-reverse">
       <div class="mx-3">
         <%= image_tag chat.user.get_profile_image, size: '50x50', class: "rounded-circle user_img" %>
-        <p class="user-name"><%= chat.user.name %></p>
+        <p class="break-word user-name"><%= chat.user.name %></p>
       </div>
-      <p class="p-3 bg-primary text-light rounded"><%= chat.message %></p>
+      <p class="p-3 bg-primary text-light rounded chat-content"><%= chat.message %></p>
     </div>
   <% else %>
     <div class="d-flex">
@@ -15,7 +15,7 @@
           <p class="user-name"><%= chat.user.name %></p>
         </div>
       <% end %>
-      <p class="p-2 bg-light border border-secondary rounded"><%= chat.message %></p>
+      <p class="p-2 bg-light border border-secondary rounded chat-content"><%= chat.message %></p>
     </div>
   <% end %>
 <% end %>

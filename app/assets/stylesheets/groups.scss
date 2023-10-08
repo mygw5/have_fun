@@ -20,10 +20,15 @@
 }
 
 .member-list {
+  table-layout: fixed;
+
   td {
     width: 25%;
     vertical-align: baseline;
     background: rgba(255,255,255,0.5);
+    word-break: break-all;
+    overflow-wrap : break-word;
+    vertical-align: middle;
   }
 
   td:first-child {
@@ -45,6 +50,8 @@
 }
 
 .group-list {
+  table-layout: fixed;
+
   .group-img {
     width: 200px;
     height: 150px;
@@ -62,8 +69,10 @@
 
   td {
     width: 100px;
-    vertical-align: baseline;
     background: rgba(255,255,255,0.5);
+    word-break: break-all;
+    overflow-wrap : break-word;
+    vertical-align: middle;
   }
  }
 
@@ -86,8 +95,15 @@
   background: rgba(255,255,255,0.7);
 
   .user-name {
+    width: 50px;
     text-align: center;
     font-size: xx-small;
+    overflow-wrap : break-word;
+  }
+
+  .chat-content {
+    word-break: break-all;
+    overflow-wrap : break-word;
   }
 }
 

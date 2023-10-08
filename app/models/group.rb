@@ -8,10 +8,8 @@ class Group < ApplicationRecord
 
   has_one_attached :group_image, dependent: :destroy
 
-  with_options presence: true do
-    validates :group_name, uniqueness: true
-    validates :introduction
-  end
+  validates :group_name,   length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :introduction, length: { maximum: 150 }, presence: true
 
   def get_group_image
     (group_image.attached?) ? group_image : "no_image.jpg"
