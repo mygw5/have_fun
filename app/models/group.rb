@@ -32,7 +32,6 @@ class Group < ApplicationRecord
     group_users.each do | group_user_id |
       save_notification_chat(current_user, chat_id, group_user_id['user_id'])
     end
-
   end
 
   def save_notification_chat(current_user, chat_id, visited_id)
