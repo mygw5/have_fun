@@ -39,7 +39,7 @@ sakura = User.find_or_create_by!(email: "sakura@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename: "sample-user2.jpg")
 end
 
-taro = User.find_or_create_by!(email: "taro@example.com") do |user|
+User.find_or_create_by!(email: "taro@example.com") do |user|
   user.name = "太郎"
   user.hobby = "ゲーム"
   user.introduction = "新しい趣味を見つけたい!"
@@ -47,7 +47,7 @@ taro = User.find_or_create_by!(email: "taro@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename: "sample-user3.jpg")
 end
 
- shin= User.find_or_create_by!(email: "shin@example.com") do |user|
+User.find_or_create_by!(email: "shin@example.com") do |user|
   user.name = "シン"
   user.hobby = "映画鑑賞"
   user.introduction = "ホラー映画とねこ大好き!アイコンの猫ちゃんは猫カフェの猫です"
