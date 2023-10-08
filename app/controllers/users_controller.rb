@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user,   only: [:edit]
   before_action :if_not_admin,        only: [:index]
+  before_action :set_user,            only: [:edit, :show, :update]
 
   def index
     @q = User.ransack(params[:q])
@@ -10,16 +11,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @post_hobbies = @user.post_hobbies.where(post_status: :published).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       if @user != current_user
         flash[:notice] = "ユーザー情報の更新に成功しました"
@@ -76,5 +74,9 @@ class UsersController < ApplicationController
 
   def if_not_admin
     redirect_to mypage_users_path unless current_user.admin?
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

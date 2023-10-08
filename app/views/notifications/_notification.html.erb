@@ -38,5 +38,12 @@
         <%= time %>
         <p class="text-muted pl-3"><%= chat_content %></p>
     <% end %>
+    <!-- 通知時間を表示(○分前) -->
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+
+    <p class="text-muted">
+      <%= truncate(comment_content) %>
+      <%= truncate(chat_content) %>
+    </p>
   </li>
 </ul>

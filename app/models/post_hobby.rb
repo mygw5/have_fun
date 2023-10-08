@@ -25,7 +25,6 @@ class PostHobby < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-
   def save_tags(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags

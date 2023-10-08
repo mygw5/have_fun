@@ -16,7 +16,6 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.users << @group.owner
     if group_params[:group_image].present?
-      result = Vision.image_analysis(group_params[:group_image])
       if result
         if @group.save
           flash[:notice] = "グループ作成に成功しました"
@@ -45,7 +44,6 @@ class GroupsController < ApplicationController
 
   def update
     if group_params[:group_image].present?
-      result = Vision.image_analysis(group_params[:group_image])
       if result
         if @group.update(group_params)
           flash[:notice] = "グループ情報を更新しました"
@@ -95,5 +93,9 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def result
+    Vision.image_analysis(group_params[:group_image])
   end
 end

@@ -12,7 +12,6 @@ class PostHobbiesController < ApplicationController
   def create
     @post_hobby = PostHobby.new(post_hobby_params)
     if post_hobby_params[:post_image].present?
-      result = Vision.image_analysis(post_hobby_params[:post_image])
       # 画像ありの時の処理
       if result
         if params[:commit] == "下書き保存"
@@ -81,7 +80,6 @@ class PostHobbiesController < ApplicationController
   def update
     tag_list = params[:post_hobby][:tag_name].split(",")
     if post_hobby_params[:post_image].present?
-      result = Vision.image_analysis(post_hobby_params[:post_image])
       # 画像ありの処理
       if result
         if @post_hobby.update(post_hobby_params)
@@ -165,5 +163,9 @@ class PostHobbiesController < ApplicationController
 
   def set_post_hobby
     @post_hobby = PostHobby.find(params[:id])
+  end
+
+  def result
+    Vision.image_analysis(post_hobby_params[:post_image])
   end
 end
