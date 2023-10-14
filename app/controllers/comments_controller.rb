@@ -21,12 +21,11 @@ class CommentsController < ApplicationController
   end
 
   private
+    def comment_params
+      params.require(:comment).permit(:comment, :parent_id, :user_id, :post_hobby_id)
+    end
 
-  def comment_params
-    params.require(:comment).permit(:comment, :parent_id, :user_id, :post_hobby_id)
-  end
-
-  def set_post_hobby
-    @post_hobby = PostHobby.find(params[:post_hobby_id])
-  end
+    def set_post_hobby
+      @post_hobby = PostHobby.find(params[:post_hobby_id])
+    end
 end

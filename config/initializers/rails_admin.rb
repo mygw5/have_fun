@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
   config.asset_source = :webpacker
   config.main_app_name = %w(Let's_have_fun!)
-  config.parent_controller = 'ApplicationController'
+  config.parent_controller = "ApplicationController"
   ### Popular gems integration
 
   ## == Devise ==
