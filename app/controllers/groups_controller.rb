@@ -79,23 +79,22 @@ class GroupsController < ApplicationController
   end
 
   private
-
-  def group_params
-    params.require(:group).permit(:group_name, :introduction, :group_image).merge(owner_id: current_user.id)
-  end
-
-  def ensure_correct_user
-    @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to groups_path
+    def group_params
+      params.require(:group).permit(:group_name, :introduction, :group_image).merge(owner_id: current_user.id)
     end
-  end
 
-  def set_group
-    @group = Group.find(params[:id])
-  end
+    def ensure_correct_user
+      @group = Group.find(params[:id])
+      unless @group.owner_id == current_user.id
+        redirect_to groups_path
+      end
+    end
 
-  def result
-    Vision.image_analysis(group_params[:group_image])
-  end
+    def set_group
+      @group = Group.find(params[:id])
+    end
+
+    def result
+      Vision.image_analysis(group_params[:group_image])
+    end
 end

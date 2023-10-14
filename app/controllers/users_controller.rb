@@ -52,31 +52,30 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :hobby, :introduction, :profile_image, :is_status)
-  end
-
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user || current_user.admin?
-      redirect_to user_path(current_user)
+    def user_params
+      params.require(:user).permit(:name, :hobby, :introduction, :profile_image, :is_status)
     end
-  end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.guest_user?
-      flash.now[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
-      redirect_to mypage_users_path
+    def ensure_correct_user
+      @user = User.find(params[:id])
+      unless @user == current_user || current_user.admin?
+        redirect_to user_path(current_user)
+      end
     end
-  end
 
-  def if_not_admin
-    redirect_to mypage_users_path unless current_user.admin?
-  end
+    def ensure_guest_user
+      @user = User.find(params[:id])
+      if @user.guest_user?
+        flash.now[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
+        redirect_to mypage_users_path
+      end
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def if_not_admin
+      redirect_to mypage_users_path unless current_user.admin?
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

@@ -28,9 +28,9 @@ class Group < ApplicationRecord
   end
 
   def create_notification_by(current_user, chat_id)
-    #グループメンバー検索
+    # グループメンバー検索
     group_users.each do | group_user_id |
-      save_notification_chat(current_user, chat_id, group_user_id['user_id'])
+      save_notification_chat(current_user, chat_id, group_user_id["user_id"])
     end
   end
 
@@ -44,7 +44,7 @@ class Group < ApplicationRecord
 
   def create_notification_join(current_user)
     group_users.each do | group_user_id |
-      save_notification_join(current_user, group_user_id['user_id'])
+      save_notification_join(current_user, group_user_id["user_id"])
     end
   end
 

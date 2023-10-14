@@ -1,11 +1,10 @@
-require 'base64'
-require 'json'
-require 'net/https'
+require "base64"
+require "json"
+require "net/https"
 
 module Vision
   class << self
     def image_analysis(image_file)
-
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
 
       base64_image = Base64.encode64(image_file.tempfile.read)
@@ -17,7 +16,7 @@ module Vision
           },
           features: [
             {
-              type: 'SAFE_SEARCH_DETECTION'
+              type: "SAFE_SEARCH_DETECTION"
             }
           ]
         }]
@@ -27,12 +26,12 @@ module Vision
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
       request = Net::HTTP::Post.new(uri.request_uri)
-      request['Content-Type'] = 'application/json'
+      request["Content-Type"] = "application/json"
       response = https.request(request, params)
       result = JSON.parse(response.body)
 
-      if (error = result['responses'][0]['error']).present?
-        raise error['message']
+      if (error = result["responses"][0]["error"]).present?
+        raise error["message"]
       else
         result_arr = result["responses"].flatten.map do |parsed_image|
           parsed_image["safeSearchAnnotation"].values
