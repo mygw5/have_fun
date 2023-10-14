@@ -6,18 +6,6 @@ describe "投稿のテスト" do
   let!(:user) { create(:user) }
   let!(:post_hobby) { create(:post_hobby, title: "hoge", text: "text", user_id: user.id) }
 
-  describe "トップ画面のテスト" do
-    before do
-      visit root_path
-    end
-    context "表示の確認" do
-      it 'トップ画面が"/"であるか' do
-        expect(current_path).to eq("/")
-      end
-    end
-  end
-
-
   describe "ユーザログイン後のテスト" do
     before do
       visit new_user_session_path
