@@ -49,7 +49,7 @@ class PostHobby < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title"]
+    ["title","created_at"]
   end
 
   def create_notification_by(current_user, comment_id)

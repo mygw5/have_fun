@@ -62,7 +62,7 @@ class PostHobbiesController < ApplicationController
   def index
     # 公開設定のみ一覧へ表示させる
     @q = PostHobby.ransack(params[:q])
-    @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc).page(params[:page])
+    @post_hobbies = @q.result(distinct: true).where(post_status: :published).page(params[:page])
     @tag_list = Tag.all
   end
 
