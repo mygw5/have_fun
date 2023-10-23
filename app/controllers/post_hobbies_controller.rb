@@ -2,6 +2,7 @@ class PostHobbiesController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_post_hobby, only: [:edit, :show, :update]
+  before_action :unpublished_post, only: [:show]
 
   def new
     @post_hobby = PostHobby.new
@@ -166,5 +167,14 @@ class PostHobbiesController < ApplicationController
 
     def result
       Vision.image_analysis(post_hobby_params[:post_image])
+    end
+
+    def unpublished_post
+      @post_hobby = PostHobby.find(params[:id])
+      if @post_hobby.draft? || @post_hobby.unpublished?
+        unless @post_hobby.user == current_user
+         redirect_to post_hobbies_path
+        end
+      end
     end
 end
