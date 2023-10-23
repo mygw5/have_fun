@@ -171,8 +171,10 @@ class PostHobbiesController < ApplicationController
 
     def unpublished_post
       @post_hobby = PostHobby.find(params[:id])
-      unless @post_hobby.user == current_user
-        redirect_to post_hobbies_path
+      if @post_hobby.draft? || @post_hobby.unpublished?
+        unless @post_hobby.user == current_user
+         redirect_to post_hobbies_path
+        end
       end
     end
 end
