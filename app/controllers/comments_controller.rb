@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
     @post_hobby.create_notification_by(current_user, @comment.id)
   end
 
-
   def destroy
     @reply_comment = @post_hobby.comments.new
     @comment = Comment.find(params[:id])
@@ -28,4 +27,5 @@ class CommentsController < ApplicationController
     def set_post_hobby
       @post_hobby = PostHobby.find(params[:post_hobby_id])
     end
+    
 end
