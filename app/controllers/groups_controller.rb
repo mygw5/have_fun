@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_group, only: [:show, :edit, :update]
+  before_action :authority_member, only: [:posts]
 
   def index
     @q = Group.ransack(params[:q])
@@ -78,6 +79,11 @@ class GroupsController < ApplicationController
     @owner = @group.owner
   end
 
+  def posts
+    group = Group.find(params[:group_id])
+    @post_hobbies = PostHobby.where(user_id: group.user_ids, post_status: :published).order(created_at: :desc)
+  end
+
   private
     def group_params
       params.require(:group).permit(:group_name, :introduction, :group_image).merge(owner_id: current_user.id)
@@ -96,5 +102,12 @@ class GroupsController < ApplicationController
 
     def result
       Vision.image_analysis(group_params[:group_image])
+    end
+
+    def authority_member
+      @group = Group.find(params[:group_id])
+      unless @group.includesUser?(current_user)
+        redirect_to group_path(@group)
+      end
     end
 end

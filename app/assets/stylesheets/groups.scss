@@ -107,6 +107,55 @@
   }
 }
 
+//グループ投稿画面
+.group-post {
+  .card {
+    width: 500px;
+    height: 550px;
+
+    .card-img {
+      height: 350px;
+      object-fit: cover;
+    }
+
+    h4 {
+    font-size: 20px;
+    }
+
+    p{
+      font-size: 10px;
+    }
+
+    .card-content {
+      height: 150px;
+    }
+  }
+
+  //投稿フェードイン
+  .fadein {
+    opacity: 0;
+  }
+
+  .fadein.active {
+    opacity: 1;
+    animation: fadein 2s;
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+      transition-duration: 1s;
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+      transition-duration: 1s;
+    }
+  }
+}
+
 //レスポンシブ
 @media screen and (max-width: 991px) {
   table {
