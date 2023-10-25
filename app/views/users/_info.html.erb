@@ -27,11 +27,18 @@
 </table>
 
 <div class="mt-1 text-center">
-  <% if current_user == user || current_user.admin? %>
+  <% if current_user.admin? %>
+    <%= render 'relationships/btn', user: user %>
+    <%= link_to edit_user_path(user), class: "btn btn-secondary px-5" do %>
+      <i class="fas fa-user-cog">　編集する</i>
+    <% end %>
+  <% elsif current_user == user %>
     <% unless user.guest_user? %>
       <%= link_to edit_user_path(user), class: "btn btn-secondary px-5" do %>
         <i class="fas fa-user-cog">　編集する</i>
       <% end %>
     <% end %>
+  <% else %>
+    <%= render 'relationships/btn', user: user %>
   <% end %>
 </div>

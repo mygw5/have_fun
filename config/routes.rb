@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     get   :confirm_withdraw
     patch :withdraw
     get   :mypage, on: :collection
+    resource :relationships, only: [:create, :destroy]
+    get "followings" => "relationships#followings", as: "followings"
+    get "followers" => "relationships#followers", as: "followers"
+
   end
 
   resources :groups, only: [:new, :create, :index, :show, :edit, :update] do
