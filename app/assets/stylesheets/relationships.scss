@@ -1,0 +1,12 @@
+// Place all the styles related to the relationships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//ページタイトル固定
+.heading {
+  font-size: 10em;
+  //要素の幅高さを指定
+  transform-origin: 11% 45%;
+  //要素の回転
+  transform: rotate(90deg);
+}
