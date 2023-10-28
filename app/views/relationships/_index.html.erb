@@ -1,14 +1,30 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th></th>
       <th>名前</th>
+      <th>紹介</th>
+      <th>趣味</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
         <td>
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_profile_image, size: "100x100", class: "profile-img" %>
+          <% end %>
+        </td>
+        <td>
           <%= link_to user.name, user_path(user), class: "text-dark" %>
+        </td>
+        <td><%= user.introduction %></td>
+        <td><%= user.hobby %></td>
+        <td>
+          <% unless user == current_user %>
+            <%= render 'btn', user: user %>
+          <% end %>
         </td>
       </tr>
     <% end %>
