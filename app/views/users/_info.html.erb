@@ -14,6 +14,16 @@
     <td><%= user.introduction %></td>
   </tr>
 
+  <tr>
+    <th>フォロワー</th>
+    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+  </tr>
+
+  <tr>
+    <th>フォロー</th>
+    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+  </tr>
+
   <% if current_user.admin? %>
     <tr>
       <th>ステータス</th>
