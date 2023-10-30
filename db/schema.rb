@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 2023_10_25_032531) do
     t.integer "group_id"
     t.integer "comment_id"
     t.integer "chat_id"
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.string "action", default: " ", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
