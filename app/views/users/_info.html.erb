@@ -15,13 +15,13 @@
   </tr>
 
   <tr>
-    <th>フォロワー</th>
-    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+    <th>フォロー</th>
+    <td  class="follow"><%= link_to user.followings.count, user_followings_path(user) %></td>
   </tr>
 
   <tr>
-    <th>フォロー</th>
-    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+    <th>フォロワー</th>
+    <td  class="follow"><%= link_to user.followers.count, user_followers_path(user) %></td>
   </tr>
 
   <% if current_user.admin? %>

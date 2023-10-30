@@ -10,3 +10,7 @@
   //要素の回転
   transform: rotate(90deg);
 }
+
+.profile-img {
+  object-fit: cover;
+}
