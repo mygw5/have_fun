@@ -21,6 +21,8 @@
         <% chat = Chat.find_by(id: visiter_chat) %>
         <% chat_content = chat.message %>
         <%= link_to "#{ group.group_name }", group_path(notification.group_id) %>にチャットを送りました。
+      <% when "follow" then %>
+        あなたをフォローしました。
     <% end %>
     <!-- 通知時間を表示(○分前) -->
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
