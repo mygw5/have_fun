@@ -28,12 +28,31 @@
   <% end %>
 </div>
 
-<div class="row pt-3">
-  <div class="col-12">
-    <%= render 'sort', q: @q %>
+<!--<div class="row pt-3">-->
+<!--  <div class="col-12">-->
+<!--    <%= render 'sort', q: @q %>-->
+<!--    <%= render 'index', post_hobbies: @post_hobbies %>-->
+<!--  </div>-->
+<!--</div>-->
+
+<ul class="tab-list list-unstyled">
+  <li class="tab tab-active">
+    一覧
+  </li>
+  <li class="tab">
+    フォロー
+  </li>
+</ul>
+
+<div class="tabbox-contents">
+  <div class="tabbox box-show">
     <%= render 'index', post_hobbies: @post_hobbies %>
   </div>
+  <div class="tabbox">
+    <%= render 'index', post_hobbies: @follow_posts %>
+  </div>
 </div>
+
 
 <%= paginate @post_hobbies %>
 <%= javascript_pack_tag 'script/fadein' %>
