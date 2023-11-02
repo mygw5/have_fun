@@ -64,7 +64,7 @@ class PostHobbiesController < ApplicationController
     # 公開設定のみ一覧へ表示させる
     @q = PostHobby.ransack(params[:q])
     @post_hobbies = @q.result(distinct: true).where(post_status: :published).order(created_at: :desc).page(params[:page])
-    @follow_posts = @q.result(distinct: true).where(post_status: :opublished).where(current_user.follow).order(created_at: :desc).page(params[:page])
+    @follow_posts = @q.result(distinct: true).where(post_status: :published).where(user_id: current_user.followings).order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 
